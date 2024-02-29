@@ -123,10 +123,10 @@ ul.main-menu li a {
   color:#ffffff;
 }
 ul.main-menu li a:hover {
-  color:#FFFFFF;
+  color:#0000FF;
 }
 ul.main-menu li a.active {
-  color:#FFFFFF;
+  color:#3d7ee0;
   border-bottom-color:#EF6D3D;
 }
 
