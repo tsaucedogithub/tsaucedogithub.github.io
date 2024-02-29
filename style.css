@@ -130,6 +130,29 @@ ul.main-menu li a.active {
   border-bottom-color:#3d7ee0; /* #EF6D3D; */
 }
 
+/* Footer Links */
+ul.main-footer {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  list-style: none;
+}
+ul.main-footer li a {
+  margin-right:10px;
+  font-size:2.0rem;
+  border-bottom: solid transparent 3px;
+  color:#242526;
+}
+ul.main-footer li a:hover {
+  color:#0000FF;
+}
+ul.main-footer li a.active {
+  color:#3d7ee0;
+  border-bottom-color:#3d7ee0; /* #EF6D3D; */
+}
+
 /* Utility classes */
 .hide {
   display:none;
