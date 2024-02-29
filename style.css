@@ -11,7 +11,7 @@ body {
   line-height: 1.6;
   font-weight: 400;
   font-family: "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #000000;
+  color: #FF0000;
 }
 
 /**
@@ -103,7 +103,7 @@ body {
 header, #content, footer { 
   background: rgba(1,0,0,.8); 
   padding:25px;
-  color:#FFFFFF; 
+  color:#00FF00; 
 }
 
 /* Menu Links */
