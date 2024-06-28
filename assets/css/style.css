@@ -175,3 +175,16 @@ ul.main-footer li a:hover {
 .show {
   display:block;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.about-image {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
