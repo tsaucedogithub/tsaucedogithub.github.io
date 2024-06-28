@@ -40,14 +40,14 @@ navigation:
     link: /
   - name: About
     link: /about/
-  - name: Contact
-    link: /contact/
   - name: Blog
     link: /blog/
-  - name: The Club Violet
-    link: /theclubviolet/
+  - name: Contact
+    link: /contact/
   - name: Projects
     link: /projects/
+  - name: The Club Violet
+    link: /theclubviolet/
   #- name: Writing
   #  link: /writing/
 
