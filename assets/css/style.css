@@ -143,6 +143,39 @@ ul.main-menu li a.active {
   border-bottom-color:#3d7ee0; /* #EF6D3D; */
 }
 
+header {
+  /* background-color: #f0f0f0; Example background color for the header */
+  padding: 10px 0; /* Adjust padding as needed */
+}
+
+nav ul {
+  list-style-type: none; /* Remove default list styles */
+  margin: 0;
+  padding: 0;
+  text-align: center; /* Center-align the list items */
+}
+
+nav ul li {
+  display: inline-block; /* Display list items horizontally */
+  margin-right: 10px; /* Adjust spacing between items */
+}
+
+nav ul li:last-child {
+  margin-right: 0; /* Remove margin from last item */
+}
+
+nav ul li a {
+  color: #333; /* Link text color */
+  text-decoration: none; /* Remove underline */
+  padding: 5px 10px; /* Add padding to each link */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+nav ul li a:hover {
+  color: #0077cc; /* Change color on hover */
+}
+
+
 /* General link styles */
 header nav ul li a {
   color: inherit; /* Default link color */
