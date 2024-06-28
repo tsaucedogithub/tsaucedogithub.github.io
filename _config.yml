@@ -44,6 +44,12 @@ navigation:
     link: /contact/
   - name: Blog
     link: /blog/
+  - name: The Club Violet
+    link: /clubviolet/
+  - name: Projects
+    link: /projects/
+  #- name: Writing
+  #  link: /writing/
 
 
 # Exclude from processing.
