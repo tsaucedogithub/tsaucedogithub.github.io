@@ -140,12 +140,12 @@ header nav ul li a {
 
 /* Hover effect */
 header nav ul li a:hover {
-  color: lightblue; /* Color when hovering over a link */
+  color: rgb(227, 173, 230); /* Color when hovering over a link */
 }
 
 /* Active link */
 header nav ul li a.active {
-  color: blue; /* Color for the active page link */
+  color: rgb(200, 0, 255); /* Color for the active page link */
 }
 
 
@@ -195,7 +195,7 @@ img {
   text-align: center;
   padding: 20% 0;
   font-size: 2em;
-  color: #ffffff;
+  color: #ffcdfe;
   font-weight: bold;
 }
 
