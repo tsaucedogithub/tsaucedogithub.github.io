@@ -1,10 +1,8 @@
 ---
 layout: default
-title: Contact
+title: Contact Me
 permalink: /contact/
 ---
-
-# Contact me
 
 For sponsorships: tristansaucedobusiness@gmail.com.
 

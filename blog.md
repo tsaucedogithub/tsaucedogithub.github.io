@@ -4,8 +4,6 @@ title: Blog
 permalink: /blog/
 ---
 
-# Blog
-
 This is my blog! I was more consistent in the past, but now I write when I'm inspired.
 
 <div class="posts">

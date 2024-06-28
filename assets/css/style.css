@@ -120,6 +120,15 @@ header, #content, footer {
   color:#242526; 
 }
 
+/* Set maximum width for main content */
+#container {
+  max-width: 1200px; /* Adjust max-width as needed */
+  margin: 0 auto; /* Center-align the container */
+  padding: 0 20px; /* Optional: Add padding for additional space */
+  box-sizing: border-box; /* Include padding and border in total width */
+}
+
+
 /* Menu Links */
 ul.main-menu {
   margin: 0;

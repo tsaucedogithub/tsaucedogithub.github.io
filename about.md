@@ -1,10 +1,8 @@
 ---
 layout: default
-title: About
+title: About Me
 permalink: /about/
 ---
-
-# About Me
 
 <img src="{{ '/assets/images/port.jpg' | relative_url }}" alt="Me" style="width: 200px; height: auto;">
 
