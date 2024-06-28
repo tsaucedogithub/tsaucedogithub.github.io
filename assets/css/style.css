@@ -188,3 +188,18 @@ img {
   width: 150px;
   height: 150px;
 }
+
+
+/* Add styles specific to The Club Violet page */
+.coming-soon {
+  text-align: center;
+  padding: 20% 0;
+  font-size: 2em;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.page-club-violet {
+  background-color: #e6e6fa; /* Light purple background */
+  min-height: 100vh; /* Ensure it covers the full viewport height */
+}

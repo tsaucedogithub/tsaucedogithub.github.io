@@ -4,4 +4,8 @@ title: The Club Violet
 permalink: /theclubviolet/
 ---
 
-# Coming soon :)
+<div class="page-club-violet">
+  <div class="coming-soon">
+    <h1><strong>Coming Soon :)</strong></h1>
+  </div>
+</div>
