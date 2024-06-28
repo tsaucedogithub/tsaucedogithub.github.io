@@ -4,7 +4,7 @@ title: Blog
 permalink: /blog/
 ---
 
-This is my blog! I was more consistent in the past, but now I write when I'm inspired.
+This is my blog! I was more consistent in the past, but now I write when I'm inspired. I still have to add my old blogposts from autumn 2023. 
 
 <div class="posts">
   {% for post in site.posts %}
