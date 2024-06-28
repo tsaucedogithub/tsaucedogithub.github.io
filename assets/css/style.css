@@ -200,6 +200,12 @@ img {
 }
 
 .page-club-violet {
-  background-color: #e6e6fa; /* Light purple background */
+  background-color: #c070eb; /* Light purple background */
   min-height: 100vh; /* Ensure it covers the full viewport height */
+}
+
+.page-club-violet header,
+.page-club-violet footer {
+  background-color: #c070eb; /* Match the background color of the page */
+  padding: 10px; /* Adjust padding as needed */
 }
