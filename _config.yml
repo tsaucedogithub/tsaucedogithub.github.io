@@ -27,13 +27,13 @@ url: "https://tsaucedogithub.github.io/" # the base hostname & protocol for your
 github_username:  tsaucedogithub
 
 title: Tristan's Site
-description: Tristan Saucedo's personal Website.
+description: Tristan Saucedo's personal Website. 
 author: Tristan Saucedo
 
 # Build settings
 theme: minima
-plugins:
-  - jekyll-feed
+#plugins:
+#  - jekyll-feed
 
 navigation:
   - name: Home
