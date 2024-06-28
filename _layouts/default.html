@@ -19,7 +19,7 @@
         <ul>
           {% for item in site.navigation %}
             <li>
-              <a href="{{ item.link }}" class="{% if page.url == item.link %}active{% endif %}">{{ item.name }}</a>
+              <a href="{{ item.link }}" class="{% if item.link == page.url or item.link == page.url | absolute_url %}active{% endif %}">{{ item.name }}</a>
             </li>
           {% endfor %}
         </ul>
