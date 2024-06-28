@@ -130,6 +130,23 @@ ul.main-menu li a.active {
   border-bottom-color:#3d7ee0; /* #EF6D3D; */
 }
 
+/* General link styles */
+header nav ul li a {
+  color: inherit; /* Default link color */
+  transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+/* Hover effect */
+header nav ul li a:hover {
+  color: lightblue; /* Color when hovering over a link */
+}
+
+/* Active link */
+header nav ul li a.active {
+  color: blue; /* Color for the active page link */
+}
+
+
 /* Footer Links */
 ul.main-footer {
   margin: 0;
