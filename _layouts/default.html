@@ -6,7 +6,7 @@
     <meta name="description" content="{{ site.description }}">
     <meta name="author" content="{{ site.author }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="{{ '/favicon.png' | relative_url }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
     <link href="{{ '/assets/css/style.css' | relative_url }}" rel="stylesheet" type="text/css" />
@@ -19,7 +19,7 @@
         <ul>
           {% for item in site.navigation %}
             <li>
-              <a href="{{ item.link }}" class="{% if item.link == page.url or item.link == page.url | absolute_url %}active{% endif %}">{{ item.name }}</a>
+              <a href="{{ item.link | relative_url }}" class="{% if item.link == page.url or item.link == page.url | absolute_url %}active{% endif %}">{{ item.name }}</a>
             </li>
           {% endfor %}
         </ul>
@@ -31,13 +31,13 @@
     <footer>
       <ul class="main-footer">
         <li><a href="http://github.com/tsaucedogithub">Github (where I built this site!)</a></li>
-        <li><a href="http://instagram.com/tristanrsaucedo/">Instagram</a></li>
         <li><a href="https://www.goodreads.com/user/show/154137344-tristan-saucedo">Goodreads</a></li>
+        <li><a href="http://instagram.com/tristanrsaucedo/">Instagram</a></li>
         <li><a href="https://www.linkedin.com/in/tristan-saucedo-b0a275193/">Linkedin</a></li>
-        <li><a href="http://youtube.com/channel/UCYyAyOKRGAUAkZsTMHZc1lQ">Youtube</a></li>
         <li><a href="https://www.linkedin.com/in/tristan-saucedo-b0a275193/overlay/1635544333826/single-media-viewer/?profileId=ACoAAC1sZvoBeGVMtS7D_9-shvWiNzg3L05uQ0E">Resume</a></li>
+        <li><a href="http://youtube.com/channel/UCYyAyOKRGAUAkZsTMHZc1lQ">Youtube</a></li>
       </ul>
     </footer>
-    <script src="/assets/js/script.js"></script>
+    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
   </body>
 </html>
