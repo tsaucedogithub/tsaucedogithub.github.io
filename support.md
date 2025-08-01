@@ -2,7 +2,7 @@
 layout: null
 title: Support, Daily Log App
 permalink: /support.html
-----
+---
 
 # Support Daily Log
 
