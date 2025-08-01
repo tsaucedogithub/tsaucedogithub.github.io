@@ -1,87 +1,68 @@
 ---
-layout: default
-title: Support Policy
+layout: null
+title: Support, Daily Log App
 permalink: /support.html
----
+----
 
-# Support Policy
+# Support Daily Log
 
-## Overview
+Last updated: {{ site.time | date: "%B %d, %Y" }}
 
-This support policy outlines how we provide assistance and handle support requests for our application. We are committed to helping our users have the best possible experience with our service.
+## Getting Started
+### Creating Your First Habit
+1. Open the app and tap “Add Habit.”
+2. Enter a name and select a type (binary, discrete, continuous).
+3. Save to see it on your dashboard.
 
-## Support Channels
+### Understanding Habit Types
+- **Binary:** Yes/No habits (e.g., Meditated today?).
+- **Discrete:** Count-based habits (e.g., Glasses of water).
+- **Continuous:** Measurable values (e.g., Miles run).
 
-### Email Support
-For general inquiries and support requests, please contact us at:
-- **Email**: support@example.com
-- **Response Time**: We aim to respond within 24-48 hours during business days
+### Taking Your First Daily Survey
+1. Tap “Daily Survey” from the main menu.
+2. Answer yes/no, select scales, or enter numbers.
+3. Optionally add a note before submitting.
 
-### Technical Issues
-For technical problems or bug reports:
-- **Email**: tech-support@example.com
-- **Response Time**: We prioritize technical issues and aim to respond within 24 hours
+## Features Guide
+- **Daily Survey:** Complete, edit, and review past survey entries.
+- **Habit Management:** Add, edit, and delete habits anytime.
+- **Streak Tracking:** Track daily and weekly streaks automatically.
+- **Dashboard:** View your summary stats, calendar heatmap, and averages.
+- **Notes:** Attach context or observations to any day’s entry.
 
-## What We Support
+## Troubleshooting
+- **App Won’t Open:** Ensure iOS is updated; restart your device.
+- **Data Missing:** Data is local—check device storage and backup settings.
+- **Streaks Not Updating:** Confirm daily survey was submitted; streaks require consecutive entries.
+- **Cannot Edit Past Dates:** Use the calendar view on the dashboard to select older dates.
 
-### Covered Support Areas
-- Account setup and configuration
-- Basic troubleshooting and usage questions
-- Bug reports and technical issues
-- Feature requests and feedback
-- Billing and subscription inquiries
+## Frequently Asked Questions
+**Can I sync data between devices?** No. All data remains local to your device.
 
-### Support Limitations
-- We do not provide support for third-party integrations beyond our documented APIs
-- Custom development or implementation services are not included in standard support
-- Support is provided in English only
+**What happens if I delete the app?** All data is permanently removed and cannot be recovered.
 
-## Support Hours
+**Can I export my data?** Not currently supported.
 
-Our support team operates during the following hours:
-- **Monday - Friday**: 9:00 AM - 6:00 PM (EST)
-- **Weekends**: Limited support for critical issues only
-- **Holidays**: Support may be delayed during major holidays
+**How do I back up my data?** Use iCloud or iTunes device backup to save local app data.
 
-## Response Times
+**Why don’t I see data from last month?** The calendar view defaults to the current month—navigate to previous months using the arrows.
 
-We strive to provide timely responses based on the nature of your inquiry:
+## Feature Requests & Feedback
+Love the app or have ideas? Email detailed suggestions to:
+**tristansaucedobusiness@gmail.com**
+*Include:* feature description, use case, device model, and iOS version.
 
-### Priority Levels
-- **Critical Issues**: Within 4 hours during business hours
-- **General Support**: Within 24-48 hours
-- **Feature Requests**: Within 1 week for initial acknowledgment
+## Technical Requirements
+- **iOS Version:** 13.0 or later.
+- **Storage:** Minimal (&lt;50 MB).
+- **Internet:** Not required for core features.
 
-## How to Get Better Support
+## Contact Support
+For additional support, email **tristansaucedobusiness@gmail.com**. Please include:
+- App version
+- Device model
+- iOS version
+- Detailed issue description
 
-To help us assist you more effectively:
-
-1. **Be Specific**: Provide detailed descriptions of issues or questions
-2. **Include Screenshots**: Visual aids help us understand problems faster
-3. **Provide Context**: Let us know what you were trying to accomplish
-4. **Include Error Messages**: Copy and paste any error messages you encounter
-
-## Escalation Process
-
-If you're not satisfied with the initial support response:
-
-1. Reply to the original support email requesting escalation
-2. Your case will be reviewed by a senior support team member
-3. We will provide an updated response within 24 hours
-
-## Support Policy Updates
-
-This support policy may be updated from time to time. We will notify users of significant changes through:
-- Email notifications to registered users
-- Updates posted on our website
-- In-app notifications when applicable
-
-## Contact Information
-
-For questions about this support policy or to request support:
-- **Email**: support@example.com
-- **Website**: [Your Website URL]
-
----
-
-*Last Updated: [Current Date]*
+*Response time: 24–48 business hours.*

@@ -1,74 +1,44 @@
 ---
-layout: default
-title: Privacy Policy
+layout: null
+title: Privacy Policy, Daily Log App
 permalink: /privacy.html
 ---
 
-# Privacy Policy
+# Privacy Policy Daily Log
 
 Last updated: {{ site.time | date: "%B %d, %Y" }}
 
-## Introduction
+## Data Collection & Storage
+- **Local Storage Only:** All habit data, survey responses, notes, and usage patterns are stored locally on your device using Core Data.
+- **No Cloud Sync:** Data is not transmitted to external servers or cloud services.
+- **No Account Required:** The app does not collect any personal information or require user accounts.
 
-This Privacy Policy describes how we collect, use, and protect your information when you use our mobile application. We are committed to protecting your privacy and ensuring the security of your personal information.
+## Data Types Collected
+- Habit names and configurations (binary, discrete, or continuous types)
+- Daily survey responses (yes/no answers, numerical values, scale ratings)
+- Optional daily notes
+- Streak tracking data
+- App usage patterns (stored locally only)
 
-## Information We Collect
-
-### Personal Information
-- Name and contact information you provide
-- Account credentials and profile information
-- Communication preferences
-
-### Usage Information
-- App usage patterns and features accessed
-- Device information and operating system
-- Log data and crash reports
-
-### Location Information
-- Approximate location based on IP address
-- Precise location data (only with your explicit consent)
-
-## How We Use Your Information
-
-We use the collected information to:
-- Provide and maintain our app services
-- Improve user experience and app functionality
-- Send important notifications and updates
-- Respond to user inquiries and support requests
-- Ensure app security and prevent fraud
-
-## Information Sharing
-
-We do not sell, trade, or rent your personal information to third parties. We may share information only in the following circumstances:
-- With your explicit consent
-- To comply with legal obligations
-- To protect our rights and safety
-- With trusted service providers under strict confidentiality agreements
+## Data Usage
+- Data is used solely to provide habit tracking functionality within the app.
+- All statistics, averages, and streak calculations are performed locally on device.
+- No data is shared with third parties.
+- The app does not use any analytics or tracking services.
 
 ## Data Security
+- Data is protected by your device’s built‑in security (passcode, Face ID, or Touch ID).
+- No network transmission means no network security risks.
+- Users control backups through their iOS device settings.
 
-We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.
+## User Rights
+- You can delete all data at any time via the app’s “Reset All Data” feature.
+- Uninstalling the app removes all data permanently.
+- Deleted data cannot be recovered, underscoring the local‑only approach.
 
-## Your Rights
+## Key Legal Considerations
+- **CCPA & GDPR Compliance:** No personal data is collected or sold; data is processed locally.
+- **Privacy by Design:** The app is built around local‑only data handling to maximize user privacy.
 
-You have the right to:
-- Access your personal information
-- Correct inaccurate information
-- Request deletion of your data
-- Opt-out of certain data processing activities
-
-## Children's Privacy
-
-Our app is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13.
-
-## Changes to This Policy
-
-We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
-
-## Contact Us
-
-If you have any questions about this Privacy Policy, please contact us at:
-- Email: [your-email@example.com]
-- Address: [Your Address]
-
-This policy is effective as of the date listed above and applies to all users of our mobile application.
+## Contact Information
+For privacy questions or concerns, contact: tristansaucedobusiness@gmail.com
