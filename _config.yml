@@ -47,7 +47,7 @@ navigation:
   - name: Projects
     link: /projects/
   - name: The Club Violet
-    link: /theclubviolet/
+    link: https://clubviolet.substack.com/
   #- name: Writing
   #  link: /writing/
 
