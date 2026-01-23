@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html class="{{ page.body_class | default: '' }}">
   <head>
     <meta charset="utf-8">
     <title>{{ page.title }}</title>
@@ -7,19 +7,24 @@
     <meta name="author" content="{{ site.author }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <link rel="icon" type="image/png" href="{{ '/favicon.png' | relative_url }}">
+    {% if page.body_class == "home" %}
+    <link rel="preload" as="image" href="{{ '/assets/images/background.jpg' | relative_url }}">
+    {% endif %}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
     <link href="{{ '/assets/css/style.css' | relative_url }}" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
   </head>
-  <body>
+  <body class="{{ page.body_class | default: '' }}">
     <header>
       <h1>{{ site.title }}</h1>
       <nav>
         <ul>
           {% for item in site.navigation %}
             <li>
-              <a href="{{ item.link | relative_url }}" class="{% if item.link == page.url or item.link == page.url | absolute_url %}active{% endif %}">{{ item.name }}</a>
+              {% assign is_absolute = item.link contains '://' %}
+              {% assign open_new_tab = item.new_tab or is_absolute %}
+              <a href="{% if is_absolute %}{{ item.link }}{% else %}{{ item.link | relative_url }}{% endif %}" class="{% if item.link == page.url or item.link == page.url | absolute_url %}active{% endif %}"{% if open_new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ item.name }}</a>
             </li>
           {% endfor %}
         </ul>
@@ -30,13 +35,13 @@
     </main>
     <footer>
       <ul class="main-footer">
-        <li><a href="http://github.com/tsaucedogithub">Github (where I built this site!)</a></li>
-        <li><a href="https://www.goodreads.com/user/show/154137344-tristan-saucedo">Goodreads</a></li>
-        <li><a href="http://instagram.com/tristanrsaucedo/">Instagram</a></li>
-        <li><a href="https://www.linkedin.com/in/tristan-saucedo-b0a275193/">Linkedin</a></li>
-        <li><a href="https://www.linkedin.com/in/tristan-saucedo-b0a275193/overlay/1635544333826/single-media-viewer/?profileId=ACoAAC1sZvoBeGVMtS7D_9-shvWiNzg3L05uQ0E">Resume</a></li>
-        <li><a href="https://substack.com/@tsaucedo?utm_source=user-menu">Substack</a></li>
-        <li><a href="http://youtube.com/channel/UCYyAyOKRGAUAkZsTMHZc1lQ">Youtube</a></li>
+        <li><a href="http://github.com/tsaucedogithub" target="_blank" rel="noopener noreferrer">Github (where I built this site!)</a></li>
+        <li><a href="https://www.goodreads.com/user/show/154137344-tristan-saucedo" target="_blank" rel="noopener noreferrer">Goodreads</a></li>
+        <li><a href="http://instagram.com/tristanrsaucedo/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/tristan-saucedo-b0a275193/" target="_blank" rel="noopener noreferrer">Linkedin</a></li>
+        <li><a href="https://www.linkedin.com/in/tristan-saucedo-b0a275193/overlay/1635544333826/single-media-viewer/?profileId=ACoAAC1sZvoBeGVMtS7D_9-shvWiNzg3L05uQ0E" target="_blank" rel="noopener noreferrer">Resume</a></li>
+        <li><a href="https://substack.com/@tsaucedo?utm_source=user-menu" target="_blank" rel="noopener noreferrer">Substack</a></li>
+        <li><a href="http://youtube.com/channel/UCYyAyOKRGAUAkZsTMHZc1lQ" target="_blank" rel="noopener noreferrer">Youtube</a></li>
       </ul>
     </footer>
     <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
