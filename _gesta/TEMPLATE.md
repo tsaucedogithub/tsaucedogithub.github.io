@@ -5,6 +5,7 @@ date: 2024-01-01   # controls order (newest first) and the year shown
 category: travel   # academic / athletic / intellectual / travel / ...
 location: City, ST
 photo: /assets/images/res-gestae/FILENAME.jpg   # one photo; omit if none
+thumb_position: center   # thumbnail crop focal point: center / top / bottom / left / right / "70% 30%"
 # For multiple photos use this instead of `photo:` (a gallery on the entry page):
 # photos:
 #   - /assets/images/res-gestae/FIRST.jpg

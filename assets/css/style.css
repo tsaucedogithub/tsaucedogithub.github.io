@@ -313,15 +313,15 @@ img {
 }
 
 /**
- * Res Gestae — alternating timeline (the "tree")
+ * Res Gestae — alternating timeline with click-to-expand entries.
+ * Progressive enhancement: without JS every entry shows in full. With JS the
+ * timeline collapses to teasers and clicking a node expands it inline.
  */
-.timeline { position: relative; margin: 56px 0; }
+.timeline { position: relative; margin: 48px 0; }
 .timeline::before {                 /* the center spine */
   content: "";
   position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
+  left: 50%; top: 0; bottom: 0;
   width: 2px;
   background: rgba(20, 33, 61, 0.15);
   transform: translateX(-50%);
@@ -330,30 +330,62 @@ img {
   position: relative;
   width: 50%;
   box-sizing: border-box;
-  padding: 14px 36px;
+  padding: 12px 24px;
 }
 .tl-entry.left  { left: 0;   }
 .tl-entry.right { left: 50%; }
 .tl-entry::after {                  /* dot on the spine */
   content: "";
   position: absolute;
-  top: 22px;
-  width: 12px;
-  height: 12px;
+  top: 20px;
+  width: 12px; height: 12px;
   border-radius: 50%;
   background: var(--color-primary);
+  z-index: 2;
 }
 .tl-entry.left::after  { right: -7px; }
 .tl-entry.right::after { left: -7px;  }
+.tl-entry.is-expanded::after { display: none; }   /* no confusing dot shift when open */
 
+.tl-card { display: flex; gap: 14px; align-items: stretch; }
+.tl-photo {                          /* always visible; fills the full height of the entry */
+  width: 96px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  flex: 0 0 auto;
+  align-self: stretch;
+}
+.tl-info { min-width: 0; }
 .tl-year { display: block; font-size: 1.3rem; opacity: .55; color: var(--color-primary); }
-.tl-title { font-size: 2rem; margin: 4px 0; }
+.tl-title { font-size: 2rem; margin: 2px 0; }
 .tl-title a { color: var(--color-primary); text-decoration: none; }
 .tl-title a:hover { text-decoration: underline; }
-.tl-location { display: block; font-size: 1.4rem; opacity: .6; }
-.tl-thumb { margin-top: 12px; border-radius: 6px; max-width: 220px; }
-.tl-desc { margin: 10px 0 0; font-size: 1.6rem; }
-.tl-more { white-space: nowrap; }
+.tl-loc { display: block; font-size: 1.4rem; opacity: .6; }
+.tl-text { font-size: 1.6rem; margin-top: 6px; }
+.tl-text p { margin: 0 0 .5em; }
+.tl-text p:last-child { margin-bottom: 0; }
+.tl-more { display: inline-block; margin-top: 10px; font-size: 1.4rem; }
+.tl-more[hidden] { display: none; }
+
+/* JS-enhanced state */
+.js-timeline .tl-entry { cursor: pointer; }
+.js-timeline .tl-text {              /* collapsed teaser */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.js-timeline .tl-entry.is-expanded { width: 100%; left: 0; margin: 6px 0; }
+.js-timeline .tl-entry.is-expanded .tl-card {
+  background: var(--color-accent);
+  border-radius: 12px;
+  padding: 22px 26px;
+  gap: 24px;
+  align-items: flex-start;
+}
+.js-timeline .tl-entry.is-expanded .tl-photo { width: 260px; align-self: flex-start; }
+.js-timeline .tl-entry.is-expanded .tl-text { -webkit-line-clamp: 12; }  /* overflow spills to the page */
 
 /* Res Gestae intro line */
 .res-intro { font-size: 1.9rem; max-width: 58ch; opacity: .85; margin-bottom: 8px; }
@@ -385,11 +417,12 @@ img {
   .tl-entry.right {
     width: 100%;
     left: 0;
-    text-align: left;
-    padding: 14px 0 14px 32px;
+    padding: 12px 0 12px 30px;
   }
   .tl-entry.left::after,
   .tl-entry.right::after { left: 1px; right: auto; }
+  .js-timeline .tl-entry.is-expanded .tl-card { flex-direction: column; }
+  .js-timeline .tl-entry.is-expanded .tl-photo { width: 100%; }
   .tl-entry.left .tl-thumb { margin-left: 0; }
 }
 
