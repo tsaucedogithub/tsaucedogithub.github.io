@@ -64,6 +64,7 @@ defaults:
 exclude:
   - photos_res_gestae/
   - COPY.md
+  - ENTRIES.md
 
 # Exclude from processing.
 # The following items will not be processed, by default.
