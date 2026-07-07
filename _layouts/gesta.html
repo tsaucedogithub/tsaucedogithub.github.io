@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<article class="gesta-single">
+  <p class="gesta-meta">
+    <span class="gesta-year">{{ page.date | date: "%B %Y" }}</span>
+    {% if page.category %}<span class="gesta-cat">{{ page.category }}</span>{% endif %}
+  </p>
+  <h1>{{ page.title }}</h1>
+  {% if page.location %}<p class="gesta-location">{{ page.location }}</p>{% endif %}
+
+  {% if page.photo %}
+  <img class="gesta-photo" src="{{ page.photo | relative_url }}" alt="{{ page.title }}">
+  {% endif %}
+  {% if page.photos %}
+  <div class="gesta-gallery">
+    {% for p in page.photos %}
+    <img src="{{ p | relative_url }}" alt="{{ page.title }}">
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {{ content }}
+
+  {% if page.link %}
+  <p class="gesta-external"><a href="{{ page.link }}" target="_blank" rel="noopener noreferrer">View source &rarr;</a></p>
+  {% endif %}
+
+  <p class="gesta-back"><a href="{{ '/res-gestae/' | relative_url }}">&larr; Back to Res Gestae</a></p>
+</article>

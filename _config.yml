@@ -22,7 +22,7 @@
 #email: your-email@example.com
 #description: >- # this means to ignore newlines until "baseurl: "
 baseurl: "" #"/tsaucedogithub.github.io/" # the subpath of your site, e.g. /blog
-url: "https://tsaucedogithub.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://tristansaucedo.com" # the base hostname & protocol for your site
 #twitter_username: jekyllrb
 github_username:  tsaucedogithub
 
@@ -38,20 +38,32 @@ theme: minima
 navigation:
   - name: Home
     link: /
-  - name: About
-    link: /about/
-#  - name: Blog
-#    link: /blog/
-  - name: Contact
-    link: /contact/
   - name: Projects
     link: /projects/
-  - name: The Club Violet
-    link: https://clubviolet.substack.com/
-    new_tab: true
-  #- name: Writing
-  #  link: /writing/
+  - name: Res Gestae
+    link: /res-gestae/
+  - name: About
+    link: /about/
+# Contact lives in the footer + About, not the top nav.
+# Club Violet lives in the footer.
 
+# Collections
+collections:
+  gesta:
+    output: true                       # each entry also gets its own page
+    permalink: /res-gestae/:name/      # e.g. /res-gestae/nature-paper/
+
+defaults:
+  - scope:
+      type: gesta
+    values:
+      layout: gesta
+
+
+# Raw photo dump — kept out of the build; web-ready copies live in assets/images/res-gestae/
+exclude:
+  - photos_res_gestae/
+  - COPY.md
 
 # Exclude from processing.
 # The following items will not be processed, by default.

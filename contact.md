@@ -1,10 +1,12 @@
 ---
 layout: default
-title: Contact Me
+title: Contact
 permalink: /contact/
+description: How to reach Tristan Saucedo.
 ---
 
-For sponsorships: tristansaucedobusiness@gmail.com.
+# Contact
 
+Email me at [tsaucedobusiness@gmail.com](mailto:tsaucedobusiness@gmail.com).
 
-For general inquiries DM me on instagram (full transparency I don't check instagram frequently).
+Just to say hello? Reach me on [Instagram](https://instagram.com/tristanrsaucedo/).

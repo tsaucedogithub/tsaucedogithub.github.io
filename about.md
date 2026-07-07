@@ -1,11 +1,22 @@
 ---
 layout: default
-title: About Me
+title: About
 permalink: /about/
+description: A little about Tristan Saucedo.
 ---
 
-<img src="{{ '/assets/images/port.jpg' | relative_url }}" alt="Me" style="width: 200px; height: auto;">
+<div class="about-layout">
+<div class="about-text" markdown="1">
 
-My name is Tristan Saucedo. I'm a 24 year old Stanford graduate. 
-I studied Biology, Classics, and Computer Science (with a focus on AI). 
-I was born and raised in San Diego!
+# About
+
+I'm from San Diego, where I grew up in the ocean (surfing and diving, mostly), playing soccer, skating, doing photography, and generally finishing schoolwork early and then distracting myself. I went to Stanford from 2018 to 2023, where I studied Biology (major), Classics (minor), and Computer Science (master's). After a gap year abroad I moved to San Francisco to pursue the unique Cali / Stanford / CS dream of working at a startup. You'll find evidence of the rest of me here.
+
+</div>
+<div class="headshot about" role="img" aria-label="Tristan Saucedo"></div>
+</div>
+<div class="preload-hidden" aria-hidden="true">
+  <img src="{{ '/assets/images/headshots/img_1049.jpg' | relative_url }}" alt="">
+  <img src="{{ '/assets/images/headshots/img_1031.jpg' | relative_url }}" alt="">
+  <img src="{{ '/assets/images/headshots/img_1042.jpg' | relative_url }}" alt="">
+</div>

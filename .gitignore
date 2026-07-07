@@ -3,3 +3,16 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+.DS_Store
+
+# Raw photo dump and full-res backups (kept local only)
+photos_res_gestae/
+assets/images/_originals/
+
+# Res Gestae photo library: all 54 stay local for the workflow; only the photos
+# actually referenced get force-added and published.
+assets/images/res-gestae/
+
+# Local dev helpers
+previews/
+COPY.md
