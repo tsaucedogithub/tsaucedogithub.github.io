@@ -1,6 +1,7 @@
 ---
 title: Chinese Car Ad
-date: 2023-10-01
+date: 2023-10-04
+date_display: October 4, 2023
 category: random
 location: Munich, Germany
 photo: /assets/images/res-gestae/img_0004.jpg

@@ -28,7 +28,7 @@ description: The things done. A first-person account of what Tristan Saucedo has
     <div class="tl-card">
       {% if thumb %}<img class="tl-photo" src="{{ thumb | relative_url }}" alt="" style="object-position: {{ e.thumb_position | default: 'center' }}">{% endif %}
       <div class="tl-info">
-        <span class="tl-year">{{ e.date | date: "%Y" }}</span>
+        <span class="tl-year">{% if e.date_display %}{{ e.date_display }}{% else %}{{ e.date | date: "%Y" }}{% endif %}</span>
         <h3 class="tl-title"><a href="{{ e.url | relative_url }}">{{ e.title }}</a></h3>
         {% if e.location %}<span class="tl-loc">{{ e.location }}</span>{% endif %}
         <div class="tl-text">{{ e.content }}</div>

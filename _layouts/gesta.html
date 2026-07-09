@@ -3,7 +3,7 @@ layout: default
 ---
 <article class="gesta-single">
   <p class="gesta-meta">
-    <span class="gesta-year">{{ page.date | date: "%B %Y" }}</span>
+    <span class="gesta-year">{% if page.date_display %}{{ page.date_display }}{% else %}{{ page.date | date: "%B %Y" }}{% endif %}</span>
     {% if page.category %}<span class="gesta-cat">{{ page.category }}</span>{% endif %}
   </p>
   <h1>{{ page.title }}</h1>
