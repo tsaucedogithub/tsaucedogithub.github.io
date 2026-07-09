@@ -26,7 +26,7 @@ description: The things done. A first-person account of what Tristan Saucedo has
   {% if e.link %}{% assign more_label = "View source &rarr;" %}{% elsif photo_count > 1 %}{% assign more_label = "See all photos &rarr;" %}{% else %}{% assign more_label = "Continue on the full page &rarr;" %}{% endif %}
   <div class="tl-entry {% cycle 'left', 'right' %}" data-category="{{ e.category }}">
     <div class="tl-card">
-      {% if thumb %}<img class="tl-photo" src="{{ thumb | relative_url }}" alt="" style="object-position: {{ e.thumb_position | default: 'center' }}">{% endif %}
+      {% if thumb %}{% assign thumb_name = thumb | split: '/' | last %}{% assign crop = site.data.thumb_crops[thumb_name] | default: e.thumb_position | default: 'center' %}<img class="tl-photo" src="{{ thumb | relative_url }}" alt="" style="object-position: {{ crop }}">{% endif %}
       <div class="tl-info">
         <span class="tl-year">{% if e.date_display %}{{ e.date_display }}{% else %}{{ e.date | date: "%Y" }}{% endif %}</span>
         <h3 class="tl-title"><a href="{{ e.url | relative_url }}">{{ e.title }}</a></h3>

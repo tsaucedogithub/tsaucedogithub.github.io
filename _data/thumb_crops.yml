@@ -1,0 +1,5 @@
+# Thumbnail crop focal points, keyed by photo filename. Managed by the crop tool
+# (previews/crop.html). Values are CSS object-position, e.g. "center", "70% 30%".
+"img_0004.jpg": "right"
+"img_0133.jpg": "99% 49%"
+"img_6366.jpg": "55% 31%"
