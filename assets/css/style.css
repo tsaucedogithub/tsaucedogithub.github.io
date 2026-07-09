@@ -347,14 +347,14 @@ img {
 .tl-entry.right::after { left: -7px;  }
 .tl-entry.is-expanded::after { display: none; }   /* no confusing dot shift when open */
 
-.tl-card { display: flex; gap: 14px; align-items: stretch; }
-.tl-photo {                          /* always visible; fills the full height of the entry */
-  width: 96px;
+.tl-card { display: flex; gap: 14px; align-items: flex-start; }
+.tl-photo {                          /* always visible; square center-crop works for any orientation */
+  width: 128px;
+  height: 128px;
   object-fit: cover;
   object-position: center;
   border-radius: 8px;
   flex: 0 0 auto;
-  align-self: stretch;
 }
 .tl-info { min-width: 0; }
 .tl-year { display: block; font-size: 1.3rem; opacity: .55; color: var(--color-primary); }
@@ -384,7 +384,7 @@ img {
   gap: 24px;
   align-items: flex-start;
 }
-.js-timeline .tl-entry.is-expanded .tl-photo { width: 260px; align-self: flex-start; }
+.js-timeline .tl-entry.is-expanded .tl-photo { width: 260px; height: auto; align-self: flex-start; }
 .js-timeline .tl-entry.is-expanded .tl-text { -webkit-line-clamp: 12; }  /* overflow spills to the page */
 
 /* Res Gestae intro line */
