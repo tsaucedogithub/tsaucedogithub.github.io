@@ -5,6 +5,6 @@ permalink: /
 body_class: home
 ---
 
-My personal site.
+Hi! My name is Tristan (you may have guessed that).
 
-Somewhat biased, I guess, since I created it. Currently an engineer in San Francisco. You'll find more of me here.
+This is my personal website. I'm currently an engineer in San Francisco. You'll find evidence of the other things I do here. Start with [About](/about/) if you want to learn more, or [Projects](/projects/) if you want to see what I've built.

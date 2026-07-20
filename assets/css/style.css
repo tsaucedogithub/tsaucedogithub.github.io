@@ -180,7 +180,7 @@ main { padding: 72px 0 80px; }
 .headshot.home {
   flex: 0 0 auto;
   width: 240px;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 3 / 4;
   margin-top: 6px;
 }
 
@@ -255,7 +255,9 @@ img {
    Shared by the About page and the Home hero; placement varies by variant. */
 .headshot {
   border-radius: 8px;
-  background: center / cover no-repeat url("../images/headshots/img_1001.jpg");
+  /* 50% 63% keeps the face centered: these portraits carry a lot of sky, so
+     plain "center" crops with the face sitting low in the 4:3 box */
+  background: 50% 63% / cover no-repeat url("../images/headshots/img_1001.jpg");
 }
 .about-layout {
   display: flex;
@@ -388,12 +390,21 @@ img {
 .js-timeline .tl-entry.is-expanded .tl-text { -webkit-line-clamp: 12; }  /* overflow spills to the page */
 
 /* Res Gestae intro line */
-.res-intro { font-size: 1.9rem; max-width: 58ch; opacity: .85; margin-bottom: 8px; }
+.res-intro { font-size: 1.9rem; max-width: 58ch; opacity: .85; margin-bottom: 8px; text-indent: 2em; }
+.res-intro + .res-intro { margin-top: 14px; margin-bottom: 24px; }
 
 /* Project figure with caption */
 .project-figure { margin: 16px 0; }
 .project-figure img { max-width: 320px; border-radius: 8px; margin: 0; }
 .project-figure figcaption { font-size: 1.4rem; opacity: .6; margin-top: 8px; }
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  margin: 16px 0;
+  max-width: 640px;
+}
+.project-gallery img { width: 100%; aspect-ratio: 2 / 3; object-fit: cover; border-radius: 8px; margin: 0; }
 
 /* Single Res Gestae entry page */
 .gesta-meta { font-size: 1.4rem; opacity: .6; color: var(--color-primary); display: flex; gap: 14px; margin-bottom: 4px; }

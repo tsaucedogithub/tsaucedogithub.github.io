@@ -7,8 +7,9 @@ description: The things done. A first-person account of what Tristan Saucedo has
 
 # Res Gestae
 
-<!-- PLACEHOLDER intro. Replace with your own words (see COPY.md, section 6). No dashes. -->
-<p class="res-intro">The running record of things I've done, in my own words.</p>
+<p class="res-intro">In Latin, Res gestae means "things done" or "things transacted", in reference to the surrounding facts, events, and statement (the context) of an <a href="https://tenor.com/view/charles-leclerc-inchident-incident-max-verstappen-leclerc-gif-27092516" target="_blank" rel="noopener noreferrer">inchident</a> (don't quote me, I'm not a lawyer). This Res Gestae is more similar to the <a href="https://www.atlasobscura.com/places/replica-of-the-res-gestae-divi-augusti" target="_blank" rel="noopener noreferrer">Res Gestae Divi Augusti</a>, or "The Deeds of the Divine Augustus".</p>
+
+<p class="res-intro">While I am certainly not divine, I like the idea of having a first-person running record of my life and accomplishments (though most will appear insignificant to a bystander). This page is that. It is generally factual (though for the sake of friends and family, past and present, I may not include everything). It serves as a record and reflection on my life, written on my own initiative and at my own expense.</p>
 
 <!--
   Each entry is its own file in _gesta/ (copy _gesta/TEMPLATE.md). Newest first.
