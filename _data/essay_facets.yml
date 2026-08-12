@@ -1,0 +1,56 @@
+# Ordered vocabularies for the /essays/ filters.
+# Alphabetical order is wrong for most of these, so the order here is the order shown.
+# Adding a new topic: add it here, then use the exact same string in essays.json.
+
+topics:
+  - Writing & craft
+  - Books & criticism
+  - Art & music
+  - Philosophy
+  - Mind & consciousness
+  - Science
+  - Nature & animals
+  - AI & technology
+  - Internet & attention
+  - Politics & power
+  - War
+  - Race
+  - Gender
+  - Sex & love
+  - Work & money
+  - Death & illness
+  - Faith & doubt
+  - Travel & place
+  - Family & childhood
+  - Sport
+
+lengths:
+  - value: under 10 min
+    label: Under 10 min
+  - value: 10–20 min
+    label: 10–20 min
+  - value: 20–45 min
+    label: 20–45 min
+  - value: 45–90 min
+    label: 45–90 min
+  - value: over 90 min
+    label: Over 90 min
+  - value: unknown
+    label: Length unknown
+
+centuries:
+  - ancient
+  - 16th century
+  - 17th century
+  - 18th century
+  - 19th century
+  - 20th century
+  - 21st century
+
+access:
+  - value: free
+    label: Free to read
+  - value: paywall
+    label: Paywalled
+  - value: borrow
+    label: Borrow from archive.org

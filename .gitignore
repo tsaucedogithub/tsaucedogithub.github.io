@@ -17,3 +17,7 @@ assets/images/res-gestae/
 previews/
 COPY.md
 ENTRIES.md
+
+# Python bytecode from _tools/
+__pycache__/
+*.pyc

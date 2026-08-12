@@ -42,6 +42,8 @@ navigation:
     link: /projects/
   - name: Res Gestae
     link: /res-gestae/
+  - name: Essays
+    link: /essays/
   - name: About
     link: /about/
 # Contact lives in the footer + About, not the top nav.
@@ -66,6 +68,8 @@ exclude:
   - COPY.md
   - ENTRIES.md
   - crop-server.py
+  # Build pipeline for _data/essays.json. Run: python3 _tools/build_essays.py
+  - _tools/
 
 # Exclude from processing.
 # The following items will not be processed, by default.
