@@ -702,6 +702,27 @@ img {
 }
 
 
+/* Pinyon Script, subset to the eight glyphs in "the fuck" — 2 KB, so it is
+   self-hosted rather than pulled from a third party. It has no other
+   characters, so do not reuse it anywhere else. */
+@font-face {
+  font-family: "Pinyon";
+  src: url("/assets/fonts/pinyon-script-subset.woff2") format("woff2");
+  font-display: swap;
+}
+
+/* A roundhand sits far lower than Satoshi, so it needs its own size and a
+   nudge off the baseline to share a line with it. */
+.cuss {
+  font-family: "Pinyon", cursive;
+  font-size: 1.55em;
+  font-weight: 400;
+  letter-spacing: 0;
+  position: relative;
+  top: .04em;
+  padding: 0 .04em;
+}
+
 /**
  * Essays (/essays/)
  * A dense list page — ~97 screens of it. Slightly wider than the editorial
@@ -769,9 +790,17 @@ body.essays { max-width: 880px; }
   border: 1px solid rgba(20, 33, 61, 0.18);
   border-radius: 6px;
 }
-.essays input[type="search"],
-.essays select { padding: 0 10px; }
-.essays input[type="search"] { flex: 1 1 240px; min-width: 180px; }
+.essays input[type="search"] { padding: 0 12px; }
+.essays select { padding: 0 12px; }
+
+/* The sort control sizes to its longest label instead of being squeezed by
+   the search field, and its text gets room away from the native arrow. */
+.es-bar #es-sort {
+  flex: 0 0 auto;
+  min-width: 218px;
+  padding: 0 34px 0 16px;
+}
+.essays input[type="search"] { flex: 1 1 200px; min-width: 160px; }
 .essays input[type="search"]:focus,
 .essays select:focus { outline: 2px solid var(--color-link); outline-offset: 1px; }
 

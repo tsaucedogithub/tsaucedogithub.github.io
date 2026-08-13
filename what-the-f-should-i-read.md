@@ -8,7 +8,7 @@ body_class: essays
 description: A working list of essays, stories, speeches and letters worth your evening — sortable by length, subject and form.
 ---
 
-# What the F should I read?
+# What <span class="cuss">the fuck</span> should I read?
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      WRITE HERE. Everything between this marker and END INTRO is yours.
@@ -21,7 +21,7 @@ description: A working list of essays, stories, speeches and letters worth your 
 
 <p class="es-intro">I've been spending less time scrolling thanks to an app I built called <a href="https://getyourtimeback.app" target="_blank" rel="noopener noreferrer">Timeback</a>, but that only works if you replace it with something. So I've been trying to read more. I started using essays as an easy way to get my <a href="https://clubviolet.substack.com/" target="_blank" rel="noopener noreferrer">book club</a> to read more and meet more consistently.</p>
 
-<p class="es-intro">So here is an essay picker. I wrote a function to guess how long it will take to read something and then organized a list of essays I liked, then found some beyond that (authors I like, pieces I want to read, etc) and put them all here. Should be pretty obvious how to use this.</p>
+<p class="es-intro">So here is an essay picker. I wrote a function to guess how long it will take to read something and then organized a list of essays I liked, then found some beyond that (authors I like, pieces I want to read, etc) and put them all here.</p>
 
 <!-- ──────────────────────────────── END INTRO ──────────────────────────────── -->
 
