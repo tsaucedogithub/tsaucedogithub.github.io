@@ -334,39 +334,61 @@
     }
   }
 
-  function openPanels(open) {
-    panels.hidden = !open;
+  // Two dialogs share one backdrop and one scroll lock: the filters and the
+  // read-for-free note. Only one is ever open.
+  var freeNote = document.getElementById('es-free');
+  var freeBtn  = document.getElementById('es-free-toggle');
+  var openDialog = null;
+
+  var TRIGGER = {};
+  TRIGGER['es-panels'] = panelBtn;
+  TRIGGER['es-free'] = freeBtn;
+
+  function showDialog(el, open) {
+    if (open && openDialog && openDialog !== el) showDialog(openDialog, false);
+
+    el.hidden = !open;
     backdrop.hidden = !open;
-    panelBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    panelBtn.classList.toggle('is-active', open);
+    var trigger = TRIGGER[el.id];
+    trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    trigger.classList.toggle('is-active', open);
 
     lockScroll(open);
 
     if (open) {
       lastFocus = document.activeElement;
-      panels.scrollTop = 0;
-      panels.querySelector('.es-acc-head').focus();
-    } else if (lastFocus) {
-      lastFocus.focus();
-      lastFocus = null;
+      el.scrollTop = 0;
+      var first = el.querySelector('.es-acc-head, .es-btn, .es-panels-close');
+      if (first) first.focus();
+      openDialog = el;
+    } else {
+      openDialog = null;
+      if (lastFocus) { lastFocus.focus(); lastFocus = null; }
     }
   }
 
-  // Keep tabbing inside the dialog while it is open.
-  panels.addEventListener('keydown', function (e) {
-    if (e.key !== 'Tab') return;
-    var f = panels.querySelectorAll('button, input, select, a[href]');
-    if (!f.length) return;
-    var first = f[0], last = f[f.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  function openPanels(open) { showDialog(panels, open); }
+
+  // Keep tabbing inside whichever dialog is open.
+  [panels, freeNote].forEach(function (dlg) {
+    dlg.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      var f = dlg.querySelectorAll('button, input, select, a[href]');
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
   });
 
-  panelBtn.addEventListener('click', function () { openPanels(panels.hidden); });
-  backdrop.addEventListener('click', function () { openPanels(false); });
-  document.getElementById('es-panels-close').addEventListener('click', function () { openPanels(false); });
-  document.getElementById('es-panels-done').addEventListener('click', function () { openPanels(false); });
+  panelBtn.addEventListener('click', function () { showDialog(panels, panels.hidden); });
+  freeBtn.addEventListener('click', function () { showDialog(freeNote, freeNote.hidden); });
+  backdrop.addEventListener('click', function () { if (openDialog) showDialog(openDialog, false); });
+  document.getElementById('es-panels-close').addEventListener('click', function () { showDialog(panels, false); });
+  document.getElementById('es-panels-done').addEventListener('click', function () { showDialog(panels, false); });
   document.getElementById('es-panels-clear').addEventListener('click', function () { clearAll(); });
+  document.getElementById('es-free-close').addEventListener('click', function () { showDialog(freeNote, false); });
+  document.getElementById('es-free-done').addEventListener('click', function () { showDialog(freeNote, false); });
 
   /* ------------------------------------------------------------ sticky pinning */
   // The page is ~97 screens tall. Once the controls scroll off there is no way
@@ -389,7 +411,7 @@
       controls.scrollIntoView({ block: 'start' });
       q.focus();
     } else if (e.key === 'Escape') {
-      if (!panels.hidden) return openPanels(false);
+      if (openDialog) return showDialog(openDialog, false);
       if (typing) document.activeElement.blur();
       clearAll();
     } else if ((e.key === 'r' || e.key === 'R') && !typing) {

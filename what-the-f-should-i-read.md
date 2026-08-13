@@ -68,7 +68,10 @@ description: A working list of 337 essays, stories, speeches and letters worth y
       </select>
     </div>
 
-    <button type="button" class="es-morelink" id="es-panel-toggle" aria-expanded="false" aria-controls="es-panels">More filters</button>
+    <p class="es-links">
+      <button type="button" class="es-morelink" id="es-panel-toggle" aria-expanded="false" aria-controls="es-panels">More filters</button>
+      <button type="button" class="es-morelink" id="es-free-toggle" aria-expanded="false" aria-controls="es-free">Read for free</button>
+    </p>
 
     <div class="es-status">
       <span class="es-count" id="es-count">{{ site.data.essays | size }} essays</span>
@@ -78,6 +81,22 @@ description: A working list of 337 essays, stories, speeches and letters worth y
   </div>
 
     <div class="es-backdrop" id="es-backdrop" hidden></div>
+
+    <div class="es-panels es-note" id="es-free" hidden role="dialog" aria-label="Read for free" aria-modal="true">
+      <div class="es-panels-head">
+        <span class="es-panels-title">Read for free</span>
+        <button type="button" class="es-panels-close" id="es-free-close" aria-label="Close">&times;</button>
+      </div>
+      <div class="es-note-body">
+        <p>Some of these essays may be hidden behind a paywall.</p>
+        <p>Just as you shouldn't download a car, you should never illegally pirate (by using Z-Library or LibGen) or access pieces of media that are hidden behind a paywall (by making a free account you intend to cancel, or removing the auth token from the internet link, or through some other easily googleable method).</p>
+        <p>To do so for personal use in the pursuit of knowledge would be&hellip; well, I won't tell you whether it's good or bad. I'll let you make those moral judgments yourself.</p>
+      </div>
+      <div class="es-panels-foot">
+        <span></span>
+        <button type="button" class="es-btn es-btn-primary" id="es-free-done">Understood</button>
+      </div>
+    </div>
 
     <div class="es-panels" id="es-panels" hidden role="dialog" aria-label="Filter essays" aria-modal="true">
       <div class="es-panels-head">
