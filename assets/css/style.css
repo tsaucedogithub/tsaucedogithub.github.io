@@ -843,6 +843,8 @@ html.es-noscroll body {
 
 .es-acc { border-top: 1px solid rgba(20, 33, 61, 0.12); }
 .es-acc-item { border-bottom: 1px solid rgba(20, 33, 61, 0.12); }
+/* The footer draws its own top border; without this they stack as two rules. */
+.es-acc-item:last-child { border-bottom: 0; }
 
 .es-acc-head {
   display: flex;
@@ -859,7 +861,7 @@ html.es-noscroll body {
   cursor: pointer;
 }
 .es-acc-head:hover { background: rgba(245, 239, 228, 0.5); }
-.es-acc-name { font-weight: 500; flex: 0 0 auto; min-width: 100px; }
+.es-acc-name { font-weight: 500; flex: 0 0 auto; min-width: 132px; }
 .es-acc-sel {
   flex: 1 1 auto;
   min-width: 0;
