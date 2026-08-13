@@ -59,6 +59,7 @@ description: A working list of 337 essays, stories, speeches and letters worth y
       <input type="search" id="es-q" placeholder="Search title, author, or subject…" autocomplete="off">
       <label class="es-vh" for="es-sort">Sort</label>
       <select id="es-sort">
+        <option value="rec">Recommended first</option>
         <option value="year-asc">Oldest first</option>
         <option value="year-desc">Newest first</option>
         <option value="len-asc">Shortest first</option>
@@ -109,12 +110,20 @@ description: A working list of 337 essays, stories, speeches and letters worth y
         sections still combine as "and".
       {%- endcomment -%}
 
-      {%- assign recs = site.data.essays | where: "recommended", true | size -%}
-      {%- if recs > 0 %}
-      <label class="es-opt es-opt-solo"><input type="checkbox" data-facet="recommended" value="yes"> <strong>Only the ones I recommend</strong> <span class="es-opt-n">{{ recs }}</span></label>
-      {%- endif %}
-
       <div class="es-acc" id="es-acc">
+
+        {%- assign recs = site.data.essays | where: "recommended", true | size -%}
+        {%- if recs > 0 %}
+        <section class="es-acc-item">
+          <button type="button" class="es-acc-head" aria-expanded="false" data-acc="recommended">
+            <span class="es-acc-name">Recommendation</span><span class="es-acc-sel"></span><span class="es-acc-caret" aria-hidden="true"></span>
+          </button>
+          <div class="es-acc-body" hidden>
+            <label class="es-opt"><input type="radio" name="es-rec" data-facet="recommended" value="" checked> All <span class="es-opt-n">{{ site.data.essays | size }}</span></label>
+            <label class="es-opt"><input type="radio" name="es-rec" data-facet="recommended" value="yes"> Recommended by Tristan <span class="es-opt-n">{{ recs }}</span></label>
+          </div>
+        </section>
+        {%- endif %}
 
         <section class="es-acc-item">
           <button type="button" class="es-acc-head" aria-expanded="false" data-acc="tag">

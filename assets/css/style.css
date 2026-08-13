@@ -901,6 +901,7 @@ html.es-noscroll body {
 }
 .es-opt:hover { background: var(--color-accent); }
 .es-opt input { accent-color: var(--color-primary); flex: 0 0 auto; }
+.es-opt input[type="radio"] { margin: 0; }
 .es-opt-n {
   margin-left: auto;
   padding-left: 8px;
@@ -1039,17 +1040,6 @@ html.es-noscroll body {
 
 /* Tristan's own picks */
 .es-star { margin-right: 6px; color: #b58a2b; font-size: .9em; }
-.es-opt-solo {
-  display: flex;
-  align-items: baseline;
-  gap: 7px;
-  margin: 12px 0 4px;
-  padding: 10px 12px;
-  font-size: 1.45rem;
-  background: var(--color-accent);
-  border-radius: 6px;
-  cursor: pointer;
-}
 
 .es-tags { margin: 9px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
 .es-tag {

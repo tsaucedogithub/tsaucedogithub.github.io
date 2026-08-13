@@ -18,7 +18,7 @@
   var clearBtn  = document.getElementById('es-clear');
   var emptyEl   = document.getElementById('es-empty');
   var controls  = document.getElementById('es-controls');
-  var boxes     = Array.prototype.slice.call(root.querySelectorAll('.es-opt input[type="checkbox"]'));
+  var boxes     = Array.prototype.slice.call(root.querySelectorAll('.es-opt input[data-facet]'));
   var panels     = document.getElementById('es-panels');
   var backdrop   = document.getElementById('es-backdrop');
   var panelBtn   = document.getElementById('es-panel-toggle');
@@ -36,7 +36,7 @@
   // Each facet holds a SET of accepted values. Within a facet the values are
   // OR-ed (French or German); across facets they are AND-ed. 'author' has no
   // checkboxes — it is only ever set by clicking a byline.
-  var state = { q: '', sort: 'year-asc', facets: {} };
+  var state = { q: '', sort: 'rec', facets: {} };
 
   function selected(facet) { return state.facets[facet] || []; }
 
@@ -72,7 +72,11 @@
 
   /* ----------------------------------------------------------------- sorting */
 
+  function isRec(row) { return row.getAttribute('data-recommended') === 'yes' ? 0 : 1; }
+
   var SORTS = {
+    // Default: Tristan's picks first, oldest first within each group.
+    'rec':       function (a, b) { return isRec(a) - isRec(b) || num(a, 'year') - num(b, 'year'); },
     'year-asc':  function (a, b) { return num(a, 'year') - num(b, 'year'); },
     'year-desc': function (a, b) { return num(b, 'year') - num(a, 'year'); },
     // Rows with no word count sort last either way rather than pretending to be 0.
@@ -108,7 +112,11 @@
   // Checkbox DOM follows state, never the other way round.
   function syncBoxes() {
     boxes.forEach(function (b) {
-      b.checked = selected(b.getAttribute('data-facet')).indexOf(b.value) !== -1;
+      var chosen = selected(b.getAttribute('data-facet'));
+      // A radio with an empty value is the "All" case: on when nothing is set.
+      b.checked = b.type === 'radio' && b.value === ''
+        ? chosen.length === 0
+        : chosen.indexOf(b.value) !== -1;
     });
     updateAccordionSummaries();
 
@@ -123,8 +131,11 @@
       var facet = head.getAttribute('data-acc');
       var chosen = selected(facet);
       var out = head.querySelector('.es-acc-sel');
-      out.textContent = chosen.length ? chosen.join(', ') : 'Any';
-      out.classList.toggle('is-set', chosen.length > 0);
+      var shown = chosen.filter(Boolean);
+      out.textContent = shown.length ? shown.map(function (v) {
+        return facet === 'recommended' ? 'Recommended by Tristan' : v;
+      }).join(', ') : 'Any';
+      out.classList.toggle('is-set', shown.length > 0);
     });
   }
 
@@ -148,7 +159,7 @@
       selected(facet).forEach(function (value) {
         any = true;
         chipsEl.appendChild(makeChip(
-          facet === 'author' ? value : labelFor(facet, value),
+          facet === 'author' ? value : (facet === 'recommended' ? 'Recommended by Tristan' : labelFor(facet, value)),
           function () { toggleFacet(facet, value, false); }
         ));
       });
@@ -190,7 +201,7 @@
       if (ok) shown++;
     });
 
-    var ordered = rows.slice().sort(SORTS[state.sort] || SORTS['year-asc']);
+    var ordered = rows.slice().sort(SORTS[state.sort] || SORTS['rec']);
     var frag = document.createDocumentFragment();
     ordered.forEach(function (row) { frag.appendChild(row); });
     list.appendChild(frag);
@@ -212,7 +223,7 @@
   function writeUrl() {
     var params = new URLSearchParams();
     if (state.q) params.set('q', state.q);
-    if (state.sort !== 'year-asc') params.set('sort', state.sort);
+    if (state.sort !== 'rec') params.set('sort', state.sort);
     Object.keys(state.facets).forEach(function (k) {
       if (selected(k).length) params.set(k, selected(k).join(','));
     });
@@ -248,7 +259,8 @@
 
   boxes.forEach(function (box) {
     box.addEventListener('change', function () {
-      toggleFacet(box.getAttribute('data-facet'), box.value, box.checked);
+      if (box.type === 'radio') setFacetSingle(box.getAttribute('data-facet'), box.value);
+      else toggleFacet(box.getAttribute('data-facet'), box.value, box.checked);
     });
   });
 

@@ -249,7 +249,7 @@ if '--list' in sys.argv:
         print(f"{r['id']:>4}  {r['author'][:22]:<24}{r['title'][:60]}")
     raise SystemExit
 
-out.sort(key=lambda r: r['year'])
+out.sort(key=lambda r: (not r['recommended'], r['year']))
 json.dump(out, open(OUT, 'w'), ensure_ascii=False, indent=1)
 
 print(f'wrote {len(out)} records to {OUT}')
