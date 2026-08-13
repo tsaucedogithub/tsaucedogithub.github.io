@@ -125,6 +125,7 @@ RECOMMENDED = {
     427,  # Violet Bent Backwards Over the Grass — Lana Del Rey
     460,  # The String Theory — David Foster Wallace
     461,  # The Crypto Story — Matt Levine
+    463,  # My Story: How one Percocet Prescription… — John Doe
 }
 
 # access_of() guesses from the domain, which is wrong whenever a publisher

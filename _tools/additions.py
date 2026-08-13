@@ -408,3 +408,18 @@ EXTRA += [
               'objection turns out not to be about megawatts but about being told after the '
               'deal was signed.'),
 ]
+
+
+EXTRA += [
+    # The byline really is "John Doe": the Journal of Medical Toxicology ran it
+    # anonymously, and says so in the closing line.
+    rec(dict(author='John Doe', author_sort='Doe', author_born=None, author_died=None,
+             author_living=True, gender='man', nationality='American', **ENGLISH),
+        id=463, year=2012, century='21st century', form='essay', words=2800,
+        title='My Story: How one Percocet Prescription Triggered my Addiction',
+        url='https://pmc.ncbi.nlm.nih.gov/articles/PMC3550260/',
+        tags=['death', 'mind'],
+        blurb='An emergency-department nurse is prescribed Percocet after a meningitis '
+              'exposure and traces, month by month, how the prescription became the '
+              'addiction. Published anonymously in the Journal of Medical Toxicology.'),
+]

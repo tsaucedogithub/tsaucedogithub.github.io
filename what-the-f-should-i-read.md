@@ -295,6 +295,7 @@ body_class: essays
           {%- if e.access == "paywall" %} <span class="es-badge es-badge-warn">paywall</span>{% endif -%}
           {%- if e.access == "borrow" %} <span class="es-badge">borrow from archive.org</span>{% endif -%}
           {%- if e.club_read %} <span class="es-badge es-badge-club">read at Club Violet</span>{% endif -%}
+          {%- if e.minutes %} <span class="es-meta-time"><span class="es-dot">·</span>{{ e.minutes }} min</span>{% endif -%}
         </p>
         {% if e.blurb %}<p class="es-blurb">{{ e.blurb }}</p>{% endif %}
         <p class="es-tags">

@@ -74,7 +74,7 @@ h6 {
   letter-spacing: -.02em;
   color: var(--color-primary);
 }
-h1 { font-size: 4.4rem; line-height: 1.04; font-weight: 700; letter-spacing: -.03em; }
+h1 { font-size: 4.4rem; line-height: 1.04; font-weight: 700; letter-spacing: -.03em; text-wrap: balance; }
 h2 { font-size: 3.0rem; }
 h3 { font-size: 2.2rem; }
 h4 { font-size: 1.8rem; }
@@ -960,7 +960,12 @@ html.es-noscroll body {
   position: fixed;
   left: 0;
   right: 0;
-  width: 100%;
+  /* Not width:100%. body is content-box with horizontal padding, so 100%
+     sizes the content and the padding is added on top, widening the page by
+     exactly the padding and pushing the picker off-screen. Letting width stay
+     auto between left:0 and right:0 resolves to the same box as when
+     unlocked. */
+  width: auto;
 }
 .es-backdrop[hidden] { display: none; }
 
@@ -1159,7 +1164,7 @@ html.es-noscroll body {
 }
 .es-row {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 4px 24px;
   padding: 18px 0;
   border-top: 1px solid rgba(20, 33, 61, 0.12);
@@ -1191,6 +1196,7 @@ html.es-noscroll body {
   opacity: .62;
   margin: 4px 0 0;
 }
+.es-meta-time { display: none; }
 .es-dot { padding: 0 5px; opacity: .5; }
 
 /* The byline filters to that author — 30 of them have four or more pieces. */
@@ -1293,12 +1299,33 @@ html.es-noscroll body {
 }
 
 @media (max-width: 600px) {
-  .es-row { grid-template-columns: 1fr; }
-  .es-time { text-align: left; margin-top: 8px; }
-  .es-mins { display: inline; font-size: 1.5rem; }
-  .es-words { display: inline; margin-left: 6px; }
-  .es-words::before { content: "· "; opacity: .5; }
-  .es-hero { --pick-w: 100%; padding: 24px 16px; min-height: 200px; }
+  /* 24px a side is 12% of a 390px screen. */
+  body.essays { padding: 0 16px; }
+
+  .es-row { grid-template-columns: minmax(0, 1fr); padding: 14px 0; }
+
+  /* The reading time rides the byline instead of claiming its own line, and
+     the right-hand column steps aside. Its markup stays put so the picker can
+     still read the minutes out of it. */
+  .es-time { display: none; }
+  .es-meta-time { display: inline; font-weight: 500; opacity: .9; }
+
+  /* "TRANSLATED FROM ANCIENT GREEK" runs 213px, more than half a phone. Let
+     it wrap and drop the pill so it stops dictating the row's width. */
+  .es-badge {
+    white-space: normal;
+    border: 0;
+    padding: 0;
+    margin-left: 6px;
+    font-size: 1.15rem;
+    letter-spacing: .02em;
+  }
+  .es-badge::before { content: "· "; }
+
+  /* Comfortable to hit with a thumb. */
+  .es-author { padding: 3px 0; }
+  .es-tag { padding: 6px 11px; }
+  .es-hero { --pick-w: 100%; padding: 22px 16px; min-height: 0; }
   .es-stage-status { min-height: 3.4rem; }
   .es-stage-actions { flex-direction: column; }
   .essays .es-stage-actions .es-btn { justify-content: center; width: 100%; }
