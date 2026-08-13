@@ -55,6 +55,19 @@ URL_FIX.update({
 
 # Corrections Tristan supplied after working through the audit.
 URL_FIX.update({
+    # steve.psy.gla.ac.uk returns 403 with an HTML error page, so this is
+    # authorama's single-essay copy instead: 805 words, opens on "Studies
+    # serve for delight".
+    63:  'https://www.authorama.com/essays-of-francis-bacon-50.html',
+    66:  'https://www.gutenberg.org/files/9334/9334-h/9334-h.htm#section26',
+    102: 'https://www.theatlantic.com/magazine/archive/1937/09/undersea/652922/',
+    176: 'https://www.astro.sunysb.edu/fwalter/AST389/TEXTS/Nightfall.htm',
+    # Both land on The Electric Typewriter's E. B. White index rather than the
+    # essay itself; its own outbound link for "Freedom" is dead.
+    210: 'https://tetw.org/E_B_White',
+    213: 'https://tetw.org/E_B_White',
+    427: 'https://genius.com/Lana-del-rey-violet-bent-backwards-over-the-grass-annotated',
+
     105: 'https://prattintfa15.wordpress.com/wp-content/uploads/2015/06/tanizaki_inpraiseofshadows.pdf',
     120: 'https://www.walden.org/web/viewer.html?file=https://www.walden.org/wp-content/uploads/2016/03/Walking.pdf',
     149: 'https://www.gutenberg.org/cache/epub/68626/pg68626-images.html',
@@ -116,6 +129,7 @@ RECOMMENDED = {
 # leaves a piece ungated. Each id below was fetched and found to serve its
 # full text, so the domain guess is overridden. Verified 2026-08-12.
 ACCESS_FIX = {
+    102: 'free',
     103: 'paywall', 113: 'paywall', 79: 'borrow', 112: 'borrow', 451: 'borrow',
     460: 'free',   # Esquire serves all 15,000 words of The String Theory
     5: 'free', 14: 'free', 16: 'free', 24: 'free', 25: 'free', 33: 'free', 35: 'free', 36: 'free', 37: 'free',

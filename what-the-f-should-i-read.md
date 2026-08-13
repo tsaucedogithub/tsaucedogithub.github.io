@@ -106,7 +106,13 @@ description: A working list of essays, stories, speeches and letters worth your 
       </div>
       <div class="es-note-body">
         <p>Some of these essays may be hidden behind a paywall.</p>
-        <p>Just as you shouldn't download a car, you should never illegally pirate (by using Z-Library or LibGen) or access pieces of media that are hidden behind a paywall (by making a free account you intend to cancel, or removing the auth token from the internet link, or simply by adding &ldquo;free PDF&rdquo; to the end of the title in a Google search, or through some other easily googleable method).</p>
+        <p>Just as you shouldn't download a car, you should never:</p>
+        <ol class="es-note-list">
+          <li>Illegally pirate, by using Z-Library or LibGen</li>
+          <li>Access pieces of media that are hidden behind a paywall, by making a free account you intend to cancel or by removing the auth token from the link</li>
+          <li>Simply add &ldquo;free PDF&rdquo; to the end of the title in a Google search</li>
+          <li>Use some other easily googleable method</li>
+        </ol>
         <p>To do so for personal use in the pursuit of knowledge would be&hellip; well, I won't tell you whether it's good or bad. I'll let you make those moral judgments yourself.</p>
       </div>
       <div class="es-panels-foot">

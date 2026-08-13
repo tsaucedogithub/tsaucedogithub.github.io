@@ -881,6 +881,38 @@ body.essays { max-width: 880px; }
 }
 .es-note-body p:last-child { margin-bottom: 0; }
 
+/* Numbered, with an italic "or" drawn between each pair rather than typed
+   into the items themselves. */
+.es-note-list {
+  counter-reset: nope;
+  list-style: none;
+  margin: 0 0 1em;
+  padding: 0;
+}
+.es-note-list li {
+  counter-increment: nope;
+  position: relative;
+  padding-left: 32px;
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+.es-note-list li::before {
+  content: counter(nope) ".";
+  position: absolute;
+  left: 0;
+  font-variant-numeric: tabular-nums;
+  opacity: .55;
+}
+.es-note-list li + li { margin-top: 1.9em; }
+.es-note-list li + li::after {
+  content: "or";
+  position: absolute;
+  left: 32px;
+  top: -1.45em;
+  font-style: italic;
+  opacity: .55;
+}
+
 
 .es-backdrop {
   position: fixed;
