@@ -30,7 +30,7 @@
   var FACET_ATTR = {
     tag: 'tags', length: 'length', form: 'form', century: 'century',
     access: 'access', gender: 'gender', nationality: 'nationality',
-    language: 'language', author: 'author'
+    language: 'language', author: 'author', recommended: 'recommended'
   };
 
   // Each facet holds a SET of accepted values. Within a facet the values are
@@ -314,13 +314,53 @@
   // The filter set is eight sections deep, so it stays out of sight until
   // asked for. Escape, the backdrop, the close button and "Show N" all close it.
 
+  var lastFocus = null;
+  var frozenAt = 0;
+
+  // Freeze the page behind the modal without losing the reader's place.
+  function lockScroll(on) {
+    var html = document.documentElement;
+    if (on) {
+      frozenAt = window.scrollY;
+      var bar = window.innerWidth - html.clientWidth;
+      if (bar > 0) html.style.paddingRight = bar + 'px';
+      document.body.style.top = -frozenAt + 'px';
+      html.classList.add('es-noscroll');
+    } else {
+      html.classList.remove('es-noscroll');
+      document.body.style.top = '';
+      html.style.paddingRight = '';
+      window.scrollTo(0, frozenAt);
+    }
+  }
+
   function openPanels(open) {
     panels.hidden = !open;
     backdrop.hidden = !open;
     panelBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     panelBtn.classList.toggle('is-active', open);
-    if (open) panels.querySelector('.es-acc-head').focus();
+
+    lockScroll(open);
+
+    if (open) {
+      lastFocus = document.activeElement;
+      panels.scrollTop = 0;
+      panels.querySelector('.es-acc-head').focus();
+    } else if (lastFocus) {
+      lastFocus.focus();
+      lastFocus = null;
+    }
   }
+
+  // Keep tabbing inside the dialog while it is open.
+  panels.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+    var f = panels.querySelectorAll('button, input, select, a[href]');
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
 
   panelBtn.addEventListener('click', function () { openPanels(panels.hidden); });
   backdrop.addEventListener('click', function () { openPanels(false); });

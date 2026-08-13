@@ -1,7 +1,8 @@
 """Turn the downloaded essays dump into _data/essays.json for the Jekyll site."""
-import json, collections, os
+import json, collections, os, sys
 from urllib.parse import urlparse
 from tags import TAGS, VOCAB
+from additions import EXTRA
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(HERE, 'essays339.json')
@@ -48,6 +49,10 @@ URL_FIX.update({
 
 # The dump attached whole-book counts to single chapters. Verified against the
 # linked text: Camus's final chapter runs ~1,600 words, not the book's 40,000.
+# Your picks. Put ids here and they get a mark on the row plus their own
+# filter. Ids are printed by: python3 _tools/build_essays.py --list
+RECOMMENDED = set()
+
 WORDS_FIX = {
     92: 1600,
 }
@@ -66,7 +71,7 @@ FORM_LABEL = {
     'pamphlet': 'Pamphlet', 'book chapter': 'Book chapter',
     'journal paper': 'Journal paper', 'novella': 'Novella',
     'prose parable': 'Prose parable', 'dialogue': 'Dialogue',
-    'broadcast': 'Broadcast', 'book': 'Book',
+    'broadcast': 'Broadcast', 'book': 'Book', 'poem': 'Poem',
 }
 
 LENGTH_LABEL = {
@@ -104,9 +109,13 @@ FORM_WPM = {
     'short story':   260,
     'speech':        260,
     'broadcast':     260,
+    'poem':          100,   # verse does not move at prose speed
 }
 
-# Older English costs you time even when the word count is small.
+# Older English costs you time even when the word count is small. This applies
+# to what you actually read, so it keys off the prose in front of you: a
+# translated Plato reaches you in modern English and takes the milder
+# TRANSLATED_FACTOR instead of its own century's penalty.
 ERA_FACTOR = {
     'ancient':      0.60,
     '16th century': 0.50,
@@ -117,20 +126,24 @@ ERA_FACTOR = {
     '21st century': 1.00,
 }
 
+TRANSLATED_FACTOR = 0.90
+
 # Subjects where the sentences carry more load per word.
 DENSE_TAGS = {'Philosophy', 'Mind & consciousness'}
 DENSE_FACTOR = 0.85
 
 
-def minutes_for(words, form, century, tags):
+def minutes_for(words, form, century, tags, translated=False):
     """Effective reading time, not word count divided by a constant."""
     if not words:
         return None
     wpm = FORM_WPM.get(form, BASE_WPM)
-    wpm *= ERA_FACTOR.get(century, 1.0)
+    wpm *= TRANSLATED_FACTOR if translated else ERA_FACTOR.get(century, 1.0)
     if DENSE_TAGS & set(tags):
         wpm *= DENSE_FACTOR
-    return max(1, round(words / wpm))
+    # A short lyric is not a one-minute read; you sit with it.
+    floor = 2 if form == 'poem' else 1
+    return max(floor, round(words / wpm))
 
 
 def length_of(minutes):
@@ -149,6 +162,10 @@ def length_of(minutes):
     return 'over 90 min'
 
 
+def year_label(year):
+    return f'{abs(year)} BCE' if year < 0 else str(year)
+
+
 def access_of(url):
     host = urlparse(url).netloc.lower()
     host = host[4:] if host.startswith('www.') else host
@@ -158,6 +175,14 @@ def access_of(url):
 
 
 src = json.load(open(SRC))
+
+# Records added by hand carry their tags as slugs already, so they bypass tags.py.
+for extra in EXTRA:
+    TAGS.setdefault(extra['id'], extra.pop('tags'))
+    extra.setdefault('blurb', '')
+    extra.setdefault('section', 'Classical')
+src = src + EXTRA
+
 out = []
 for d in src:
     if d['id'] in DROP:
@@ -165,13 +190,14 @@ for d in src:
     url = URL_FIX.get(d['id'], d['url'])
     words = WORDS_FIX.get(d['id'], d['words'])
     tags = [VOCAB[t] for t in TAGS[d['id']]]
-    minutes = minutes_for(words, d['form'], d['century'], tags)
+    minutes = minutes_for(words, d['form'], d['century'], tags, d['translated'])
     out.append({
         'id': d['id'],
         'title': TITLE_FIX.get(d['id'], d['title']),
         'author': d['author'],
         'author_sort': d['author_sort'],
         'year': d['year'],
+        'year_label': year_label(d['year']),
         'century': d['century'],
         'form': d['form'],
         'form_label': FORM_LABEL.get(d['form'], d['form'].capitalize()),
@@ -194,7 +220,13 @@ for d in src:
         'tags': tags,
         'blurb': BLURB_FIX.get(d['id'], d['blurb']),
         'club_read': d['read_by_club'],
+        'recommended': d['id'] in RECOMMENDED,
     })
+
+if '--list' in sys.argv:
+    for r in sorted(out, key=lambda r: r['author_sort']):
+        print(f"{r['id']:>4}  {r['author'][:22]:<24}{r['title'][:60]}")
+    raise SystemExit
 
 out.sort(key=lambda r: r['year'])
 json.dump(out, open(OUT, 'w'), ensure_ascii=False, indent=1)

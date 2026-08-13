@@ -1,26 +1,27 @@
 ---
 layout: default
-title: Essays
-permalink: /essays/
+title: What the F should I read?
+permalink: /what-the-f-should-i-read/
+redirect_from:
+  - /essays/
 body_class: essays
-description: A working list of essays, stories, speeches and letters worth your evening — sortable by length, subject and form.
+description: A working list of 337 essays, stories, speeches and letters worth your evening — sortable by length, subject and form.
 ---
 
-# Essays
+# What the F should I read?
 
-<!--
-  ────────────────────────────────────────────────────────────────────────
-  INTRO — replace everything between here and the closing marker.
-  This is the only prose on the page. Two or three paragraphs is plenty:
-  what the list is, how to use it, and why it beats the feed.
-  ────────────────────────────────────────────────────────────────────────
--->
+<!-- ═══════════════════════════════════════════════════════════════════════
+     WRITE HERE. Everything between this marker and END INTRO is yours.
+     Two paragraphs, plain <p class="es-intro"> tags. Add or remove freely.
 
-{%- assign short = site.data.essays | where_exp: "e", "e.minutes <= 20" | size -%}
+     Two Liquid values are available if you want live numbers:
+       {{ site.data.essays | size }}   total count, currently 337
+       {{ short }}                     how many take 20 minutes or less
+     ═══════════════════════════════════════════════════════════════════ -->
 
-<p class="es-intro">{{ site.data.essays | size }} essays, short stories, speeches and letters, from Seneca to 2026. Every one links to the full text and most are free to read. I built this because I kept losing good writing in bookmarks I never opened again.</p>
+<p class="es-intro">I've been spending less time scrolling thanks to an app I built called <a href="https://getyourtimeback.app" target="_blank" rel="noopener noreferrer">Timeback</a>, but that only works if you replace it with something. Thus, I've been trying to read more. I started using essays as an easy way to get my <a href="https://clubviolet.substack.com/" target="_blank" rel="noopener noreferrer">bookclub</a> to read more and meet more consistently.</p>
 
-<p class="es-intro">Start with length. {{ short }} of these take twenty minutes or less. Pick the bucket that fits the time you actually have, then read down the list. If nothing grabs you, press <strong>Pick one for me</strong>.</p>
+<p class="es-intro">So here is an essay picker. I wrote a function to guess how long it will take to read something and then organized a list of essays I liked, then found some beyond that (authors I like, pieces I want to read, etc) and put them all here. Should be pretty obvious how to use this.</p>
 
 <!-- ──────────────────────────────── END INTRO ──────────────────────────────── -->
 
@@ -69,9 +70,16 @@ description: A working list of essays, stories, speeches and letters worth your 
 
     <button type="button" class="es-morelink" id="es-panel-toggle" aria-expanded="false" aria-controls="es-panels">More filters</button>
 
+    <div class="es-status">
+      <span class="es-count" id="es-count">{{ site.data.essays | size }} essays</span>
+      <span class="es-chips" id="es-chips"></span>
+      <button type="button" class="es-linkbtn es-clear" id="es-clear" hidden>Clear all</button>
+    </div>
+  </div>
+
     <div class="es-backdrop" id="es-backdrop" hidden></div>
 
-    <div class="es-panels" id="es-panels" hidden role="dialog" aria-label="Filter essays" aria-modal="false">
+    <div class="es-panels" id="es-panels" hidden role="dialog" aria-label="Filter essays" aria-modal="true">
       <div class="es-panels-head">
         <span class="es-panels-title">Filters</span>
         <button type="button" class="es-panels-close" id="es-panels-close" aria-label="Close filters">&times;</button>
@@ -82,6 +90,11 @@ description: A working list of essays, stories, speeches and letters worth your 
         boxes in a section means "either" (French OR German), while separate
         sections still combine as "and".
       {%- endcomment -%}
+
+      {%- assign recs = site.data.essays | where: "recommended", true | size -%}
+      {%- if recs > 0 %}
+      <label class="es-opt es-opt-solo"><input type="checkbox" data-facet="recommended" value="yes"> <strong>Only the ones I recommend</strong> <span class="es-opt-n">{{ recs }}</span></label>
+      {%- endif %}
 
       <div class="es-acc" id="es-acc">
 
@@ -201,13 +214,6 @@ description: A working list of essays, stories, speeches and letters worth your 
       </div>
     </div>
 
-    <div class="es-status">
-      <span class="es-count" id="es-count">{{ site.data.essays | size }} essays</span>
-      <span class="es-chips" id="es-chips"></span>
-      <button type="button" class="es-linkbtn es-clear" id="es-clear" hidden>Clear all</button>
-    </div>
-  </div>
-
   <ol class="es-list is-compact" id="es-list">
     {% for e in site.data.essays %}
     {%- assign tagstr = e.tags | join: " " -%}
@@ -218,6 +224,7 @@ description: A working list of essays, stories, speeches and letters worth your 
         data-form="{{ e.form_label | escape }}"
         data-century="{{ e.century | escape }}"
         data-access="{{ e.access }}"
+        data-recommended="{% if e.recommended %}yes{% else %}no{% endif %}"
         data-gender="{{ e.gender }}"
         data-nationality="{{ e.nationality | escape }}"
         data-language="{{ e.wrote_in | escape }}"
@@ -229,10 +236,10 @@ description: A working list of essays, stories, speeches and letters worth your 
         data-title="{{ e.title | escape }}"
         data-search="{{ blob | downcase | escape }}">
       <div class="es-body">
-        <h2 class="es-title"><a href="{{ e.url }}" target="_blank" rel="noopener noreferrer">{{ e.title }}</a></h2>
+        <h2 class="es-title">{% if e.recommended %}<span class="es-star" title="Tristan recommends this one">★</span>{% endif %}<a href="{{ e.url }}" target="_blank" rel="noopener noreferrer">{{ e.title }}</a></h2>
         <p class="es-meta">
           <button type="button" class="es-author" data-author="{{ e.author | escape }}">{{ e.author }}</button>
-          <span class="es-dot">·</span>{{ e.year }}
+          <span class="es-dot">·</span>{{ e.year_label }}
           <span class="es-dot">·</span>{{ e.form_label | downcase }}
           {%- if e.translated %} <span class="es-badge">translated from {{ e.wrote_in }}</span>{% endif -%}
           {%- if e.access == "paywall" %} <span class="es-badge es-badge-warn">paywall</span>{% endif -%}

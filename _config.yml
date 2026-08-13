@@ -32,8 +32,9 @@ author: Tristan Saucedo
 
 # Build settings
 theme: minima
-#plugins:
-#  - jekyll-feed
+plugins:
+  - jekyll-feed
+  - jekyll-redirect-from
 
 navigation:
   - name: Home
@@ -42,8 +43,6 @@ navigation:
     link: /projects/
   - name: Res Gestae
     link: /res-gestae/
-  - name: Essays
-    link: /essays/
   - name: About
     link: /about/
 # Contact lives in the footer + About, not the top nav.

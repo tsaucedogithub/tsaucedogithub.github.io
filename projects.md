@@ -15,6 +15,12 @@ Timeback is a Mac app (soon Windows too) that you use to control app usage on yo
 
 Timeback installs a configuration onto your phone that cannot be removed from the phone itself (without a factory reset). I always felt the "ignore for 15 minutes" was too easy.
 
+## [What the fuck should I read?]({{ '/what-the-f-should-i-read/' | relative_url }})
+
+<!-- DESCRIPTION — replace this paragraph. -->
+
+A running list of {{ site.data.essays | size }} essays, short stories, speeches and letters, every one linked to its full text. Filter by how much time you have, or let it pick something for you.
+
 ## [Moment](https://photosmomentapp.com)
 
 Moment is a novel (as far as I can tell) social media app I built for my friends. The only way to add a friend is to take a moment, in person, with them. Every moment is a combination of two photos: one from your phone, one from your friend's phone.
