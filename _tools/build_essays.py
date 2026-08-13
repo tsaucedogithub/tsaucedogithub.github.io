@@ -124,8 +124,10 @@ RECOMMENDED = {
     426,  # Famous — Naomi Shihab Nye
     427,  # Violet Bent Backwards Over the Grass — Lana Del Rey
     460,  # The String Theory — David Foster Wallace
+    2,    # Roger Federer as Religious Experience — David Foster Wallace
     461,  # The Crypto Story — Matt Levine
     463,  # My Story: How one Percocet Prescription… — John Doe
+    464,  # Unspeakable Conversations — Harriet McBryde Johnson
 }
 
 # access_of() guesses from the domain, which is wrong whenever a publisher

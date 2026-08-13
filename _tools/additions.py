@@ -423,3 +423,17 @@ EXTRA += [
               'exposure and traces, month by month, how the prescription became the '
               'addiction. Published anonymously in the Journal of Medical Toxicology.'),
 ]
+
+
+EXTRA += [
+    rec(dict(author='Harriet McBryde Johnson', author_sort='Johnson', author_born=1957,
+             author_died=2008, gender='woman', nationality='American', **ENGLISH),
+        id=464, year=2003, century='21st century', form='essay', words=9000,
+        title='Unspeakable Conversations',
+        url='https://courses.washington.edu/intro2ds/Readings/24_Johnson-unspeakable.pdf',
+        tags=['death', 'philosophy'],
+        blurb='Johnson, a disability-rights lawyer, goes to Princeton to debate Peter '
+              'Singer, who argues that parents should be free to kill disabled infants. '
+              'She finds him courteous, takes the argument seriously, and refuses it '
+              'from inside her own life.'),
+]
