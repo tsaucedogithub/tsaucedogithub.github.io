@@ -59,6 +59,9 @@ URL_FIX.update({
     # authorama's single-essay copy instead: 805 words, opens on "Studies
     # serve for delight".
     63:  'https://www.authorama.com/essays-of-francis-bacon-50.html',
+    # The Dauphine PDF is an image scan with no text layer at all; the Naval
+    # Academy's is a real text PDF (12 fonts, 3,568 words recovered).
+    263: 'https://www.usna.edu/CoreEthics/Essays/Omelas.pdf',
     100: 'https://www.newyorker.com/magazine/1994/09/05/the-naked-citadel',
     182: 'https://fs.blog/david-foster-wallace-this-is-water/',
     66:  'https://www.gutenberg.org/files/9334/9334-h/9334-h.htm#section26',

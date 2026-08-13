@@ -437,3 +437,26 @@ EXTRA += [
               'She finds him courteous, takes the argument seriously, and refuses it '
               'from inside her own life.'),
 ]
+
+
+ASIMOV = dict(author='Isaac Asimov', author_sort='Asimov', author_born=1920,
+              author_died=1992, gender='man', nationality='American', **ENGLISH)
+
+EXTRA += [
+    rec(ASIMOV, id=465, year=1956, century='20th century', form='short story', words=4700,
+        title='The Last Question',
+        url='https://users.ece.cmu.edu/~gamvrosi/thelastq.html',
+        tags=['ai', 'science'],
+        blurb='Across trillions of years, humanity keeps asking the computer whether '
+              'entropy can be reversed, and keeps getting the same answer: INSUFFICIENT '
+              'DATA FOR MEANINGFUL ANSWER. Asimov called it his own favorite of everything '
+              'he wrote.'),
+
+    rec(ASIMOV, id=466, year=1980, century='20th century', form='short story', words=3700,
+        title='The Last Answer',
+        url='https://www.yeyebook.com/en/isaac-asimov-short-story-the-last-answer-full-text-ebook/',
+        tags=['faith', 'death'],
+        blurb='Murray Templeton, an atheist physicist, dies of a heart attack and wakes to '
+              'find himself the property of a being that made him in order to be thought '
+              'about. He starts working out how to end it.'),
+]
