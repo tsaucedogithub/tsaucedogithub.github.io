@@ -5,7 +5,6 @@ permalink: /what-the-f-should-i-read/
 redirect_from:
   - /essays/
 body_class: essays
-description: A working list of essays, stories, speeches and letters worth your evening — sortable by length, subject and form.
 ---
 
 # What <span class="cuss">the fuck</span> should I read?
