@@ -53,4 +53,4 @@ access:
   - value: paywall
     label: Paywalled
   - value: borrow
-    label: Borrow from archive.org
+    label: Borrow (archive.org)

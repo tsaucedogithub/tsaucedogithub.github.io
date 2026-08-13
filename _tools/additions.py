@@ -371,3 +371,26 @@ EXTRA += [
               'for thirty years and thinks about the tracks. Joyce Carol Oates put it among '
               'the best essays of the century.'),
 ]
+
+
+EXTRA += [
+    rec(dict(author='David Foster Wallace', author_sort='Wallace', author_born=1962,
+             author_died=2008, gender='man', nationality='American', **ENGLISH),
+        id=460, year=1996, century='20th century', form='essay', words=15000,
+        title='The String Theory',
+        url='https://www.esquire.com/sports/a5151/the-string-theory-david-foster-wallace/',
+        tags=['sport', 'writing'],
+        blurb='Michael Joyce is the 79th best tennis player alive, which is to say '
+              'unimaginably good and going nowhere. Wallace watches him qualify in Montreal '
+              'and works out what that level of devotion costs.'),
+
+    rec(dict(author='Matt Levine', author_sort='Levine', author_born=None, author_died=None,
+             author_living=True, gender='man', nationality='American', **ENGLISH),
+        id=461, year=2022, century='21st century', form='essay', words=40000,
+        title='The Crypto Story',
+        url='https://www.bloomberg.com/features/2022-the-crypto-story/',
+        tags=['work', 'ai'],
+        blurb='An entire issue of Businessweek handed to one writer. Levine explains what '
+              'crypto actually is, from first principles, without deciding in advance '
+              'whether it is a scam or a revolution.'),
+]

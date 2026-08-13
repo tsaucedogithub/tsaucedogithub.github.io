@@ -64,7 +64,7 @@
   ],
   "blurb": "Watching someone she wants sit and laugh with someone else, catalogued as symptoms: the tongue breaks, fire runs under the skin, she is greener than grass.",
   "club_read": false,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 401,
@@ -233,7 +233,7 @@
   ],
   "blurb": "Three kinds of friendship: for use, for pleasure, and for the other person's own sake. Only the third survives either party changing.",
   "club_read": false,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 406,
@@ -1013,7 +1013,7 @@
   ],
   "blurb": "What reading is for. \"Some books are to be tasted, others to be swallowed, and some few to be chewed and digested.\"",
   "club_read": false,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 300,
@@ -3550,7 +3550,7 @@
   ],
   "blurb": "\"That is no country for old men.\" An aging man leaves the world of birth and dying for a city of mosaic, asking to be remade as a golden bird.",
   "club_read": false,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 22,
@@ -4508,7 +4508,7 @@
   ],
   "blurb": "The desire to be inside the group that matters, and why that desire never resolves.",
   "club_read": false,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 89,
@@ -5765,7 +5765,7 @@
   ],
   "blurb": "The stars do not care about us, and that is survivable. \"If equal affection cannot be, / Let the more loving one be me.\"",
   "club_read": false,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 116,
@@ -5900,7 +5900,7 @@
   ],
   "blurb": "What it costs to be responsible for your own life, written after Didion was not admitted to Phi Beta Kappa.",
   "club_read": false,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 108,
@@ -6073,7 +6073,7 @@
   ],
   "blurb": "The father got up first in the cold and nobody ever thanked him. Fourteen lines that end on \"love’s austere and lonely offices.\"",
   "club_read": false,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 78,
@@ -6174,7 +6174,7 @@
   ],
   "blurb": "A sensibility that prefers artifice, exaggeration, and failed seriousness, catalogued rather than argued.",
   "club_read": false,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 446,
@@ -7499,7 +7499,7 @@
   ],
   "blurb": "A villanelle that insists losing is easy while the losses get larger, until the form itself starts to shake in the last line.",
   "club_read": false,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 196,
@@ -8182,7 +8182,7 @@
   ],
   "blurb": "The river is famous to the fish. A redefinition of fame as being known by the thing nearest you, ending in a wish to be famous the way a buttonhole is.",
   "club_read": false,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 90,
@@ -9140,6 +9140,40 @@
   "recommended": false
  },
  {
+  "id": 460,
+  "title": "The String Theory",
+  "author": "David Foster Wallace",
+  "author_sort": "Wallace",
+  "year": 1996,
+  "year_label": "1996",
+  "century": "20th century",
+  "form": "essay",
+  "form_label": "Essay",
+  "words": 15000,
+  "words_label": "15,000",
+  "minutes": 60,
+  "length": "45–90 min",
+  "length_label": "45–90 min",
+  "url": "https://www.esquire.com/sports/a5151/the-string-theory-david-foster-wallace/",
+  "alt_urls": [],
+  "access": "free",
+  "gender": "man",
+  "native_language": "English",
+  "wrote_in": "English",
+  "nationality": "American",
+  "author_born": 1962,
+  "author_died": 2008,
+  "author_living": false,
+  "translated": false,
+  "tags": [
+   "Sport",
+   "Writing & craft"
+  ],
+  "blurb": "Michael Joyce is the 79th best tennis player alive, which is to say unimaginably good and going nowhere. Wallace watches him qualify in Montreal and works out what that level of devotion costs.",
+  "club_read": false,
+  "recommended": true
+ },
+ {
   "id": 287,
   "title": "Nonoverlapping Magisteria",
   "author": "Stephen Jay Gould",
@@ -9444,7 +9478,7 @@
   ],
   "blurb": "The Maine Lobster Festival, and whether boiling a lobster alive is defensible. Assigned as festival coverage; delivered as an argument about pain.",
   "club_read": true,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 28,
@@ -9955,7 +9989,7 @@
   ],
   "blurb": "A mechanical scientist dissects his own brain while it runs and discovers his world is dying of air-pressure equalization. Won the 2009 Hugo for Best Short Story, the 2009 BSFA Award, and the 2009 Locus Award. The 2019 collection it names was a New York Times Notable Book and bestseller.",
   "club_read": false,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 199,
@@ -10056,7 +10090,7 @@
   ],
   "blurb": "A man dies in a car crash and a god explains that every human who ever lived is him, living each life in sequence. Kurzgesagt animated it in 2019 with Weir's permission; it is one of that channel's most-viewed videos, and the story has been fan-translated into 30+ languages. Logic built his 2017 album Everybody around the premise. No awards — it was never professionally published.",
   "club_read": false,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 195,
@@ -11611,7 +11645,7 @@
   ],
   "blurb": "After the flowering trees are done showing off, the plain green leaves come out anyway, and the poem decides to take that as instruction.",
   "club_read": false,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 133,
@@ -12052,7 +12086,7 @@
   ],
   "blurb": "The title poem of her collection. She arrives at a party with every decision already made, sees a seven-year-old arched backwards in the grass doing nothing, and decides to do nothing about everything.",
   "club_read": false,
-  "recommended": false
+  "recommended": true
  },
  {
   "id": 50,
@@ -12222,6 +12256,40 @@
   "blurb": "Peer review is a recent invention, not a timeless feature of science, and the evidence that it improves papers is thin.",
   "club_read": false,
   "recommended": false
+ },
+ {
+  "id": 461,
+  "title": "The Crypto Story",
+  "author": "Matt Levine",
+  "author_sort": "Levine",
+  "year": 2022,
+  "year_label": "2022",
+  "century": "21st century",
+  "form": "essay",
+  "form_label": "Essay",
+  "words": 40000,
+  "words_label": "40,000",
+  "minutes": 160,
+  "length": "over 90 min",
+  "length_label": "Over 90 min",
+  "url": "https://www.bloomberg.com/features/2022-the-crypto-story/",
+  "alt_urls": [],
+  "access": "free",
+  "gender": "man",
+  "native_language": "English",
+  "wrote_in": "English",
+  "nationality": "American",
+  "author_born": null,
+  "author_died": null,
+  "author_living": true,
+  "translated": false,
+  "tags": [
+   "Work & money",
+   "AI & technology"
+  ],
+  "blurb": "An entire issue of Businessweek handed to one writer. Levine explains what crypto actually is, from first principles, without deciding in advance whether it is a scam or a revolution.",
+  "club_read": false,
+  "recommended": true
  },
  {
   "id": 35,

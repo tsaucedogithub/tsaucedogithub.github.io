@@ -809,6 +809,7 @@ html.es-noscroll body {
   background: var(--color-bg);
 }
 .es-panels-title { font-size: 1.5rem; font-weight: 500; }
+.es-panels-head-bare { justify-content: flex-end; padding-bottom: 0; }
 .es-panels-close {
   font: inherit;
   font-size: 2.2rem;
@@ -882,7 +883,7 @@ html.es-noscroll body {
 
 .es-acc-body {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
   gap: 2px 14px;
   padding: 4px 2px 14px;
 }
@@ -892,6 +893,7 @@ html.es-noscroll body {
   display: flex;
   align-items: baseline;
   gap: 7px;
+  white-space: nowrap;
   padding: 4px 6px;
   font-size: 1.4rem;
   border-radius: 5px;
@@ -901,6 +903,7 @@ html.es-noscroll body {
 .es-opt input { accent-color: var(--color-primary); flex: 0 0 auto; }
 .es-opt-n {
   margin-left: auto;
+  padding-left: 8px;
   font-size: 1.2rem;
   opacity: .45;
   font-variant-numeric: tabular-nums;

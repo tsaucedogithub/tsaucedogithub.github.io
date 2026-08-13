@@ -83,8 +83,7 @@ description: A working list of 337 essays, stories, speeches and letters worth y
     <div class="es-backdrop" id="es-backdrop" hidden></div>
 
     <div class="es-panels es-note" id="es-free" hidden role="dialog" aria-label="Read for free" aria-modal="true">
-      <div class="es-panels-head">
-        <span class="es-panels-title">Read for free</span>
+      <div class="es-panels-head es-panels-head-bare">
         <button type="button" class="es-panels-close" id="es-free-close" aria-label="Close">&times;</button>
       </div>
       <div class="es-note-body">
@@ -94,7 +93,7 @@ description: A working list of 337 essays, stories, speeches and letters worth y
       </div>
       <div class="es-panels-foot">
         <span></span>
-        <button type="button" class="es-btn es-btn-primary" id="es-free-done">Understood</button>
+        <button type="button" class="es-btn es-btn-primary" id="es-free-done">Aye aye, Captain</button>
       </div>
     </div>
 

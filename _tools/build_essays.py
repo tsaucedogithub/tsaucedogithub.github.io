@@ -51,7 +51,28 @@ URL_FIX.update({
 # linked text: Camus's final chapter runs ~1,600 words, not the book's 40,000.
 # Your picks. Put ids here and they get a mark on the row plus their own
 # filter. Ids are printed by: python3 _tools/build_essays.py --list
-RECOMMENDED = set()
+RECOMMENDED = {
+    1,    # Consider the Lobster — David Foster Wallace
+    5,    # On Self-Respect — Joan Didion
+    7,    # Notes on "Camp" — Susan Sontag
+    8,    # The Inner Ring — C. S. Lewis
+    63,   # Of Studies — Francis Bacon
+    156,  # The Egg — Andy Weir
+    158,  # Exhalation — Ted Chiang
+    405,  # On Friendship (Nicomachean Ethics VIII) — Aristotle
+    420,  # Fragment 31 — Sappho
+    421,  # Sailing to Byzantium — W. B. Yeats
+    422,  # The More Loving One — W. H. Auden
+    423,  # One Art — Elizabeth Bishop
+    424,  # Those Winter Sundays — Robert Hayden
+    425,  # Instructions on Not Giving Up — Ada Limón
+    426,  # Famous — Naomi Shihab Nye
+    427,  # Violet Bent Backwards Over the Grass — Lana Del Rey
+    460,  # The String Theory — David Foster Wallace
+    461,  # The Crypto Story — Matt Levine
+}
+
+ACCESS_FIX = {460: 'free'}
 
 WORDS_FIX = {
     92: 1600,
@@ -208,7 +229,7 @@ for d in src:
         'length_label': LENGTH_LABEL[length_of(minutes)],
         'url': url,
         'alt_urls': d['alt_urls'],
-        'access': access_of(url),
+        'access': ACCESS_FIX.get(d['id'], access_of(url)),
         'gender': d['gender'],
         'native_language': d['native_language'],
         'wrote_in': d['wrote_in'],
