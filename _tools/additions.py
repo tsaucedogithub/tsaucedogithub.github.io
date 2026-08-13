@@ -394,3 +394,17 @@ EXTRA += [
               'crypto actually is, from first principles, without deciding in advance '
               'whether it is a scam or a revolution.'),
 ]
+
+
+EXTRA += [
+    rec(dict(author='Jasmine Sun', author_sort='Sun', author_born=None, author_died=None,
+             author_living=True, gender='woman', nationality='American', **ENGLISH),
+        id=462, year=2026, century='21st century', form='essay', words=6200,
+        title='No Data Centers In My Backyard',
+        url='https://jasmi.news/p/no-data-centers-in-my-backyard',
+        tags=['ai', 'politics'],
+        blurb='Reported from Janesville and Mount Pleasant, Wisconsin and Port Washington '
+              'and Saline Township, Michigan, where towns are fighting the AI buildout. The '
+              'objection turns out not to be about megawatts but about being told after the '
+              'deal was signed.'),
+]

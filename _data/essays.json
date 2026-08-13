@@ -12732,5 +12732,39 @@
   "blurb": "Three linked claims — that web-scraped training corpora are saturated with pornography (cites the Google Imagen audit, the ~3,200 CSAM images found in LAION, allegations about Meta); that porn's racialized conventions, specifically the submissive East and Southeast Asian woman, propagate into model output; and that this produces measurable harm, using the Equinox ad featuring a dismembered AI-generated Asian woman as the case study.",
   "club_read": false,
   "recommended": false
+ },
+ {
+  "id": 462,
+  "title": "No Data Centers In My Backyard",
+  "author": "Jasmine Sun",
+  "author_sort": "Sun",
+  "year": 2026,
+  "year_label": "2026",
+  "century": "21st century",
+  "form": "essay",
+  "form_label": "Essay",
+  "words": 6200,
+  "words_label": "6,200",
+  "minutes": 25,
+  "length": "20–45 min",
+  "length_label": "20–45 min",
+  "url": "https://jasmi.news/p/no-data-centers-in-my-backyard",
+  "alt_urls": [],
+  "access": "free",
+  "gender": "woman",
+  "native_language": "English",
+  "wrote_in": "English",
+  "nationality": "American",
+  "author_born": null,
+  "author_died": null,
+  "author_living": true,
+  "translated": false,
+  "tags": [
+   "AI & technology",
+   "Politics & power"
+  ],
+  "blurb": "Reported from Janesville and Mount Pleasant, Wisconsin and Port Washington and Saline Township, Michigan, where towns are fighting the AI buildout. The objection turns out not to be about megawatts but about being told after the deal was signed.",
+  "club_read": false,
+  "recommended": false
  }
 ]
