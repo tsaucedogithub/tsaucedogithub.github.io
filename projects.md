@@ -17,9 +17,7 @@ Timeback installs a configuration onto your phone that cannot be removed from th
 
 ## [What the fuck should I read?]({{ '/what-the-f-should-i-read/' | relative_url }})
 
-<!-- DESCRIPTION — replace this paragraph. -->
-
-A running list of {{ site.data.essays | size }} essays, short stories, speeches and letters, every one linked to its full text. Filter by how much time you have, or let it pick something for you.
+Helps you choose an essay based on how much time you have, from a pre-selected list of essays that I would like to read or have read.
 
 ## [Moment](https://photosmomentapp.com)
 

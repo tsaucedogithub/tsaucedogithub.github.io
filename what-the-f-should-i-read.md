@@ -2,6 +2,7 @@
 layout: default
 title: What the F should I read?
 permalink: /what-the-f-should-i-read/
+description: Helps you choose an essay based on how much time you have, from a pre-selected list of essays that I would like to read or have read.
 redirect_from:
   - /essays/
 body_class: essays
