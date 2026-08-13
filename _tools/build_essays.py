@@ -131,6 +131,7 @@ RECOMMENDED = {
     461,  # The Crypto Story — Matt Levine
     463,  # My Story: How one Percocet Prescription… — John Doe
     464,  # Unspeakable Conversations — Harriet McBryde Johnson
+    465,  # The Last Question — Isaac Asimov
 }
 
 # access_of() guesses from the domain, which is wrong whenever a publisher
