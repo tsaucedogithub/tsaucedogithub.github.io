@@ -791,14 +791,25 @@ body.essays { max-width: 880px; }
   border-radius: 6px;
 }
 .essays input[type="search"] { padding: 0 12px; }
-.essays select { padding: 0 12px; }
 
-/* The sort control sizes to its longest label instead of being squeezed by
-   the search field, and its text gets room away from the native arrow. */
+/* The native arrow cannot be moved, so padding-right only shoved the label
+   away from it and left a hole. Draw the chevron instead: then the label sits
+   14px from the left edge and the chevron 14px from the right, with the two
+   clear of each other. */
+.essays select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0 34px 0 14px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' fill='none' stroke='%2314213d' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 11px 7px;
+}
+
+/* Sized to its own longest label rather than to whatever the search leaves. */
 .es-bar #es-sort {
   flex: 0 0 auto;
-  min-width: 218px;
-  padding: 0 34px 0 16px;
+  min-width: 202px;
 }
 .essays input[type="search"] { flex: 1 1 200px; min-width: 160px; }
 .essays input[type="search"]:focus,
@@ -854,8 +865,8 @@ body.essays { max-width: 880px; }
   min-width: 0;
   height: 44px;
   font-size: 1.6rem;
-  padding: 0 10px;
-  background: var(--color-bg);
+  /* background-color, not background: the shorthand would erase the chevron. */
+  background-color: var(--color-bg);
   border-color: rgba(20, 33, 61, 0.28);
 }
 .es-hero-btn {
