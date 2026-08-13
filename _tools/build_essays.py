@@ -53,6 +53,16 @@ URL_FIX.update({
     321: 'https://www.online-literature.com/chesterton/tremendous-trifles/11/',
 })
 
+# Corrections Tristan supplied after working through the audit.
+URL_FIX.update({
+    105: 'https://prattintfa15.wordpress.com/wp-content/uploads/2015/06/tanizaki_inpraiseofshadows.pdf',
+    120: 'https://www.walden.org/web/viewer.html?file=https://www.walden.org/wp-content/uploads/2016/03/Walking.pdf',
+    149: 'https://www.gutenberg.org/cache/epub/68626/pg68626-images.html',
+    160: 'https://www.are.na/block/4956136',
+    181: 'https://www.gutenberg.org/cache/epub/46/pg46-images.html',
+    242: 'https://africanamericanrhet.wordpress.com/wp-content/uploads/2011/11/jamesbaldwinprotestnovel.pdf',
+})
+
 URL_FIX.update({
     11:  'https://emersoncentral.com/texts/essays-first-series/self-reliance/',
     32:  'https://www.dissentmagazine.org/online_articles/the-white-negro-fall-1957/',
