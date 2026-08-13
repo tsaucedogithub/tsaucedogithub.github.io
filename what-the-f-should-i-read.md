@@ -5,7 +5,7 @@ permalink: /what-the-f-should-i-read/
 redirect_from:
   - /essays/
 body_class: essays
-description: A working list of 337 essays, stories, speeches and letters worth your evening — sortable by length, subject and form.
+description: A working list of essays, stories, speeches and letters worth your evening — sortable by length, subject and form.
 ---
 
 # What the F should I read?
@@ -15,11 +15,11 @@ description: A working list of 337 essays, stories, speeches and letters worth y
      Two paragraphs, plain <p class="es-intro"> tags. Add or remove freely.
 
      Two Liquid values are available if you want live numbers:
-       {{ site.data.essays | size }}   total count, currently 337
+       {{ site.data.essays | size }}   total count
        {{ short }}                     how many take 20 minutes or less
      ═══════════════════════════════════════════════════════════════════ -->
 
-<p class="es-intro">I've been spending less time scrolling thanks to an app I built called <a href="https://getyourtimeback.app" target="_blank" rel="noopener noreferrer">Timeback</a>, but that only works if you replace it with something. Thus, I've been trying to read more. I started using essays as an easy way to get my <a href="https://clubviolet.substack.com/" target="_blank" rel="noopener noreferrer">bookclub</a> to read more and meet more consistently.</p>
+<p class="es-intro">I've been spending less time scrolling thanks to an app I built called <a href="https://getyourtimeback.app" target="_blank" rel="noopener noreferrer">Timeback</a>, but that only works if you replace it with something. So I've been trying to read more. I started using essays as an easy way to get my <a href="https://clubviolet.substack.com/" target="_blank" rel="noopener noreferrer">book club</a> to read more and meet more consistently.</p>
 
 <p class="es-intro">So here is an essay picker. I wrote a function to guess how long it will take to read something and then organized a list of essays I liked, then found some beyond that (authors I like, pieces I want to read, etc) and put them all here. Should be pretty obvious how to use this.</p>
 
@@ -29,6 +29,7 @@ description: A working list of 337 essays, stories, speeches and letters worth y
 <div class="essays" id="essays-app">
 
   <div class="es-hero">
+    <div class="es-hero-idle" id="es-hero-idle">
     <p class="es-hero-line">
       <label for="es-hero-length">I have</label>
       <select id="es-hero-length">
@@ -42,12 +43,26 @@ description: A working list of 337 essays, stories, speeches and letters worth y
       </select>
     </p>
     <button type="button" class="es-hero-btn" id="es-pick">Pick one for me</button>
-
-    <div class="es-reveal" id="es-reveal" hidden>
-      <p class="es-reveal-status" id="es-reveal-status" aria-live="polite"></p>
-      <p class="es-reveal-shuffle" id="es-reveal-shuffle" aria-hidden="true"></p>
-      <div class="es-reveal-result" id="es-reveal-result" hidden></div>
     </div>
+
+    <div class="es-stage" id="es-stage" hidden>
+      <p class="es-stage-status" id="es-stage-status" aria-live="polite"></p>
+      <p class="es-stage-shuffle" id="es-stage-shuffle" aria-hidden="true"></p>
+      <div class="es-stage-result" id="es-stage-result" hidden>
+        <h2 class="es-stage-title"><a id="es-stage-link" href="#" target="_blank" rel="noopener noreferrer"></a></h2>
+        <p class="es-stage-meta" id="es-stage-meta"></p>
+        <p class="es-stage-time" id="es-stage-time"></p>
+        <p class="es-stage-actions">
+          <a class="es-btn es-btn-primary" id="es-stage-read" href="#" target="_blank" rel="noopener noreferrer">Read it</a>
+          <button type="button" class="es-btn" id="es-stage-again">Spin again</button>
+        </p>
+        <p class="es-stage-links">
+          <button type="button" class="es-morelink" id="es-stage-filters">More filters</button>
+          <button type="button" class="es-morelink" id="es-stage-free">Read for free</button>
+        </p>
+      </div>
+    </div>
+
   </div>
 
   <!-- Watched by an IntersectionObserver; when it leaves the viewport the bar pins. -->
@@ -80,6 +95,8 @@ description: A working list of 337 essays, stories, speeches and letters worth y
       <button type="button" class="es-linkbtn es-clear" id="es-clear" hidden>Clear all</button>
     </div>
   </div>
+
+    <div class="es-dim" id="es-dim" hidden></div>
 
     <div class="es-backdrop" id="es-backdrop" hidden></div>
 
@@ -206,7 +223,7 @@ description: A working list of 337 essays, stories, speeches and letters worth y
 
         <section class="es-acc-item">
           <button type="button" class="es-acc-head" aria-expanded="false" data-acc="gender">
-            <span class="es-acc-name">Author</span><span class="es-acc-sel"></span><span class="es-acc-caret" aria-hidden="true"></span>
+            <span class="es-acc-name">Gender</span><span class="es-acc-sel"></span><span class="es-acc-caret" aria-hidden="true"></span>
           </button>
           <div class="es-acc-body" hidden>
             {%- assign w = site.data.essays | where: "gender", "woman" | size -%}
@@ -236,7 +253,7 @@ description: A working list of 337 essays, stories, speeches and letters worth y
         <label class="es-check"><input type="checkbox" id="es-compact" checked> Compact view</label>
         <span class="es-panels-actions">
           <button type="button" class="es-linkbtn" id="es-panels-clear">Clear all</button>
-          <button type="button" class="es-btn es-btn-primary" id="es-panels-done">Show <span id="es-panels-count">337</span></button>
+          <button type="button" class="es-btn es-btn-primary" id="es-panels-done">Show <span id="es-panels-count">all {{ site.data.essays | size }}</span></button>
         </span>
       </div>
     </div>
@@ -244,7 +261,8 @@ description: A working list of 337 essays, stories, speeches and letters worth y
   <ol class="es-list is-compact" id="es-list">
     {% for e in site.data.essays %}
     {%- assign tagstr = e.tags | join: " " -%}
-    {%- assign blob = e.title | append: " " | append: e.author | append: " " | append: e.blurb | append: " " | append: tagstr -%}
+    {%- assign plainblurb = e.blurb | strip_html -%}
+    {%- assign blob = e.title | append: " " | append: e.author | append: " " | append: plainblurb | append: " " | append: tagstr -%}
     <li class="es-row"
         data-tags="{{ e.tags | join: '|' | escape }}"
         data-length="{{ e.length | escape }}"

@@ -281,7 +281,6 @@
     state.facets = {};
     q.value = '';
     syncBoxes();
-    hideReveal();
     render();
   }
 
@@ -330,15 +329,19 @@
   var frozenAt = 0;
 
   // Freeze the page behind the modal without losing the reader's place.
+  var locks = 0;
+
   function lockScroll(on) {
     var html = document.documentElement;
     if (on) {
+      if (++locks > 1) return;
       frozenAt = window.scrollY;
       var bar = window.innerWidth - html.clientWidth;
       if (bar > 0) html.style.paddingRight = bar + 'px';
       document.body.style.top = -frozenAt + 'px';
       html.classList.add('es-noscroll');
     } else {
+      if (locks > 0 && --locks > 0) return;
       html.classList.remove('es-noscroll');
       document.body.style.top = '';
       html.style.paddingRight = '';
@@ -423,6 +426,7 @@
       controls.scrollIntoView({ block: 'start' });
       q.focus();
     } else if (e.key === 'Escape') {
+      if (hero.classList.contains('is-spotlit')) return unspotlight();
       if (openDialog) return showDialog(openDialog, false);
       if (typing) document.activeElement.blur();
       clearAll();
@@ -431,16 +435,28 @@
     }
   });
 
-  /* ----------------------------------------------------------- the reveal */
-  // Picking at random is the best thing this page does, so it gets to take
-  // its time about it. Roughly four seconds of visible deliberation, then
-  // the answer. Anyone who has asked for reduced motion just gets the answer.
+  /* --------------------------------------------------------------- the stage */
+  // Picking at random is the best thing this page does, so it takes over the
+  // screen. Roughly four seconds of visible deliberation that slows as it
+  // closes in, then the answer. Reduced motion skips straight to it.
 
-  var reveal    = document.getElementById('es-reveal');
-  var statusEl  = document.getElementById('es-reveal-status');
-  var shuffleEl = document.getElementById('es-reveal-shuffle');
-  var resultEl  = document.getElementById('es-reveal-result');
+  var hero      = document.querySelector('.es-hero');
+  var heroIdle  = document.getElementById('es-hero-idle');
+  var dim       = document.getElementById('es-dim');
+  var stage     = document.getElementById('es-stage');
+  var statusEl  = document.getElementById('es-stage-status');
+  var shuffleEl = document.getElementById('es-stage-shuffle');
+  var resultEl  = document.getElementById('es-stage-result');
   var pickBtn   = document.getElementById('es-pick');
+
+  // The separators in .es-meta are CSS padding, not characters, so lift the
+  // text and put real spaces back around them.
+  function metaText(row) {
+    return row.querySelector('.es-meta').textContent
+      .replace(/\u00b7/g, ' \u00b7 ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
 
   var LINES = [
     'Consulting the entropy pool',
@@ -449,11 +465,17 @@
     'Discarding the ones you would hate',
     'Asking the ghost of Montaigne',
     'Checking how much evening you have left',
-    'Shuffling 145 hours of reading',
+    'Shuffling 181 hours of reading',
     'Rejecting the obvious answer',
     'Consulting a second opinion',
+    'Consulting the oracles',
     'Warming up the good one'
   ];
+
+  // Four seconds is right the first time and tedious the fourth. Resets on
+  // reload.
+  var SPINS = [4200, 3000, 2500, 2000];
+  var spins = 0;
 
   var timers = [];
   function clearTimers() {
@@ -462,80 +484,111 @@
   }
   function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
 
-  function hideReveal() {
+  // Dismissing the spotlight leaves the pick sitting in the box; it does not
+  // throw the answer away.
+  function unspotlight() {
+    if (!hero.classList.contains('is-spotlit')) return;
+    dim.hidden = true;
+    hero.classList.remove('is-spotlit');
+    lockScroll(false);
+    // The selector does not come back. Once there is a pick, the box is the
+    // pick: title, Read it, Spin again. Length is still reachable under
+    // More filters, and Spin again honours it.
+  }
+
+  // Back to the selector and the button.
+  function resetStage() {
     clearTimers();
-    reveal.hidden = true;
+    unspotlight();
+    stage.hidden = true;
+    stage.classList.remove('is-drawing', 'is-settled');
     resultEl.hidden = true;
-    shuffleEl.textContent = '';
-    statusEl.textContent = '';
-    reveal.classList.remove('is-settled');
+    heroIdle.hidden = false;
     pickBtn.disabled = false;
-    pickBtn.textContent = 'Pick one for me';
   }
 
   function pickRandom() {
     var pool = visibleRows();
-    if (!pool.length || pickBtn.disabled) return;
+    if (!pool.length) return;
     var chosen = pool[Math.floor(Math.random() * pool.length)];
 
     clearTimers();
-    reveal.hidden = false;
-    reveal.classList.remove('is-settled');
+    heroIdle.hidden = true;
+    stage.hidden = false;
+    stage.classList.add('is-drawing');
+    stage.classList.remove('is-settled');
     resultEl.hidden = true;
     pickBtn.disabled = true;
-    reveal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) {
-      statusEl.textContent = 'Picked from ' + pool.length;
+    // Everything except the box goes dark.
+    // No scrolling. If you could see the button you can see the box, and
+    // yanking the page around between spins is worse than a little offset.
+    // Re-spinning must not stack a second lock on the first.
+    var alreadyLit = hero.classList.contains('is-spotlit');
+    dim.hidden = false;
+    dim.classList.add('is-breathing');
+    hero.classList.add('is-spotlit');
+    if (!alreadyLit) lockScroll(true);
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       shuffleEl.textContent = '';
-      settle(chosen, pool.length);
-      return;
+      return settle(chosen);
     }
 
-    // Titles flicker past while the status line changes underneath.
-    var titles = pool.map(function (r) { return r.getAttribute('data-title'); });
-    var flicker = setInterval(function () {
-      shuffleEl.textContent = titles[Math.floor(Math.random() * titles.length)];
-    }, 70);
-    timers.push(flicker);
+    var SPAN = SPINS[Math.min(spins++, SPINS.length - 1)];
 
-    // Three status lines, drawn without repeats, ~1.2s each.
+    // Three status lines, drawn without repeats, paced to the spin so the
+    // last one never lands after the answer.
     var picked = LINES.slice().sort(function () { return Math.random() - 0.5; }).slice(0, 3);
-    statusEl.textContent = picked[0] + '…';
-    later(function () { statusEl.textContent = picked[1] + '…'; }, 1250);
-    later(function () { statusEl.textContent = picked[2] + '…'; }, 2500);
+    statusEl.textContent = picked[0] + '\u2026';
+    later(function () { statusEl.textContent = picked[1] + '\u2026'; }, SPAN * 0.30);
+    later(function () { statusEl.textContent = picked[2] + '\u2026'; }, SPAN * 0.60);
 
-    later(function () {
-      clearInterval(flicker);
-      shuffleEl.textContent = '';
-      settle(chosen, pool.length);
-    }, 3900);
+    // Titles flick past, slowing on an ease-out curve so it lands rather
+    // than stops. A fixed interval reads as a cut; this reads as a wheel.
+    var titles = pool.map(function (r) { return r.getAttribute('data-title'); });
+    var began = Date.now();
+
+    (function tick() {
+      var t = Math.min(1, (Date.now() - began) / SPAN);
+      shuffleEl.textContent = titles[Math.floor(Math.random() * titles.length)];
+      if (t >= 1) return settle(chosen);
+      later(tick, 55 + Math.pow(t, 3) * 430);
+    })();
   }
 
-  function settle(row, poolSize) {
-    var title = row.querySelector('.es-title').innerHTML;
-    var meta  = row.querySelector('.es-meta').innerHTML;
-    var blurb = row.querySelector('.es-blurb');
-    var time = ['.es-mins', '.es-words'].map(function (sel) {
-      var el = row.querySelector(sel);
-      return el ? el.textContent.trim().replace(/(\d)min/, '$1 min') : '';
-    }).filter(Boolean).join(' · ');
+  function settle(row) {
+    var link = row.querySelector('.es-title a');
+    var mins = row.querySelector('.es-mins');
 
-    resultEl.innerHTML =
-      '<h2 class="es-title es-reveal-title">' + title + '</h2>' +
-      '<p class="es-meta">' + meta + '</p>' +
-      (blurb ? '<p class="es-blurb">' + blurb.innerHTML + '</p>' : '') +
-      '<p class="es-reveal-foot">' + time + ' · picked at random from ' + poolSize + '</p>';
+    document.getElementById('es-stage-link').textContent = row.getAttribute('data-title');
+    document.getElementById('es-stage-link').href = link.href;
+    document.getElementById('es-stage-read').href = link.href;
+    document.getElementById('es-stage-meta').textContent = metaText(row);
 
-    statusEl.textContent = 'Read this one.';
+    document.getElementById('es-stage-time').textContent = mins
+      ? 'About ' + mins.textContent.replace(/(\d)min/, '$1 min') + ' to read'
+      : '';
+    statusEl.textContent = '';
+    shuffleEl.textContent = '';
+    stage.classList.remove('is-drawing');
+    stage.classList.add('is-settled');
+    dim.classList.remove('is-breathing');
     resultEl.hidden = false;
-    reveal.classList.add('is-settled');
-    pickBtn.disabled = false;
-    pickBtn.textContent = 'Pick another';
+    document.getElementById('es-stage-read').focus();
   }
 
   pickBtn.addEventListener('click', pickRandom);
+  document.getElementById('es-stage-again').addEventListener('click', pickRandom);
+  document.getElementById('es-stage-filters').addEventListener('click', function () {
+    showDialog(panels, true);
+  });
+  document.getElementById('es-stage-free').addEventListener('click', function () {
+    showDialog(freeNote, true);
+  });
+
+  dim.addEventListener('click', unspotlight);
+  document.getElementById('es-stage-read').addEventListener('click', unspotlight);
 
   /* -------------------------------------------------------------------- init */
 

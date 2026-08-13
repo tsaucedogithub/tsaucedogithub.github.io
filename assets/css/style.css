@@ -282,6 +282,139 @@ img {
 }
 .preload-hidden { position: absolute; width: 0; height: 0; overflow: hidden; }
 
+/* ---- the spinner runs inside the cream box, which gets spotlit ---- */
+
+.es-hero {
+  position: relative;
+  /* Holds its height across idle, drawing and settled so nothing jumps.
+     280px overall: 224 of content plus 28 of padding top and bottom. The
+     settled stack below is tuned to fit inside that. */
+  min-height: 224px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: box-shadow .35s ease;
+}
+.es-hero.is-spotlit {
+  z-index: 55;
+  box-shadow: 0 24px 60px -24px rgba(20, 33, 61, 0.55);
+}
+.es-hero-idle[hidden] { display: none; }
+
+.es-dim {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  /* Warm brown rather than navy, so the cream box reads as lamplit. */
+  background: rgba(58, 42, 26, 0.55);
+  animation: es-fade .28s ease-out;
+  transition: background-color .3s ease;
+  cursor: pointer;
+}
+.es-dim[hidden] { display: none; }
+
+/* While it is drawing, the room around the box breathes. */
+@keyframes es-breathe {
+  0%, 100% { background-color: rgba(58, 42, 26, 0.42); }
+  50%      { background-color: rgba(58, 42, 26, 0.68); }
+}
+.es-dim.is-breathing { animation: es-breathe 1.6s ease-in-out infinite; }
+@keyframes es-fade { from { opacity: 0 } to { opacity: 1 } }
+
+.es-stage[hidden] { display: none; }
+
+.es-stage-status {
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  opacity: .5;
+  margin: 0 0 14px;
+  min-height: 1.5rem;
+}
+
+/* The wheel: titles flicking past, breathing while they do. */
+.es-stage-shuffle {
+  font-size: clamp(2.2rem, 3.4vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--color-primary);
+  max-width: 22ch;
+  margin: 0 auto;
+  opacity: .22;
+  /* Always exactly two lines tall and centred inside them. Titles are one or
+     two lines and the wheel changes every 60ms; without this the status line
+     above it bounces the whole time. */
+  height: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.es-stage.is-settled .es-stage-shuffle,
+.es-stage.is-settled .es-stage-status { display: none; }
+
+.es-stage.is-drawing .es-stage-shuffle { opacity: .3; }
+
+.es-stage-result[hidden] { display: none; }
+
+.es-stage-title {
+  font-size: clamp(2.2rem, 3.4vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  max-width: 22ch;
+  margin: 0 auto;
+  /* Matches the wheel, so landing on the answer does not shift anything. */
+  min-height: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.essays .es-stage-title a { color: var(--color-primary); text-decoration: none; border: 0; }
+.essays .es-stage-title a:hover { color: var(--color-link); }
+
+.es-stage-meta { font-size: 1.5rem; opacity: .6; margin: 10px 0 0; }
+.es-stage-time {
+  font-size: 1.3rem;
+  font-style: italic;
+  opacity: .5;
+  margin: 4px 0 0;
+}
+
+.es-stage-links {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 10px 0 0;
+}
+
+.es-stage-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 14px 0 0;
+}
+.essays .es-stage-actions .es-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 44px;
+  padding: 0 24px;
+  text-decoration: none;
+  /* Same navy edge as the filled button, so the pair reads as a set. */
+  border-color: var(--color-primary);
+}
+
+@keyframes es-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+.es-stage.is-settled .es-stage-result { animation: es-rise .45s cubic-bezier(.2,.7,.3,1); }
+
 @media (prefers-reduced-motion: reduce) {
   .headshot:hover {
     animation: none;
@@ -669,7 +802,7 @@ body.essays { max-width: 880px; }
 .es-hero {
   --pick-w: 320px;
   margin: 32px 0 30px;
-  padding: 32px 24px;
+  padding: 28px 24px;
   text-align: center;
   background: var(--color-accent);
   border-radius: 10px;
@@ -718,13 +851,6 @@ body.essays { max-width: 880px; }
 .es-hero-btn:active { transform: translateY(1px); }
 .es-hero-btn:disabled { opacity: .5; cursor: default; }
 
-.es-hero .es-reveal {
-  text-align: left;
-  max-width: 620px;
-  margin: 24px auto 0;
-  background: var(--color-bg);
-}
-
 /* ---- filters popover ---- */
 
 .es-links { display: flex; gap: 18px; margin: 10px 0 0; }
@@ -759,7 +885,7 @@ body.essays { max-width: 880px; }
 .es-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 30;
+  z-index: 60;
   background: rgba(20, 33, 61, 0.35);
 }
 
@@ -782,7 +908,7 @@ html.es-noscroll body {
 .es-panels {
   box-sizing: border-box;
   position: fixed;
-  z-index: 40;
+  z-index: 70;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -1017,7 +1143,11 @@ html.es-noscroll body {
 }
 .es-author:hover { color: var(--color-link); border-bottom-color: currentColor; }
 
-.es-blurb {
+/* Hidden for now. The text stays in _data/essays.json and in each row's
+   data-search attribute, so search still matches on it. */
+.es-blurb { display: none; }
+
+.es-blurb-hidden-styles {
   font-size: 1.55rem;
   line-height: 1.5;
   max-width: 62ch;
@@ -1099,61 +1229,16 @@ html.es-noscroll body {
   cursor: pointer;
 }
 
-/* ---- the random pick ---- */
-
-.es-reveal {
-  margin: 22px 0 6px;
-  padding: 22px 24px;
-  border: 1px solid rgba(20, 33, 61, 0.2);
-  border-radius: 8px;
-  background: var(--color-accent);
-  transition: border-color .3s;
-}
-.es-reveal.is-settled { border-color: var(--color-primary); }
-
-.es-reveal-status {
-  font-size: 1.4rem;
-  letter-spacing: .02em;
-  text-transform: uppercase;
-  opacity: .6;
-  margin: 0;
-}
-.es-reveal-shuffle {
-  font-size: 1.9rem;
-  font-weight: 500;
-  line-height: 1.25;
-  min-height: 2.4rem;
-  margin: 8px 0 0;
-  opacity: .35;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.es-reveal.is-settled .es-reveal-shuffle { display: none; }
-.es-reveal-result { margin-top: 10px; }
-.es-reveal-result[hidden] { display: none; }
-.es-reveal-title { font-size: 2.4rem; }
-.es-reveal-foot { font-size: 1.3rem; opacity: .55; margin: 10px 0 0; }
-
-@keyframes es-settle {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: none; }
-}
-.es-reveal.is-settled .es-reveal-result { animation: es-settle .45s ease-out; }
-
-@media (prefers-reduced-motion: reduce) {
-  .es-reveal.is-settled .es-reveal-result { animation: none; }
-  .essays * { scroll-behavior: auto; }
-}
-
 @media (max-width: 600px) {
   .es-row { grid-template-columns: 1fr; }
   .es-time { text-align: left; margin-top: 8px; }
   .es-mins { display: inline; font-size: 1.5rem; }
   .es-words { display: inline; margin-left: 6px; }
   .es-words::before { content: "· "; opacity: .5; }
-  .es-reveal { padding: 18px 16px; }
-  .es-hero { --pick-w: 100%; padding: 24px 16px; }
+  .es-hero { --pick-w: 100%; padding: 24px 16px; min-height: 200px; }
+  .es-stage-status { min-height: 3.4rem; }
+  .es-stage-actions { flex-direction: column; }
+  .essays .es-stage-actions .es-btn { justify-content: center; width: 100%; }
   .es-hero-btn { font-size: 1.75rem; padding: 15px 18px; }
   .es-hero-line { font-size: 1.6rem; }
   .es-panels { width: calc(100vw - 20px); max-height: 86vh; padding: 0 16px; }
