@@ -59,6 +59,8 @@ URL_FIX.update({
     # authorama's single-essay copy instead: 805 words, opens on "Studies
     # serve for delight".
     63:  'https://www.authorama.com/essays-of-francis-bacon-50.html',
+    100: 'https://www.newyorker.com/magazine/1994/09/05/the-naked-citadel',
+    182: 'https://fs.blog/david-foster-wallace-this-is-water/',
     66:  'https://www.gutenberg.org/files/9334/9334-h/9334-h.htm#section26',
     102: 'https://www.theatlantic.com/magazine/archive/1937/09/undersea/652922/',
     176: 'https://www.astro.sunysb.edu/fwalter/AST389/TEXTS/Nightfall.htm',
@@ -129,7 +131,7 @@ RECOMMENDED = {
 # leaves a piece ungated. Each id below was fetched and found to serve its
 # full text, so the domain guess is overridden. Verified 2026-08-12.
 ACCESS_FIX = {
-    102: 'free',
+    100: 'free', 102: 'free',
     103: 'paywall', 113: 'paywall', 79: 'borrow', 112: 'borrow', 451: 'borrow',
     460: 'free',   # Esquire serves all 15,000 words of The String Theory
     5: 'free', 14: 'free', 16: 'free', 24: 'free', 25: 'free', 33: 'free', 35: 'free', 36: 'free', 37: 'free',

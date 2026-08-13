@@ -105,8 +105,7 @@ description: A working list of essays, stories, speeches and letters worth your 
         <button type="button" class="es-panels-close" id="es-free-close" aria-label="Close">&times;</button>
       </div>
       <div class="es-note-body">
-        <p>Some of these essays may be hidden behind a paywall.</p>
-        <p>Just as you shouldn't download a car, you should never:</p>
+        <p>Some of these essays may be hidden behind a paywall. Just as you shouldn't download a car, you should never:</p>
         <ol class="es-note-list">
           <li>Illegally pirate, by using Z-Library or LibGen</li>
           <li>Access pieces of media that are hidden behind a paywall, by making a free account you intend to cancel or by removing the auth token from the link</li>

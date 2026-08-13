@@ -881,8 +881,7 @@ body.essays { max-width: 880px; }
 }
 .es-note-body p:last-child { margin-bottom: 0; }
 
-/* Numbered, with an italic "or" drawn between each pair rather than typed
-   into the items themselves. */
+/* Plain numbered list. The items already read as alternatives. */
 .es-note-list {
   counter-reset: nope;
   list-style: none;
@@ -903,15 +902,7 @@ body.essays { max-width: 880px; }
   font-variant-numeric: tabular-nums;
   opacity: .55;
 }
-.es-note-list li + li { margin-top: 1.9em; }
-.es-note-list li + li::after {
-  content: "or";
-  position: absolute;
-  left: 32px;
-  top: -1.45em;
-  font-style: italic;
-  opacity: .55;
-}
+.es-note-list li + li { margin-top: .55em; }
 
 
 .es-backdrop {
