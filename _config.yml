@@ -30,6 +30,10 @@ title: The site of Tristan Saucedo
 description: Tristan Saucedo's personal Website. 
 author: Tristan Saucedo
 
+# Cloudflare Web Analytics. The beacon is injected in production builds only,
+# so `jekyll serve` never reports local traffic. Remove this line to turn it off.
+cloudflare_analytics_token: "c504482bd2ec4738ab2482dd44f60cf6"
+
 # Build settings
 theme: minima
 plugins:

@@ -60,5 +60,8 @@
         <li><a href="{{ '/assets/tsaucedo_resume_2026_public.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">Resume</a></li>
       </ul>
     </footer>
+    {% if jekyll.environment == "production" and site.cloudflare_analytics_token %}
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.cloudflare_analytics_token }}"}'></script>
+    {% endif %}
   </body>
 </html>
