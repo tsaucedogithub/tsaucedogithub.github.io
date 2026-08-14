@@ -32,7 +32,7 @@ author: Tristan Saucedo
 
 # Cloudflare Web Analytics. The beacon is injected in production builds only,
 # so `jekyll serve` never reports local traffic. Remove this line to turn it off.
-cloudflare_analytics_token: "c504482bd2ec4738ab2482dd44f60cf6"
+cloudflare_analytics_token: "aa2cf866e6e0477d8218ef5b0a0cf972"
 
 # Build settings
 theme: minima
