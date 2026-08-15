@@ -87,6 +87,7 @@ body_class: essays
     <p class="es-links">
       <button type="button" class="es-morelink" id="es-panel-toggle" aria-expanded="false" aria-controls="es-panels">More filters</button>
       <button type="button" class="es-morelink" id="es-free-toggle" aria-expanded="false" aria-controls="es-free">Read for free</button>
+      <a class="es-morelink es-morelink-end" href="https://forms.gle/nCpkfoni7i9z9amJ9" target="_blank" rel="noopener noreferrer">Know an essay?</a>
     </p>
 
     <div class="es-status">
