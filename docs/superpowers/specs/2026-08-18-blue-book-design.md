@@ -1,0 +1,100 @@
+# Blue Book: design
+
+A daily game on tristansaucedo.com. Five passages from the classics each day. For each, name the book and place it in time. Score out of 5,000, share it, come back tomorrow. Named for the exam booklet: the model is a literature exam where you identify a passage and know why it matters.
+
+Status: design agreed in conversation 2026-08-18. Canon list not yet built. No code yet.
+
+## What makes it different
+
+Existing book games (Bookdle, Bookordle, Guess The Book, Versedle) are one book a day, right or wrong, quotes pulled from Goodreads. Blue Book is:
+
+- **A real canon.** ~100 books everyone has heard of, drawn from "best books of all time" lists (not Goodreads). Novels, plays, epics, philosophy, non-fiction. No lyric poetry.
+- **Significant passages.** Each passage is one a professor would put on the exam: a turning point, a thesis, a defining scene. Names and places left in. Not the single most-quoted line (those are the hint).
+- **Graded scoring.** Five rounds, a year control with per-book tolerance, hints that cost points, a total to brag about.
+- **The reveal teaches.** After each round: title, author, year, where in the book it is, and (when written) two or three sentences on why the passage matters. Blurbs are drafted with the passages; the game runs without them, so they are not a launch blocker.
+
+## The canon
+
+- ~100 books at launch, growing toward 200.
+- Source: overlap of established best-of lists (see `_tools/blue_book/lists/`). Filter: recognition. Everyone should have heard of every book. Some books will be harder to find good passages for; that can cut a book.
+- Include non-fiction and philosophy (Republic, The Prince, Origin of Species, Communist Manifesto, etc.), plays, epics.
+- Fair use is fine. No public-domain restriction on the list.
+- Per book: `id`, `title`, `author`, `year` (a single number, negative for BCE), `window` (years of full credit either side), `year_label` ("c. 725 BCE"), `form`, `nationality`/language, `aliases` (for the autocomplete).
+
+## Passages
+
+- Two main passages per book plus one **famous** passage used only as a hint. Main passages rotate through the schedule; the famous one never appears as a prompt.
+- 80–200 words (shorter for verse and drama). Self-contained. Best-known English translation for translated works.
+- Per passage: `text`, `locus` ("Book 11", "Act 3, Scene 1", "Ch. 5"), `difficulty` (1–3), `significance` (optional blurb).
+- Accuracy: public-domain books get an exact-substring check against Gutenberg text (`_tools/blue_book/verify_passages.py`). Post-1930 books are drafted from knowledge and flagged **unverified** until checked against a copy.
+
+## A round
+
+Prompt: the passage. Inputs: a search box with autocomplete over the canon (shows Title · Author), and a year control. Buttons: Guess, Give up, three hints.
+
+- **Three guesses.** A wrong guess says "Not it" and, if the author matches, "right author, though." The round ends on a correct guess, a third miss, or Give up.
+- **Year** is adjustable until the round ends and is scored at that moment. Control: a slider that is nonlinear (a quarter of the track for everything before 1500, the rest for 1500–2000) plus a tappable year you can type or step. Displays "1848" or "725 BCE".
+- **Hints**, each usable once per round:
+  - Era: shades the slider to a band ("written 1800–1899").
+  - Author clue: "Russian novelist", "Athenian playwright", "German philosopher".
+  - Famous passage: the book's most recognizable passage.
+
+## Scoring
+
+Each round is worth 1,000: **600 for the book, 400 for the year.** Every hint and every wrong guess costs **100** off the round. Floor at 0.
+
+- Book: 600 if guessed within three tries, else 0.
+- Year: full 400 inside the book's window. Outside it, linear decay to zero over `D = max(50, 2 × window)` years past the window. So `excess = max(0, |guess − year| − window)`, `points = 400 × max(0, 1 − excess / D)`.
+
+Examples:
+
+| Book | Year | Window | D | Guess | Year pts |
+|---|---|---|---|---|---|
+| Communist Manifesto | 1848 | 2 | 50 | 1870 | 240 |
+| Communist Manifesto | 1848 | 2 | 50 | 1880 | 160 |
+| Odyssey | −700 | 150 | 300 | −530 | 373 |
+| Odyssey | −700 | 150 | 300 | −400 | 200 |
+| Hamlet | 1600 | 5 | 50 | 1620 | 280 |
+| Beowulf | 900 | 200 | 400 | 1200 | 300 |
+
+Third guess with all three hints: 600 − 500 = 100 for the book, plus whatever the year earns.
+
+## The day
+
+- Five rounds, deterministic. `_tools/blue_book/build_schedule.py` writes `_data/blue_book_schedule.json` (day N → five passage ids) with constraints: no book within 15 days, no author twice in a day, at least one pre-1800 book per day, no more than two from the same century, mixed difficulty. Hand-editable.
+- Day number = local calendar days since the launch date. Rolls at local midnight.
+- Repeats are acceptable for now: 100 books × 2 passages ≈ 40 days before a passage recurs, ~20 before a book does.
+- localStorage: today's progress (survives reload), stats (played, streak, max streak, best, average).
+- Today only in v1. Archive and practice later.
+
+## Ending
+
+After round five: the results screen. Big total, five round tiles (points and tier colour; titles shown since the day is done), streak, best, "come back tomorrow" countdown, and Share.
+
+- **Share text (v1):** copies to clipboard, native share sheet on phones. No spoilers.
+  ```
+  Blue Book #12 · 3,860 / 5,000
+  📗 📗 📙 📕 📗 · 🔥 6
+  tristansaucedo.com/blue-book
+  ```
+  📗 ≥ 800, 📙 400–799, 📕 below.
+- **Share image (v1.5):** a PNG card rendered client-side on a canvas (score, five tiles, day number, URL), delivered through the Web Share API with files on phones (straight into Instagram/iMessage) and as a download on desktop. Square first, story-size later. Titles stay off the image.
+
+## Build
+
+Fully static, same shape as the essay picker.
+
+- `_data/blue_book.yml`: books + passages + significance. Hand-editable; the drafting artifact.
+- `_data/blue_book_schedule.json`: generated.
+- `_tools/blue_book/`: source lists, `build_schedule.py`, `verify_passages.py`.
+- `blue-book.md` (permalink `/blue-book/`), `assets/js/blue-book.js`, styles in `assets/css/style.css`, an entry in `projects.md`.
+- Data reaches JS as a JSON blob via Liquid `jsonify` in a `<script type="application/json">`.
+- The answer key is in page source, like every static daily game. Not obfuscated.
+
+## Order of work
+
+1. Canon: gather lists, draft ~120 candidates, cut to 100 (Tristan edits the YAML).
+2. Playable shell with ~10 books of real data: round mechanics, scoring, reveal, results, share text. Get the feel right before writing 200 passages.
+3. Passages in batches of ~20 books, verified as they land. Significance blurbs alongside.
+4. Schedule, projects entry, launch.
+5. Later: share image, archive/practice, canon page, growth to 200.

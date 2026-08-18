@@ -73,6 +73,8 @@ exclude:
   - crop-server.py
   # Build pipeline for _data/essays.json. Run: python3 _tools/build_essays.py
   - _tools/
+  # Design specs and plans, not site content.
+  - docs/
 
 # Exclude from processing.
 # The following items will not be processed, by default.
