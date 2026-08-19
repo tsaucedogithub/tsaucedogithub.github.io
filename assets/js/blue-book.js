@@ -692,7 +692,9 @@
       main.appendChild(rowSpan('bb-row-sub', plainDashes(book.author + ' · ' + (book.year_label || C.yearLabel(book.year)))));
       li.appendChild(rowSpan('bb-row-n', String(i + 1)));
       li.appendChild(main);
-      li.appendChild(rowSpan('bb-row-pts', C.formatPoints(r.total)));
+      var pts = rowSpan('bb-row-pts', C.formatPoints(r.total));
+      pts.appendChild(rowSpan('bb-row-of', ' / 1,000'));
+      li.appendChild(pts);
       el.cardRows.appendChild(li);
     }
 

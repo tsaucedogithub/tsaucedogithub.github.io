@@ -558,6 +558,7 @@ body.blue-book { max-width: 720px; }
 .bb-row-title { font-weight: 500; }
 .bb-row-sub { display: block; font-size: 1.3rem; opacity: .7; }
 .bb-row-pts { flex: 0 0 auto; font-weight: 700; font-variant-numeric: tabular-nums; }
+.bb-row-of { font-weight: 400; font-size: 1.2rem; opacity: .6; }
 
 /* The marker's line goes in a bordered rectangle, the NOTES: box of a real
    cover: a small label in its top-left corner, then one line written in the
