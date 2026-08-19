@@ -84,7 +84,7 @@ stylesheet: /assets/css/blue-book.css
         <p class="bb-card-comments-label">Instructor's comments:</p>
         <p class="bb-card-comment" id="bb-card-comment"></p>
       </div>
-      <p class="bb-card-foot">5 passages · scored out of 5,000 · tristansaucedo.com/blue-book</p>
+      <p class="bb-card-foot">tristansaucedo.com/blue-book</p>
     </div>
     <p class="bb-actions">
       <button type="button" class="bb-btn bb-btn-primary" id="bb-share">Share</button>

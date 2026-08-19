@@ -433,29 +433,26 @@ body.blue-book { max-width: 720px; }
     inset 0 0 0 .7rem var(--color-primary);
 }
 
-/* The heading is the printed part of the cover: two left-aligned lines, the
-   first heavy and closed off by a thick rule. `padding-right` holds the words
-   clear of the grade box while the rule still runs the full width of the
-   cover; the box, painted over it, caps the rule's right end. */
+/* The heading is the printed part of the cover: two centred lines, the
+   first heavy and closed off by a thick rule that runs the full width of the
+   cover; the grade box, painted over it, caps the rule's right end. */
 .bb-card-kicker {
   margin: 0 0 .8rem;
-  padding-right: 9rem;
   padding-bottom: .6rem;
   font-size: 3.8rem;
   font-weight: 900;
   line-height: 1;
-  text-align: left;
+  text-align: center;
   text-transform: uppercase;
   letter-spacing: .02em;
   border-bottom: .4rem solid var(--color-primary);
 }
 .bb-card-title {
   margin: 0 0 2.4rem;
-  padding-right: 9rem;
   font-size: 2rem;
   font-weight: 500;
   line-height: 1.2;
-  text-align: left;
+  text-align: center;
   text-transform: uppercase;
   letter-spacing: .06em;
 }
@@ -489,10 +486,12 @@ body.blue-book { max-width: 720px; }
 }
 
 /* Fields: an uppercase label, then the value written on a ruled line. Every
-   line is the same length, as on the printed cover, and the block starts at
-   the left edge with the heading rather than being centred. */
+   line is the same length, as on the printed cover, and the block is centred
+   under the heading. */
 .bb-card-fields {
-  margin: 0 0 2rem;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 2rem;
   padding: 0;
 }
 .bb-card-field {
@@ -583,11 +582,11 @@ body.blue-book { max-width: 720px; }
   line-height: 1.45;
 }
 
-/* The spec line printed along the foot of the cover. */
+/* The line printed along the foot of the cover. */
 .bb-card-foot {
   margin: 0;
   font-size: 1rem;
-  text-align: left;
+  text-align: center;
   text-transform: uppercase;
   letter-spacing: .08em;
   opacity: .7;
@@ -612,8 +611,7 @@ body.blue-book { max-width: 720px; }
 @media (max-width: 400px) {
   .bb-card-grade { width: 5.6rem; height: 5.6rem; }
   .bb-card-grade-value { font-size: 2.6rem; }
-  .bb-card-kicker { font-size: 2.6rem; padding-right: 7rem; }
-  .bb-card-title { padding-right: 7rem; }
+  .bb-card-kicker { font-size: 2.6rem; }
 }
 
 /* ===================== end Scorecard ===================== */
