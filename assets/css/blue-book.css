@@ -410,62 +410,89 @@ body.blue-book { max-width: 720px; }
 }
 
 /* ======================= Scorecard =======================
-   The day's result as the cover of a graded blue book: the printed heading,
-   the fields a marker fills in, and the five rounds on the cover's ruled
-   lines. The field list itself is CARD_FIELDS in blue-book.js.
+   The day's result drawn as the cover of a real exam blue book: the thick
+   frame, the printed heading over its heavy rule, the grade stamped in a box
+   top right, the fields a marker fills in on uniform ruled lines, the five
+   rounds, a NOTES-style box for the instructor, and the spec line at the
+   foot. The field list itself is CARD_FIELDS in blue-book.js.
    ========================================================= */
 
+/* The cover: a thick frame, and a hairline a little way inside it drawn with
+   two inset shadows (the first paints the gap in cover blue, the second the
+   rule itself). */
 .bb-card {
   position: relative;
   text-align: left;
   color: var(--color-primary);
   background: var(--bb-blue);
-  border: 2px solid var(--color-primary);
-  border-radius: 8px;
-  padding: 2.4rem 2.4rem 2rem;
+  border: 4px solid var(--color-primary);
+  border-radius: 3px;
+  padding: 2.4rem 2.6rem 1.6rem;
+  box-shadow:
+    inset 0 0 0 .6rem var(--bb-blue),
+    inset 0 0 0 .7rem var(--color-primary);
 }
 
-/* The date is written in the corner of the cover, not among the fields, so
-   the printed heading below it stays centred on the card. */
-.bb-card-date {
-  position: absolute;
-  top: 2.4rem;
-  right: 2.4rem;
-  margin: 0;
-  font-size: 1.3rem;
-  opacity: .8;
-}
-
-/* The heading is the printed part of the cover: centred, and set larger than
-   anything the marker writes in. */
+/* The heading is the printed part of the cover: two left-aligned lines, the
+   first heavy and closed off by a thick rule. `padding-right` holds the words
+   clear of the grade box while the rule still runs the full width of the
+   cover; the box, painted over it, caps the rule's right end. */
 .bb-card-kicker {
-  margin: 0;
-  font-size: 1.6rem;
-  font-weight: 700;
-  text-align: center;
+  margin: 0 0 .8rem;
+  padding-right: 9rem;
+  padding-bottom: .6rem;
+  font-size: 3.8rem;
+  font-weight: 900;
+  line-height: 1;
+  text-align: left;
   text-transform: uppercase;
-  letter-spacing: .2em;
-  /* Letter-spacing adds a gap after the last letter too, which drags centred
-     text off to the left; the indent puts it back. */
-  text-indent: .2em;
+  letter-spacing: .02em;
+  border-bottom: .4rem solid var(--color-primary);
 }
 .bb-card-title {
-  margin: 0 0 1.6rem;
-  font-size: 3.2rem;
-  font-weight: 700;
-  line-height: 1.15;
-  text-align: center;
-  /* <h2> inherits the site's tightened tracking; the cover wants none. */
-  letter-spacing: normal;
+  margin: 0 0 2.4rem;
+  padding-right: 9rem;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: .06em;
 }
 
-/* Fields: a small label, then the value written on a short ruled line. The
-   lines are a fixed width, sized to the longest value the card can ever show
-   ("Blue Book No. 999"), and the block is centred rather than stretched: a
-   real blue book has short rules, not full-width ones. */
+/* The grade is stamped in a ruled box in the corner of the cover, the way a
+   marker writes it. It is opaque so it sits on top of the heading rule. */
+.bb-card-grade {
+  position: absolute;
+  top: 2.4rem;
+  right: 2.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  width: 7.2rem;
+  height: 7.2rem;
+  background: var(--bb-blue);
+  border: 2px solid var(--color-primary);
+}
+.bb-card-grade-label {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  opacity: .8;
+}
+.bb-card-grade-value {
+  font-size: 3.4rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Fields: an uppercase label, then the value written on a ruled line. Every
+   line is the same length, as on the printed cover, and the block starts at
+   the left edge with the heading rather than being centred. */
 .bb-card-fields {
-  width: max-content;
-  margin: 0 auto 1.6rem;
+  margin: 0 0 2rem;
   padding: 0;
 }
 .bb-card-field {
@@ -475,20 +502,27 @@ body.blue-book { max-width: 720px; }
 }
 .bb-card-field dt {
   flex: 0 0 auto;
-  /* The width is the whole label column, gap included, so the block measures
-     exactly label + rule (7.5 + 17rem) and stays inside a 360px screen. */
+  /* The width is the whole label column, its gap included, so every ruled
+     line starts at the same place whatever the label says. */
   box-sizing: border-box;
-  width: 7.5rem;
+  width: 8.5rem;
   padding-right: 1rem;
   font-size: 1.2rem;
-  text-align: right;
+  text-align: left;
   text-transform: uppercase;
   letter-spacing: .08em;
   opacity: .7;
 }
+/* The colon is printed on the cover, not part of the label, so CARD_FIELDS
+   can stay plain words. */
+.bb-card-field dt::after { content: ':'; }
+/* The rules are 20rem long, and every one is the same length because they
+   all take the same basis. They shrink together rather than staying fixed:
+   a fixed 20rem plus the label is wider than the cover's content box on a
+   360px screen, and would run out past the padding into the frame. */
 .bb-card-field dd {
-  flex: 0 0 auto;
-  width: 17rem;
+  flex: 0 1 20rem;
+  min-width: 0;
   margin: 0;
   padding-bottom: .2rem;
   font-weight: 500;
@@ -497,10 +531,10 @@ body.blue-book { max-width: 720px; }
 /* Qualified by the dd: the `.bb-card-field dd` rule above is more specific
    than a bare value class would be, and would keep the weight at 500. */
 .bb-card-field dd.bb-card-field-score { font-weight: 700; }
-.bb-card-field dd.bb-card-field-grade { font-size: 2.2rem; font-weight: 700; }
 
-/* Rounds: one per ruled line, the book on the left with its author and year
-   underneath, the round's points on the right. */
+/* Rounds: one per ruled line, in the same ink as the field rules, the book on
+   the left with its author and year underneath and the round's points on the
+   right. The number column takes the small uppercase label style. */
 .bb-card-rows {
   list-style: none;
   margin: 0;
@@ -510,25 +544,33 @@ body.blue-book { max-width: 720px; }
   display: flex;
   align-items: baseline;
   gap: 1rem;
-  padding: .8rem 0;
-  border-bottom: 1px solid rgba(20, 33, 61, .35);
+  padding: .7rem 0;
+  border-bottom: 1px solid var(--color-primary);
 }
 .bb-row-n {
   flex: 0 0 auto;
   width: 1.6rem;
-  font-size: 1.3rem;
-  font-weight: 700;
-  opacity: .6;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  opacity: .7;
 }
 .bb-row-main { flex: 1; min-width: 0; }
 .bb-row-title { font-weight: 500; }
 .bb-row-sub { display: block; font-size: 1.3rem; opacity: .7; }
 .bb-row-pts { flex: 0 0 auto; font-weight: 700; font-variant-numeric: tabular-nums; }
 
-/* Under the five rounds: the label, then one line in the marker's hand (the
-   serif the passages are set in). */
+/* The marker's line goes in a bordered rectangle, the NOTES: box of a real
+   cover: a small label in its top-left corner, then one line written in the
+   serif the passages are set in. */
+.bb-card-notes {
+  margin: 2rem 0 1.6rem;
+  padding: .8rem 1.2rem 1.2rem;
+  min-height: 7rem;
+  border: 2px solid var(--color-primary);
+}
 .bb-card-comments-label {
-  margin: 2rem 0 .8rem;
+  margin: 0 0 .6rem;
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: .08em;
@@ -537,21 +579,41 @@ body.blue-book { max-width: 720px; }
 .bb-card-comment {
   margin: 0;
   font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   line-height: 1.45;
 }
 
-/* On a phone the card loses some padding and the labels narrow, which keeps
-   the field block (label plus a 17rem rule) inside a 360px screen. */
+/* The spec line printed along the foot of the cover. */
+.bb-card-foot {
+  margin: 0;
+  font-size: 1rem;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  opacity: .7;
+}
+
+/* On a phone the card loses some padding and the heading comes down a size;
+   the ruled lines need no rule of their own, they shrink with the row. */
 @media (max-width: 480px) {
   .bb-card { padding: 2rem 1.8rem 1.6rem; }
-  /* No room beside the heading: the date sits above it instead. */
-  .bb-card-date {
-    position: static;
-    text-align: center;
-    margin: 0 0 .6rem;
-  }
-  .bb-card-field dt { width: 6.5rem; }
+  /* The box follows the padding in to stay square with the cover's corner. */
+  .bb-card-grade { top: 2rem; right: 1.8rem; }
+  .bb-card-kicker { font-size: 3rem; }
+  /* A narrower label column leaves the shrunken rules long enough for the
+     longest value the card can show ("September 30, 2026"). */
+  .bb-card-field dt { width: 7.5rem; }
+}
+
+/* On a narrow phone the cover has 24rem of content to work with. "BLUE BOOK"
+   at 3rem beside a 7.2rem box does not fit on one line and breaks in two, so
+   the box and the heading both come down a size and the words keep their
+   line. */
+@media (max-width: 400px) {
+  .bb-card-grade { width: 5.6rem; height: 5.6rem; }
+  .bb-card-grade-value { font-size: 2.6rem; }
+  .bb-card-kicker { font-size: 2.6rem; padding-right: 7rem; }
+  .bb-card-title { padding-right: 7rem; }
 }
 
 /* ===================== end Scorecard ===================== */

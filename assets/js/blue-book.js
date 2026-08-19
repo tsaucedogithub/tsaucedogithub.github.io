@@ -50,7 +50,7 @@
     breakdown: document.getElementById('bb-breakdown'),
     next: document.getElementById('bb-next'),
     resultsScreen: document.getElementById('bb-results-screen'),
-    cardDate: document.getElementById('bb-card-date'),
+    cardGradeValue: document.getElementById('bb-card-grade-value'),
     cardFields: document.getElementById('bb-card-fields'),
     cardRows: document.getElementById('bb-card-rows'),
     cardComment: document.getElementById('bb-card-comment'),
@@ -633,17 +633,18 @@
   // The card is the cover of a graded blue book: a run of labelled fields,
   // then one ruled line per round. Edit this list to reshape the cover: one
   // entry is one field line, in order, and `value` is handed a ctx of
-  // { dateLabel, dayNumber, total }. The date is not a field: it sits in the
-  // card's top-right corner (#bb-card-date).
+  // { dateLabel, dayNumber, total }. The CSS adds the colon after each label,
+  // so write labels plainly here. The grade is not a field: it is stamped in
+  // the box in the card's top-right corner (#bb-card-grade).
   var CARD_FIELDS = [
     { label: 'Class',   value: function (ctx) { return 'Blue Book No. ' + ctx.dayNumber; } },
     { label: 'Subject', value: function (ctx) { return 'The Classics'; } },
-    { label: 'Score',   value: function (ctx) { return C.formatPoints(ctx.total) + ' / 5,000'; } },
-    { label: 'Grade',   value: function (ctx) { return C.grade(ctx.total); } }
+    { label: 'Date',    value: function (ctx) { return ctx.dateLabel; } },
+    { label: 'Score',   value: function (ctx) { return C.formatPoints(ctx.total) + ' / 5,000'; } }
   ];
 
-  // Every field value carries a class off its label ('Grade' -> the
-  // bb-card-field-grade the CSS enlarges), so a new field can be styled
+  // Every field value carries a class off its label ('Score' -> the
+  // bb-card-field-score the CSS sets in bold), so a new field can be styled
   // without touching this function.
   function fieldClass(label) {
     return 'bb-card-field-' + label.toLowerCase().replace(/[^a-z0-9]+/g, '-');
@@ -663,7 +664,7 @@
       total: total
     };
 
-    el.cardDate.textContent = ctx.dateLabel;
+    el.cardGradeValue.textContent = C.grade(total);
 
     el.cardFields.innerHTML = '';
     for (var f = 0; f < CARD_FIELDS.length; f++) {

@@ -72,13 +72,19 @@ stylesheet: /assets/css/blue-book.css
 
   <section class="bb-results-screen" id="bb-results-screen" hidden>
     <div class="bb-card" id="bb-card">
-      <p class="bb-card-date" id="bb-card-date"></p>
+      <div class="bb-card-grade" id="bb-card-grade">
+        <span class="bb-card-grade-label">Grade</span>
+        <span class="bb-card-grade-value" id="bb-card-grade-value"></span>
+      </div>
       <p class="bb-card-kicker">Blue Book</p>
       <h2 class="bb-card-title">Literary Examination</h2>
       <dl class="bb-card-fields" id="bb-card-fields"></dl>
       <ol class="bb-card-rows" id="bb-card-rows"></ol>
-      <p class="bb-card-comments-label">Instructor's comments</p>
-      <p class="bb-card-comment" id="bb-card-comment"></p>
+      <div class="bb-card-notes">
+        <p class="bb-card-comments-label">Instructor's comments:</p>
+        <p class="bb-card-comment" id="bb-card-comment"></p>
+      </div>
+      <p class="bb-card-foot">5 passages · scored out of 5,000 · tristansaucedo.com/blue-book</p>
     </div>
     <p class="bb-actions">
       <button type="button" class="bb-btn bb-btn-primary" id="bb-share">Share</button>

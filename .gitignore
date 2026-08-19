@@ -24,3 +24,6 @@ __pycache__/
 
 # Blue Book: downloaded Gutenberg texts used by _tools/blue_book/verify_passages.py
 _tools/blue_book/cache/
+
+# Blue Book: raw passage drops and YAML fragments waiting to be merged into _data/blue_book.yml
+_tools/blue_book/inbox/
