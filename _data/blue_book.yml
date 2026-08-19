@@ -352,3 +352,1021 @@
     locus: Part 5, Chapter 4
     text: >-
       “Go at once, this very minute, stand at the cross-roads, bow down, first kiss the earth which you have defiled and then bow down to all the world and say to all men aloud, ‘I am a murderer!’ Then God will send you life again. Will you go, will you go?” she asked him, trembling all over, snatching his two hands, squeezing them tight in hers and gazing at him with eyes full of fire.
+- id: anna-karenina
+  title: Anna Karenina
+  author: Leo Tolstoy
+  year: 1878
+  window: 3
+  form: novel
+  clue: Russian novelist
+  aliases: [Karenina, Anna Karenin, Tolstoi]
+  gutenberg: 1399
+  passages:
+    - locus: Part 7, Chapter 31
+      difficulty: 3
+      text: >-
+        But she did not take her eyes from the wheels of the second carriage. And exactly at the moment when the space between the wheels came opposite her, she dropped the red bag, and drawing her head back into her shoulders, fell on her hands under the carriage, and lightly, as though she would rise again at once, dropped on to her knees. And at the same instant she was terror-stricken at what she was doing. “Where am I? What am I doing? What for?” She tried to get up, to drop backwards; but something huge and merciless struck her on the head and rolled her on her back. “Lord, forgive me all!” she said, feeling it impossible to struggle. A peasant muttering something was working at the iron above her. And the light by which she had read the book filled with troubles, falsehoods, sorrow, and evil, flared up more brightly than ever before, lighted up for her all that had been in darkness, flickered, began to grow dim, and was quenched forever.
+      significance: >-
+        Anna throws herself under a moving train at a suburban station, after jealousy and isolation have narrowed her life to a single unbearable thought. Tolstoy gives her one lucid instant of terror and prayer between the decision and the impact. The dying candle closes the chain of railway images that began when she first met Vronsky.
+    - locus: Part 8, Chapter 19
+      difficulty: 2
+      text: >-
+        “This new feeling has not changed me, has not made me happy and enlightened all of a sudden, as I had dreamed, just like the feeling for my child. There was no surprise in this either. Faith - or not faith - I don’t know what it is - but this feeling has come just as imperceptibly through suffering, and has taken firm root in my soul.
+
+
+        “I shall go on in the same way, losing my temper with Ivan the coachman, falling into angry discussions, expressing my opinions tactlessly; there will be still the same wall between the holy of holies of my soul and other people, even my wife; I shall still go on scolding her for my own terror, and being remorseful for it; I shall still be as unable to understand with my reason why I pray, and I shall still go on praying; but my life now, my whole life apart from anything that can happen to me, every minute of it is no more meaningless, as it was before, but it has the positive meaning of goodness, which I have the power to put into it.”
+      significance: >-
+        Levin arrives at the faith he has been circling for the whole novel and states it in the closing words of the book. He expects no change in his temper or his habits, only a new meaning inside the same ordinary life. Tolstoy answers Anna's story with a man who finds a reason to keep living rather than a reason to stop.
+  famous:
+    locus: Part 1, Chapter 1
+    text: >-
+      Happy families are all alike; every unhappy family is unhappy in its own way.
+
+
+      Everything was in confusion in the Oblonskys’ house. The wife had discovered that the husband was carrying on an intrigue with a French girl, who had been a governess in their family, and she had announced to her husband that she could not go on living in the same house with him. This position of affairs had now lasted three days, and not only the husband and wife themselves, but all the members of their family and household, were painfully conscious of it.
+- id: little-women
+  title: Little Women
+  author: Louisa May Alcott
+  year: 1868
+  window: 2
+  form: novel
+  clue: American novelist
+  aliases: [Good Wives]
+  gutenberg: 514
+  passages:
+    - locus: Chapter 35, Heartache
+      difficulty: 2
+      text: >-
+        “You, you are, you’re a great deal too good for me, and I’m so grateful to you, and so proud and fond of you, I don’t know why I can’t love you as you want me to. I’ve tried, but I can’t change the feeling, and it would be a lie to say I do when I don’t.”
+
+
+        “Really, truly, Jo?”
+
+
+        He stopped short, and caught both her hands as he put his question with a look that she did not soon forget.
+
+
+        “Really, truly, dear.”
+
+
+        They were in the grove now, close by the stile, and when the last words fell reluctantly from Jo’s lips, Laurie dropped her hands and turned as if to go on, but for once in his life the fence was too much for him. So he just laid his head down on the mossy post, and stood so still that Jo was frightened.
+      significance: >-
+        Jo refuses Laurie's proposal in the grove by the stile, telling him she cannot make herself feel what he wants her to feel. The refusal breaks the pairing readers have assumed since the two of them became friends. It is the moment Alcott chooses Jo's independence over the ending the story seemed to promise.
+    - locus: Chapter 27, Literary Lessons
+      difficulty: 3
+      text: >-
+        She did not think herself a genius by any means, but when the writing fit came on, she gave herself up to it with entire abandon, and led a blissful life, unconscious of want, care, or bad weather, while she sat safe and happy in an imaginary world, full of friends almost as real and dear to her as any in the flesh. Sleep forsook her eyes, meals stood untasted, day and night were all too short to enjoy the happiness which blessed her only at such times, and made these hours worth living, even if they bore no other fruit. The divine afflatus usually lasted a week or two, and then she emerged from her ‘vortex’, hungry, sleepy, cross, or despondent.
+      significance: >-
+        Alcott describes what happens to Jo when the writing takes hold of her, a state the family calls the vortex. Work is the one thing in the book that makes her completely happy, and it costs her sleep, meals and temper. The passage is the clearest account of the ambition that the rest of the plot keeps testing.
+  famous:
+    locus: Chapter 1, Playing Pilgrims
+    text: >-
+      “Christmas won’t be Christmas without any presents,” grumbled Jo, lying on the rug.
+
+
+      “It’s so dreadful to be poor!” sighed Meg, looking down at her old dress.
+
+
+      “I don’t think it’s fair for some girls to have plenty of pretty things, and other girls nothing at all,” added little Amy, with an injured sniff.
+
+
+      “We’ve got Father and Mother, and each other,” said Beth contentedly from her corner.
+
+
+      The four young faces on which the firelight shone brightened at the cheerful words, but darkened again as Jo said sadly, “We haven’t got Father, and shall not have him for a long time.” She didn’t say “perhaps never,” but each silently added it, thinking of Father far away, where the fighting was.
+- id: war-and-peace
+  title: War and Peace
+  author: Leo Tolstoy
+  year: 1869
+  window: 4
+  form: novel
+  clue: Russian novelist
+  aliases: [Tolstoi]
+  gutenberg: 2600
+  passages:
+    - locus: Book 3, Chapter 16
+      difficulty: 2
+      text: >-
+        “What’s this? Am I falling? My legs are giving way,” thought he, and fell on his back. He opened his eyes, hoping to see how the struggle of the Frenchmen with the gunners ended, whether the red-haired gunner had been killed or not and whether the cannon had been captured or saved. But he saw nothing. Above him there was now nothing but the sky - the lofty sky, not clear yet still immeasurably lofty, with gray clouds gliding slowly across it. “How quiet, peaceful, and solemn; not at all as I ran,” thought Prince Andrew - “not as we ran, shouting and fighting, not at all as the gunner and the Frenchman with frightened and angry faces struggled for the mop: how differently do those clouds glide across that lofty infinite sky! How was it I did not see that lofty sky before? And how happy I am to have found it at last! Yes! All is vanity, all falsehood, except that infinite sky. There is nothing, nothing, but that. But even it does not exist, there is nothing but quiet and peace. Thank God!...”
+      significance: >-
+        Prince Andrew is struck down carrying the standard at Austerlitz and finds himself looking straight up at the sky. The glory he wanted from the battle empties out in front of it, and he sees the fighting as noise. The scene sets the pattern the novel repeats, in which a character's ambition collapses and something quieter takes its place.
+    - locus: Book 9, Chapter 1
+      difficulty: 3
+      text: >-
+        From the close of the year 1811 an intensified arming and concentrating of the forces of Western Europe began, and in 1812 these forces - millions of men, reckoning those transporting and feeding the army - moved from the west eastwards to the Russian frontier, toward which since 1811 Russian forces had been similarly drawn. On the twelfth of June, 1812, the forces of Western Europe crossed the Russian frontier and war began, that is, an event took place opposed to human reason and to human nature. Millions of men perpetrated against one another such innumerable crimes, frauds, treacheries, thefts, forgeries, issues of false money, burglaries, incendiarisms, and murders as in whole centuries are not recorded in the annals of all the law courts of the world, but which those who committed them did not at the time regard as being crimes.
+      significance: >-
+        Tolstoy opens his account of the invasion of Russia by refusing to treat it as anything but a crime committed by millions of people. He states the size of the event before naming a single cause, which is the argument he then makes for the rest of the book. Everything that follows about generals and emperors is written against this paragraph.
+  famous:
+    locus: Book 1, Chapter 1
+    text: >-
+      “Well, Prince, so Genoa and Lucca are now just family estates of the Buonapartes. But I warn you, if you don’t tell me that this means war, if you still try to defend the infamies and horrors perpetrated by that Antichrist - I really believe he is Antichrist - I will have nothing more to do with you and you are no longer my friend, no longer my ‘faithful slave,’ as you call yourself! But how do you do? I see I have frightened you - sit down and tell me all the news.”
+- id: huckleberry-finn
+  title: The Adventures of Huckleberry Finn
+  author: Mark Twain
+  year: 1884
+  window: 2
+  form: novel
+  clue: American novelist
+  aliases: [Huck Finn, Huckleberry Finn, Adventures of Huckleberry Finn]
+  gutenberg: 76
+  passages:
+    - locus: Chapter 31
+      difficulty: 2
+      text: >-
+        It was a close place. I took it up, and held it in my hand. I was a-trembling, because I’d got to decide, forever, betwixt two things, and I knowed it. I studied a minute, sort of holding my breath, and then says to myself:
+
+
+        “All right, then, I’ll go to hell” - and tore it up.
+
+
+        It was awful thoughts and awful words, but they was said. And I let them stay said; and never thought no more about reforming. I shoved the whole thing out of my head, and said I would take up wickedness again, which was in my line, being brung up to it, and the other warn’t. And for a starter I would go to work and steal Jim out of slavery again; and if I could think up anything worse, I would do that, too; because as long as I was in, and in for good, I might as well go the whole hog.
+      significance: >-
+        Huck has written a letter turning Jim in and now has to decide whether to send it. He believes that helping Jim escape will damn him, and he chooses damnation. Twain lets the boy's own feeling beat the morality he was raised on, and Huck never understands that this is what has happened.
+    - locus: Chapter 19
+      difficulty: 3
+      text: >-
+        Two or three days and nights went by; I reckon I might say they swum by, they slid along so quiet and smooth and lovely. Here is the way we put in the time. It was a monstrous big river down there - sometimes a mile and a half wide; we run nights, and laid up and hid daytimes; soon as night was most gone we stopped navigating and tied up - nearly always in the dead water under a tow-head; and then cut young cottonwoods and willows, and hid the raft with them. Then we set out the lines. Next we slid into the river and had a swim, so as to freshen up and cool off; then we set down on the sandy bottom where the water was about knee deep, and watched the daylight come. Not a sound anywheres - perfectly still - just like the whole world was asleep, only sometimes the bullfrogs a-cluttering, maybe.
+      significance: >-
+        Huck describes the routine of hiding the raft by daylight and running the river at night. It is the fullest picture of the freedom the river gives him and Jim, told entirely in his own voice. The stillness here stands against the feuds, frauds and slaveholding that fill every stretch of shore in the book.
+  famous:
+    locus: Chapter 1
+    text: >-
+      You don’t know about me without you have read a book by the name of The Adventures of Tom Sawyer; but that ain’t no matter. That book was made by Mr. Mark Twain, and he told the truth, mainly. There was things which he stretched, but mainly he told the truth. That is nothing. I never seen anybody but lied one time or another, without it was Aunt Polly, or the widow, or maybe Mary. Aunt Polly - Tom’s Aunt Polly, she is - and Mary, and the Widow Douglas is all told about in that book, which is mostly a true book, with some stretchers, as I said before.
+- id: alice-in-wonderland
+  title: Alice's Adventures in Wonderland
+  author: Lewis Carroll
+  year: 1865
+  window: 2
+  form: novel
+  clue: English writer
+  aliases: [Alice in Wonderland, Wonderland]
+  gutenberg: 11
+  passages:
+    - locus: Chapter 6, Pig and Pepper
+      difficulty: 2
+      text: >-
+        “Cheshire Puss,” she began, rather timidly, as she did not at all know whether it would like the name: however, it only grinned a little wider. “Come, it’s pleased so far,” thought Alice, and she went on. “Would you tell me, please, which way I ought to go from here?”
+
+
+        “That depends a good deal on where you want to get to,” said the Cat.
+
+
+        “I don’t much care where - ” said Alice.
+
+
+        “Then it doesn’t matter which way you go,” said the Cat.
+
+
+        “ - so long as I get somewhere,” Alice added as an explanation.
+
+
+        “Oh, you’re sure to do that,” said the Cat, “if you only walk long enough.”
+
+
+        Alice felt that this could not be denied, so she tried another question. “What sort of people live about here?”
+
+
+        “In that direction,” the Cat said, waving its right paw round, “lives a Hatter: and in that direction,” waving the other paw, “lives a March Hare. Visit either you like: they’re both mad.”
+
+
+        “But I don’t want to go among mad people,” Alice remarked.
+
+
+        “Oh, you can’t help that,” said the Cat: “we’re all mad here. I’m mad. You’re mad.”
+
+
+        “How do you know I’m mad?” said Alice.
+
+
+        “You must be,” said the Cat, “or you wouldn’t have come here.”
+      significance: >-
+        Alice asks the Cheshire Cat for directions and gets a lesson in logic instead. His answer, that which way she ought to go depends on where she wants to get to, hands the question back to her. The exchange states the rule of Wonderland, where the reasoning is sound and the premises are not.
+    - locus: Chapter 1, Down the Rabbit Hole
+      difficulty: 3
+      text: >-
+        Either the well was very deep, or she fell very slowly, for she had plenty of time as she went down to look about her and to wonder what was going to happen next. First, she tried to look down and make out what she was coming to, but it was too dark to see anything; then she looked at the sides of the well, and noticed that they were filled with cupboards and book-shelves; here and there she saw maps and pictures hung upon pegs. She took down a jar from one of the shelves as she passed; it was labelled “ORANGE MARMALADE”, but to her great disappointment it was empty: she did not like to drop the jar for fear of killing somebody underneath, so managed to put it into one of the cupboards as she fell past it.
+      significance: >-
+        Alice falls down the hole and has enough time on the way to read the labels on the jars and worry about dropping one on somebody below. Carroll fixes the tone of the book here, with a child meeting the impossible as a question of ordinary manners. The slowness of the fall is the first sign that the rules of this world have changed.
+  famous:
+    locus: Chapter 1, Down the Rabbit Hole
+    text: >-
+      Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, “and what is the use of a book,” thought Alice “without pictures or conversations?”
+
+
+      So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her.
+- id: heart-of-darkness
+  title: Heart of Darkness
+  author: Joseph Conrad
+  year: 1899
+  window: 3
+  form: novel
+  clue: Polish born English novelist
+  gutenberg: 219
+  passages:
+    - locus: Part 1
+      difficulty: 3
+      text: >-
+        They were conquerors, and for that you want only brute force - nothing to boast of, when you have it, since your strength is just an accident arising from the weakness of others. They grabbed what they could get for the sake of what was to be got. It was just robbery with violence, aggravated murder on a great scale, and men going at it blind - as is very proper for those who tackle a darkness. The conquest of the earth, which mostly means the taking it away from those who have a different complexion or slightly flatter noses than ourselves, is not a pretty thing when you look into it too much. What redeems it is the idea only. An idea at the back of it; not a sentimental pretence but an idea; and an unselfish belief in the idea - something you can set up, and bow down before, and offer a sacrifice to....
+      significance: >-
+        Marlow, on a boat anchored in the Thames, compares Roman Britain to the empire of his own day and calls conquest robbery with violence. He then offers the one thing he thinks redeems it, an idea held unselfishly, and the rest of the story tests that claim in the Congo. The passage states the question the novel is built to answer.
+    - locus: Part 3
+      difficulty: 2
+      text: >-
+        “‘His last word - to live with,’ she insisted. ‘Don’t you understand I loved him - I loved him - I loved him!’
+
+
+        “I pulled myself together and spoke slowly.
+
+
+        “‘The last word he pronounced was - your name.’
+
+
+        “I heard a light sigh and then my heart stood still, stopped dead short by an exulting and terrible cry, by the cry of inconceivable triumph and of unspeakable pain. ‘I knew it - I was sure!’... She knew. She was sure. I heard her weeping; she had hidden her face in her hands. It seemed to me that the house would collapse before I could escape, that the heavens would fall upon my head. But nothing happened. The heavens do not fall for such a trifle. Would they have fallen, I wonder, if I had rendered Kurtz that justice which was his due? Hadn’t he said he wanted only justice? But I couldn’t. I could not tell her. It would have been too dark - too dark altogether....”
+      significance: >-
+        Marlow tells the woman Kurtz was to marry that Kurtz died speaking her name, when what he actually said was the horror. The lie is deliberate, and Marlow has spent the whole story insisting that lies disgust him. He decides the truth would ruin her and that withholding it is the last thing he can do for Kurtz.
+  famous:
+    locus: Part 3
+    text: >-
+      Anything approaching the change that came over his features I have never seen before, and hope never to see again. Oh, I wasn’t touched. I was fascinated. It was as though a veil had been rent. I saw on that ivory face the expression of sombre pride, of ruthless power, of craven terror - of an intense and hopeless despair. Did he live his life again in every detail of desire, temptation, and surrender during that supreme moment of complete knowledge? He cried in a whisper at some image, at some vision - he cried out twice, a cry that was no more than a breath:
+
+
+      “‘The horror! The horror!’
+- id: brothers-karamazov
+  title: The Brothers Karamazov
+  author: Fyodor Dostoevsky
+  year: 1880
+  window: 2
+  form: novel
+  clue: Russian novelist
+  aliases: [Karamazov, The Karamazov Brothers, Dostoyevsky]
+  gutenberg: 28054
+  passages:
+    - locus: Book 5, Chapter 5, The Grand Inquisitor
+      difficulty: 3
+      text: >-
+        Yet what was offered Thee? There are three powers, three powers alone, able to conquer and to hold captive for ever the conscience of these impotent rebels for their happiness - those forces are miracle, mystery and authority. Thou hast rejected all three and hast set the example for doing so. When the wise and dread spirit set Thee on the pinnacle of the temple and said to Thee, “If Thou wouldst know whether Thou art the Son of God then cast Thyself down, for it is written: the angels shall hold him up lest he fall and bruise himself, and Thou shalt know then whether Thou art the Son of God and shalt prove then how great is Thy faith in Thy Father.” But Thou didst refuse and wouldst not cast Thyself down.
+      significance: >-
+        The Inquisitor tells his silent prisoner that the church has taken up the three powers he rejected in the wilderness, miracle, mystery and authority. His charge is that freedom is more than people can carry and that giving it to them was cruelty. Ivan's poem puts the strongest case against faith that the novel will have to answer.
+    - locus: Book 3, Chapter 3
+      difficulty: 2
+      text: >-
+        I am that insect, brother, and it is said of me specially. All we Karamazovs are such insects, and, angel as you are, that insect lives in you, too, and will stir up a tempest in your blood. Tempests, because sensual lust is a tempest - worse than a tempest! Beauty is a terrible and awful thing! It is terrible because it has not been fathomed and never can be fathomed, for God sets us nothing but riddles. Here the boundaries meet and all contradictions exist side by side. I am not a cultivated man, brother, but I’ve thought a lot about this. It’s terrible what mysteries there are! Too many riddles weigh men down on earth. We must solve them as we can, and try to keep a dry skin in the water.
+      significance: >-
+        Dmitri confesses to Alyosha that the family appetite is in him and in his brother too. He calls beauty terrible because it holds the highest ideal and the lowest one together with no way to separate them. The speech names the inheritance that the murder plot will bring to a head.
+  famous:
+    locus: Book 5, Chapter 4, Rebellion
+    text: >-
+      I don’t want harmony. From love for humanity I don’t want it. I would rather be left with the unavenged suffering. I would rather remain with my unavenged suffering and unsatisfied indignation, even if I were wrong. Besides, too high a price is asked for harmony; it’s beyond our means to pay so much to enter on it. And so I hasten to give back my entrance ticket, and if I am an honest man I am bound to give it back as soon as possible. And that I am doing. It’s not God that I don’t accept, Alyosha, only I most respectfully return Him the ticket.
+- id: count-of-monte-cristo
+  title: The Count of Monte Cristo
+  author: Alexandre Dumas
+  year: 1844
+  window: 3
+  form: novel
+  clue: French novelist
+  aliases: [Monte Cristo, Monte Christo]
+  gutenberg: 1184
+  passages:
+    - locus: Chapter 116, The Pardon
+      difficulty: 2
+      text: >-
+        “I am he whom you sold and dishonored - I am he whose betrothed you prostituted - I am he upon whom you trampled that you might raise yourself to fortune - I am he whose father you condemned to die of hunger - I am he whom you also condemned to starvation, and who yet forgives you, because he hopes to be forgiven - I am Edmond Dantès!”
+
+
+        Danglars uttered a cry, and fell prostrate.
+
+
+        “Rise,” said the count, “your life is safe; the same good fortune has not happened to your accomplices - one is mad, the other dead. Keep the 50,000 francs you have left - I give them to you. The 5,000,000 you stole from the hospitals has been restored to them by an unknown hand. And now eat and drink; I will entertain you tonight. Vampa, when this man is satisfied, let him be free.”
+
+
+        Danglars remained prostrate while the count withdrew; when he raised his head he saw disappearing down the passage nothing but a shadow, before which the bandits bowed.
+      significance: >-
+        The count finally names himself to Danglars, the last of the three men who destroyed him, after starving him in a Roman cellar. Having said who he is, he sets him free and reports that the stolen millions have gone back to the hospitals. The revenge ends in mercy, which is where the novel lands after a thousand pages of patience.
+    - locus: Chapter 48, Ideology
+      difficulty: 3
+      text: >-
+        I too, as happens to every man once in his life, have been taken by Satan into the highest mountain in the earth, and when there he showed me all the kingdoms of the world, and as he said before, so said he to me, ‘Child of earth, what wouldst thou have to make thee adore me?’ I reflected long, for a gnawing ambition had long preyed upon me, and then I replied, ‘Listen, - I have always heard of Providence, and yet I have never seen him, or anything that resembles him, or which can make me believe that he exists. I wish to be Providence myself, for I feel that the most beautiful, noblest, most sublime thing in the world, is to recompense and punish.’ Satan bowed his head, and groaned. ‘You mistake,’ he said, ‘Providence does exist, only you have never seen him, because the child of God is as invisible as the parent. You have seen nothing that resembles him, because he works by secret springs, and moves by hidden ways. All I can do for you is to make you one of the agents of that Providence.’ The bargain was concluded.
+      significance: >-
+        The count explains how he came to think of himself as an agent of Providence, in a parable about being taken up a mountain and shown the kingdoms of the world. He asks for the power to reward and to punish, and is told he may have it as an agent and not as the author. It is the clearest statement of the role he has given himself, and of what he paid for it.
+  famous:
+    locus: Chapter 117, The Fifth of October
+    text: >-
+      There is neither happiness nor misery in the world; there is only the comparison of one state with another, nothing more. He who has felt the deepest grief is best able to experience supreme happiness. We must have felt what it is to die, Morrel, that we may appreciate the enjoyments of living.
+
+
+      “Live, then, and be happy, beloved children of my heart, and never forget that until the day when God shall deign to reveal the future to man, all human wisdom is summed up in these two words, - ‘Wait and hope.’ - Your friend,
+
+
+      “Edmond Dantès, Count of Monte Cristo.”
+- id: middlemarch
+  title: Middlemarch
+  author: George Eliot
+  year: 1871
+  window: 2
+  form: novel
+  clue: English novelist
+  aliases: [Mary Ann Evans]
+  gutenberg: 145
+  passages:
+    - locus: Chapter 29
+      difficulty: 2
+      text: >-
+        One morning, some weeks after her arrival at Lowick, Dorothea - but why always Dorothea? Was her point of view the only possible one with regard to this marriage? I protest against all our interest, all our effort at understanding being given to the young skins that look blooming in spite of trouble; for these too will get faded, and will know the older and more eating griefs which we are helping to neglect. In spite of the blinking eyes and white moles objectionable to Celia, and the want of muscular curve which was morally painful to Sir James, Mr. Casaubon had an intense consciousness within him, and was spiritually a-hungered like the rest of us. He had done nothing exceptional in marrying - nothing but what society sanctions, and considers an occasion for wreaths and bouquets.
+      significance: >-
+        Eliot breaks off her own sentence to ask why the story always follows Dorothea, and turns to Casaubon instead. She insists that the dry scholar readers have been invited to dislike is as hungry inside as anybody else. The interruption states the method of the whole novel, which is to extend sympathy to the people it is hardest to extend it to.
+    - locus: Chapter 20
+      difficulty: 3
+      text: >-
+        Some discouragement, some faintness of heart at the new real future which replaces the imaginary, is not unusual, and we do not expect people to be deeply moved by what is not unusual. That element of tragedy which lies in the very fact of frequency, has not yet wrought itself into the coarse emotion of mankind; and perhaps our frames could hardly bear much of it. If we had a keen vision and feeling of all ordinary human life, it would be like hearing the grass grow and the squirrel’s heart beat, and we should die of that roar which lies on the other side of silence. As it is, the quickest of us walk about well wadded with stupidity.
+      significance: >-
+        Eliot stops over an ordinary unhappiness, a young wife crying six weeks after her wedding, and refuses to call it too common to matter. She argues that the tragedy of frequency is real and that we survive only because we cannot feel all of it at once. The passage explains why the book spends itself on provincial lives rather than famous ones.
+  famous:
+    locus: Finale
+    text: >-
+      Her finely touched spirit had still its fine issues, though they were not widely visible. Her full nature, like that river of which Cyrus broke the strength, spent itself in channels which had no great name on the earth. But the effect of her being on those around her was incalculably diffusive: for the growing good of the world is partly dependent on unhistoric acts; and that things are not so ill with you and me as they might have been, is half owing to the number who lived faithfully a hidden life, and rest in unvisited tombs.
+- id: sound-and-the-fury
+  title: The Sound and the Fury
+  author: William Faulkner
+  year: 1929
+  window: 2
+  form: novel
+  clue: American novelist
+  aliases: [The Sound & the Fury]
+  gutenberg: 75170
+  passages:
+    - locus: June Second, 1910
+      difficulty: 2
+      text: >-
+        When the shadow of the sash appeared on the curtains it was between seven and eight oclock and then I was in time again, hearing the watch. It was Grandfather’s and when Father gave it to me he said, Quentin, I give you the mausoleum of all hope and desire; it’s rather excrutiating-ly apt that you will use it to gain the reducto absurdum of all human experience which can fit your individual needs no better than it fitted his or his father’s. I give it to you not that you may remember time, but that you might forget it now and then for a moment and not spend all your breath trying to conquer it. Because no battle is ever won he said. They are not even fought. The field only reveals to man his own folly and despair, and victory is an illusion of philosophers and fools.
+      significance: >-
+        Quentin wakes in his room at Harvard and remembers his father handing him the family watch with a speech about the uselessness of fighting time. The gift is offered as a release and Quentin receives it as a sentence. His section ends that same day with his suicide, and everything in it runs back to this moment.
+    - locus: April Eighth, 1928
+      difficulty: 3
+      text: >-
+        The gown fell gauntly from her shoulders, across her fallen breasts, then tightened upon her paunch and fell again, ballooning a little above the nether garments which she would remove layer by layer as the spring accomplished and the warm days, in colour regal and moribund. She had been a big woman once but now her skeleton rose, draped loosely in unpadded skin that tightened again upon a paunch almost dropsical, as though muscle and tissue had been courage or fortitude which the days or the years had consumed until only the indomitable skeleton was left rising like a ruin or a landmark above the somnolent and impervious guts, and above that the collapsed face that gave the impression of the bones themselves being outside the flesh, lifted into the driving day with an expression at once fatalistic and of a child’s astonished disappointment, until she turned and entered the house again and closed the door.
+      significance: >-
+        Faulkner opens the last section with Dilsey stepping out of her cabin into a bitter Easter morning. The body is worn down to the frame, and the frame is what has held the Compson household upright. She is the one figure the novel describes with this kind of steadiness, and the section belongs to her.
+  famous:
+    locus: April Seventh, 1928
+    text: >-
+      Through the fence, between the curling flower spaces, I could see them hitting. They were coming toward where the flag was and I went along the fence. Luster was hunting in the grass by the flower tree. They took the flag out, and they were hitting. Then they put the flag back and they went to the table, and he hit and the other hit. Then they went on, and I went along the fence. Luster came away from the flower tree and we went along the fence and they stopped and we stopped and I looked through the fence while Luster was hunting in the grass.
+
+
+      “Here, caddie.” He hit. They went away across the pasture. I held to the fence and watched them going away.
+- id: madame-bovary
+  title: Madame Bovary
+  author: Gustave Flaubert
+  year: 1857
+  window: 2
+  form: novel
+  clue: French novelist
+  aliases: [Bovary]
+  gutenberg: 2413
+  passages:
+    - locus: Part 2, Chapter 8
+      difficulty: 2
+      text: >-
+        And he seized her hand; she did not withdraw it.
+
+
+        “For good farming generally!” cried the president.
+
+
+        “Just now, for example, when I went to your house.”
+
+
+        “To Monsieur Bizat of Quincampoix.”
+
+
+        “Did I know I should accompany you?”
+
+
+        “Seventy francs.”
+
+
+        “A hundred times I wished to go; and I followed you - I remained.”
+
+
+        “Manures!”
+
+
+        “And I shall remain to-night, to-morrow, all other days, all my life!”
+
+
+        “To Monsieur Caron of Argueil, a gold medal!”
+
+
+        “For I have never in the society of any other person found so complete a charm.”
+
+
+        “To Monsieur Bain of Givry-Saint-Martin.”
+
+
+        “And I shall carry away with me the remembrance of you.”
+
+
+        “For a merino ram!”
+
+
+        “But you will forget me; I shall pass away like a shadow.”
+
+
+        “To Monsieur Belot of Notre-Dame.”
+
+
+        “Oh, no! I shall be something in your thought, in your life, shall I not?”
+
+
+        “Porcine race; prizes - equal, to Messrs. Leherisse and Cullembourg, sixty francs!”
+
+
+        Rodolphe was pressing her hand, and he felt it all warm and quivering like a captive dove that wants to fly away
+      significance: >-
+        Rodolphe makes love to Emma in the upstairs room of the town hall while the prize committee shouts awards for manure and livestock in the square below. Flaubert cuts the two voices together so that seduction and cattle prizes share the same page. The technique reduces romantic language to one more provincial noise.
+    - locus: Part 1, Chapter 7
+      difficulty: 3
+      text: >-
+        She asked herself if by some other chance combination it would have not been possible to meet another man; and she tried to imagine what would have been these unrealised events, this different life, this unknown husband. All, surely, could not be like this one. He might have been handsome, witty, distinguished, attractive, such as, no doubt, her old companions of the convent had married. What were they doing now? In town, with the noise of the streets, the buzz of the theatres and the lights of the ballroom, they were living lives where the heart expands, the senses bourgeon out. But she - her life was cold as a garret whose dormer window looks on the north, and ennui, the silent spider, was weaving its web in the darkness in every corner of her heart.
+      significance: >-
+        Emma sits alone at Tostes and measures her marriage against the lives she imagines her convent friends are leading. The passage names the boredom that drives every choice she makes afterwards. It closes on the image the novel is remembered for, ennui as a silent spider spinning in the dark.
+  famous:
+    locus: Part 2, Chapter 12
+    text: >-
+      Emma was like all his mistresses; and the charm of novelty, gradually falling away like a garment, laid bare the eternal monotony of passion, that has always the same forms and the same language. He did not distinguish, this man of so much experience, the difference of sentiment beneath the sameness of expression. Because lips libertine and venal had murmured such words to him, he believed but little in the candour of hers; exaggerated speeches hiding mediocre affections must be discounted; as if the fullness of the soul did not sometimes overflow in the emptiest metaphors, since no one can ever give the exact measure of his needs, nor of his conceptions, nor of his sorrows; and since human speech is like a cracked tin kettle, on which we hammer out tunes to make bears dance when we long to move the stars.
+- id: gullivers-travels
+  title: Gulliver's Travels
+  author: Jonathan Swift
+  year: 1726
+  window: 2
+  form: novel
+  clue: Anglo-Irish satirist
+  aliases: [Gulliver]
+  gutenberg: 829
+  passages:
+    - locus: Part 1, Chapter 4
+      difficulty: 2
+      text: >-
+        It is allowed on all hands, that the primitive way of breaking eggs, before we eat them, was upon the larger end; but his present majesty’s grandfather, while he was a boy, going to eat an egg, and breaking it according to the ancient practice, happened to cut one of his fingers. Whereupon the emperor his father published an edict, commanding all his subjects, upon great penalties, to break the smaller end of their eggs. The people so highly resented this law, that our histories tell us, there have been six rebellions raised on that account; wherein one emperor lost his life, and another his crown. These civil commotions were constantly fomented by the monarchs of Blefuscu; and when they were quelled, the exiles always fled for refuge to that empire. It is computed that eleven thousand persons have at several times suffered death, rather than submit to break their eggs at the smaller end. Many hundred large volumes have been published upon this controversy: but the books of the Big-endians have been long forbidden, and the whole party rendered incapable by law of holding employments.
+      significance: >-
+        Reldresal explains to Gulliver why Lilliput and Blefuscu have been at war for thirty six moons, and the cause turns out to be which end of an egg a subject may break. Swift gives the wars of the Reformation the shape of a quarrel about table manners. Eleven thousand deaths are counted out in the same flat administrative tone as the volumes written on the question.
+    - locus: Part 2, Chapter 6
+      difficulty: 3
+      text: >-
+        I observe among you some lines of an institution, which, in its original, might have been tolerable, but these half erased, and the rest wholly blurred and blotted by corruptions. It does not appear, from all you have said, how any one perfection is required toward the procurement of any one station among you; much less, that men are ennobled on account of their virtue; that priests are advanced for their piety or learning; soldiers, for their conduct or valour; judges, for their integrity; senators, for the love of their country; or counsellors for their wisdom. As for yourself,” continued the king, “who have spent the greatest part of your life in travelling, I am well disposed to hope you may hitherto have escaped many vices of your country. But by what I have gathered from your own relation, and the answers I have with much pains wrung and extorted from you, I cannot but conclude the bulk of your natives to be the most pernicious race of little odious vermin that nature ever suffered to crawl upon the surface of the earth.
+      significance: >-
+        The King of Brobdingnag has spent several audiences questioning Gulliver about English government, law and war, and here he gives his verdict. He can find no principle behind any English institution except the interest of whoever happens to run it. The judgement turns a comic travel narrative into a direct attack on the reader's own country.
+  famous:
+    locus: Part 1, Chapter 1
+    text: >-
+      I attempted to rise, but was not able to stir: for, as I happened to lie on my back, I found my arms and legs were strongly fastened on each side to the ground; and my hair, which was long and thick, tied down in the same manner. I likewise felt several slender ligatures across my body, from my arm-pits to my thighs. I could only look upwards; the sun began to grow hot, and the light offended my eyes. I heard a confused noise about me; but in the posture I lay, could see nothing except the sky. In a little time I felt something alive moving on my left leg, which advancing gently forward over my breast, came almost up to my chin; when, bending my eyes downwards as much as I could, I perceived it to be a human creature not six inches high
+- id: mrs-dalloway
+  title: Mrs Dalloway
+  author: Virginia Woolf
+  year: 1925
+  window: 2
+  form: novel
+  clue: English novelist
+  aliases: [Mrs. Dalloway, Clarissa Dalloway, Dalloway]
+  gutenberg: 71865
+  passages:
+    - locus: Clarissa's party, near the end
+      difficulty: 2
+      text: >-
+        She had once thrown a shilling into the Serpentine, never anything more. But he had flung it away. They went on living (she would have to go back; the rooms were still crowded; people kept on coming). They (all day she had been thinking of Bourton, of Peter, of Sally), they would grow old. A thing there was that mattered; a thing, wreathed about with chatter, defaced, obscured in her own life, let drop every day in corruption, lies, chatter. This he had preserved. Death was defiance. Death was an attempt to communicate; people feeling the impossibility of reaching the centre which, mystically, evaded them; closeness drew apart; rapture faded, one was alone. There was an embrace in death.
+
+
+        But this young man who had killed himself - had he plunged holding his treasure? “If it were now to die, ’twere now to be most happy,” she had said to herself once, coming down in white.
+      significance: >-
+        Clarissa has left her own party after hearing that a young man she never met has killed himself. She reads his death as an act that kept intact the one thing her life spends daily in chatter and lies. The novel binds her to Septimus here without the two of them ever meeting.
+    - locus: Regent's Park
+      difficulty: 3
+      text: >-
+        But they beckoned; leaves were alive; trees were alive. And the leaves being connected by millions of fibres with his own body, there on the seat, fanned it up and down; when the branch stretched he, too, made that statement. The sparrows fluttering, rising, and falling in jagged fountains were part of the pattern; the white and blue, barred with black branches. Sounds made harmonies with premeditation; the spaces between them were as significant as the sounds. A child cried. Rightly far away a horn sounded. All taken together meant the birth of a new religion
+      significance: >-
+        Septimus sits on a park bench while his wife waits beside him and the world addresses him directly through the trees. Woolf writes his breakdown from the inside, as revelation rather than as symptom. The passage is the novel's claim that the mind of a damaged clerk deserves the same attention as the mind of a society hostess.
+  famous:
+    locus: The opening
+    text: >-
+      Mrs. Dalloway said she would buy the flowers herself.
+
+
+      For Lucy had her work cut out for her. The doors would be taken off their hinges; Rumpelmayer’s men were coming. And then, thought Clarissa Dalloway, what a morning - fresh as if issued to children on a beach.
+
+
+      What a lark! What a plunge! For so it had always seemed to her, when, with a little squeak of the hinges, which she could hear now, she had burst open the French windows and plunged at Bourton into the open air.
+- id: david-copperfield
+  title: David Copperfield
+  author: Charles Dickens
+  year: 1850
+  window: 1
+  form: novel
+  clue: English novelist
+  aliases: [Copperfield]
+  gutenberg: 766
+  passages:
+    - locus: Chapter 11
+      difficulty: 2
+      text: >-
+        I know enough of the world now, to have almost lost the capacity of being much surprised by anything; but it is matter of some surprise to me, even now, that I can have been so easily thrown away at such an age. A child of excellent abilities, and with strong powers of observation, quick, eager, delicate, and soon hurt bodily or mentally, it seems wonderful to me that nobody should have made any sign in my behalf. But none was made; and I became, at ten years old, a little labouring hind in the service of Murdstone and Grinby.
+      significance: >-
+        David is sent at ten years old to wash and label bottles in a riverside warehouse after his mother's death. Dickens took the chapter from his own months in a blacking factory, an episode he never spoke of in his lifetime. The narrator's surprise that no adult made a sign on his behalf is the grievance the whole book is built on.
+    - locus: Chapter 55, Tempest
+      difficulty: 3
+      text: >-
+        I now approach an event in my life, so indelible, so awful, so bound by an infinite variety of ties to all that has preceded it, in these pages, that, from the beginning of my narrative, I have seen it growing larger and larger as I advanced, like a great tower in a plain, and throwing its fore-cast shadow even on the incidents of my childish days.
+
+
+        For years after it occurred, I dreamed of it often. I have started up so vividly impressed by it, that its fury has yet seemed raging in my quiet room, in the still night. I dream of it sometimes, though at lengthened and uncertain intervals, to this hour. I have an association between it and a stormy wind, or the lightest mention of a sea-shore, as strong as any of which my mind is conscious. As plainly as I behold what happened, I will try to write it down. I do not recall it, but see it done; for it happens again before me.
+      significance: >-
+        The narrator stops the story to announce the disaster he has been approaching since the first page. He describes the memory as something he still watches rather than recalls. Dickens uses the pause to load the storm at Yarmouth before a word of it has been told.
+  famous:
+    locus: Chapter 1
+    text: >-
+      Whether I shall turn out to be the hero of my own life, or whether that station will be held by anybody else, these pages must show. To begin my life with the beginning of my life, I record that I was born (as I have been informed and believe) on a Friday, at twelve o’clock at night. It was remarked that the clock began to strike, and I began to cry, simultaneously.
+- id: in-search-of-lost-time
+  title: In Search of Lost Time
+  author: Marcel Proust
+  year: 1913
+  window: 2
+  year_label: "1913"
+  form: novel
+  clue: French novelist
+  aliases: [Swann's Way, Remembrance of Things Past, Proust]
+  gutenberg: 7178
+  passages:
+    - locus: Swann's Way, Overture
+      difficulty: 2
+      text: >-
+        And just as the Japanese amuse themselves by filling a porcelain bowl with water and steeping in it little crumbs of paper which until then are without character or form, but, the moment they become wet, stretch themselves and bend, take on colour and distinctive shape, become flowers or houses or people, permanent and recognisable, so in that moment all the flowers in our garden and in M. Swann's park, and the water-lilies on the Vivonne and the good folk of the village and their little dwellings and the parish church and the whole of Combray and of its surroundings, taking their proper shapes and growing solid, sprang into being, town and gardens alike, from my cup of tea.
+      significance: >-
+        The taste of cake soaked in tea has just returned the narrator's childhood to him whole, and here the town assembles itself around the memory. Houses, church, river and people rise out of the cup in the order the mind supplies them. The paper flowers opening in water are Proust's demonstration of how involuntary memory restores a world rather than a fact.
+    - locus: Swann's Way, Overture
+      difficulty: 3
+      text: >-
+        And so it is with our own past. It is a labour in vain to attempt to recapture it: all the efforts of our intellect must prove futile. The past is hidden somewhere outside the realm, beyond the reach of intellect, in some material object (in the sensation which that material object will give us) which we do not suspect. And as for that object, it depends on chance whether we come upon it or not before we ourselves must die.
+      significance: >-
+        The narrator states the principle a few pages before the tea and the cake prove it. The past cannot be reached by deciding to look for it, because it is held in some object outside the mind and released only by accident. Everything the novel does afterwards rests on this claim.
+  famous:
+    locus: Swann's Way, Overture
+    text: >-
+      And suddenly the memory returns. The taste was that of the little crumb of madeleine which on Sunday mornings at Combray (because on those mornings I did not go out before church-time), when I went to say good day to her in her bedroom, my aunt Léonie used to give me, dipping it first in her own cup of real or of lime-flower tea.
+- id: vanity-fair
+  title: Vanity Fair
+  author: William Makepeace Thackeray
+  year: 1848
+  window: 2
+  form: novel
+  clue: English novelist
+  aliases: [Becky Sharp]
+  gutenberg: 599
+  passages:
+    - locus: Chapter 41
+      difficulty: 2
+      text: >-
+        "It isn't difficult to be a country gentleman's wife," Rebecca thought. "I think I could be a good woman if I had five thousand a year. I could dawdle about in the nursery and count the apricots on the wall. I could water plants in a green-house and pick off dead leaves from the geraniums. I could ask old women about their rheumatisms and order half-a-crown's worth of soup for the poor. I shouldn't miss it much, out of five thousand a year. I could even drive out ten miles to dine at a neighbour's, and dress in the fashions of the year before last. I could go to church and keep awake in the great family pew, or go to sleep behind the curtains, with my veil down, if I only had practice. I could pay everybody, if I had but the money. This is what the conjurors here pride themselves upon doing. They look down with pity upon us miserable sinners who have none. They think themselves generous if they give our children a five-pound note, and us contemptible if we are without one."
+      significance: >-
+        Becky is playing the dutiful country wife at Queen's Crawley and works out exactly what virtue would cost her. She concludes that goodness is a purchase like any other and that she has simply never had the income for it. Thackeray then endorses the reasoning in his own voice a few lines later.
+    - locus: Before the Curtain
+      difficulty: 3
+      text: >-
+        As the manager of the Performance sits before the curtain on the boards and looks into the Fair, a feeling of profound melancholy comes over him in his survey of the bustling place. There is a great quantity of eating and drinking, making love and jilting, laughing and the contrary, smoking, cheating, fighting, dancing and fiddling; there are bullies pushing about, bucks ogling the women, knaves picking pockets, policemen on the look-out, quacks (OTHER quacks, plague take them!) bawling in front of their booths, and yokels looking up at the tinselled dancers and poor old rouged tumblers, while the light-fingered folk are operating upon their pockets behind.
+      significance: >-
+        Thackeray opens the book by describing it as a fairground surveyed by the man who runs the show. Flirtation, theft, violence and entertainment are set out in a single list at the same level. The preface warns the reader in advance that this novel has characters but no hero.
+  famous:
+    locus: Chapter 67, the last lines
+    text: >-
+      "Fonder than he is of me," Emmy thinks with a sigh. But he never said a word to Amelia that was not kind and gentle, or thought of a want of hers that he did not try to gratify.
+
+
+      Ah! Vanitas Vanitatum! which of us is happy in this world? Which of us has his desire? or, having it, is satisfied? - come, children, let us shut up the box and the puppets, for our play is played out.
+- id: picture-of-dorian-gray
+  title: The Picture of Dorian Gray
+  author: Oscar Wilde
+  year: 1891
+  window: 2
+  form: novel
+  clue: Irish writer
+  aliases: [Dorian Gray]
+  gutenberg: 174
+  passages:
+    - locus: Chapter 11
+      difficulty: 2
+      text: >-
+        Yes: there was to be, as Lord Henry had prophesied, a new Hedonism that was to recreate life and to save it from that harsh uncomely puritanism that is having, in our own day, its curious revival. It was to have its service of the intellect, certainly, yet it was never to accept any theory or system that would involve the sacrifice of any mode of passionate experience. Its aim, indeed, was to be experience itself, and not the fruits of experience, sweet or bitter as they might be. Of the asceticism that deadens the senses, as of the vulgar profligacy that dulls them, it was to know nothing. But it was to teach man to concentrate himself upon the moments of a life that is itself but a moment.
+      significance: >-
+        Dorian sets out the programme he took from Lord Henry and has now made his own. It replaces morality with the pursuit of sensation and treats experience as an end rather than a means. The chapter turns aestheticism into a rule for living, which the rest of the novel then tests to destruction.
+    - locus: Chapter 2
+      difficulty: 3
+      text: >-
+        “How sad it is! I shall grow old, and horrible, and dreadful. But this picture will remain always young. It will never be older than this particular day of June.... If it were only the other way! If it were I who was to be always young, and the picture that was to grow old! For that - for that - I would give everything! Yes, there is nothing in the whole world I would not give! I would give my soul for that!”
+      significance: >-
+        Standing in front of his finished portrait for the first time, Dorian wishes the picture would age in his place. The wish is granted without ceremony and every event in the book follows from it. This is the moment the novel stops being a story about beauty and becomes a story about a soul.
+  famous:
+    locus: Chapter 20, the last lines
+    text: >-
+      When they entered, they found hanging upon the wall a splendid portrait of their master as they had last seen him, in all the wonder of his exquisite youth and beauty. Lying on the floor was a dead man, in evening dress, with a knife in his heart. He was withered, wrinkled, and loathsome of visage. It was not till they had examined the rings that they recognized who it was.
+- id: emma
+  title: Emma
+  author: Jane Austen
+  year: 1815
+  window: 2
+  form: novel
+  clue: English novelist
+  aliases: [Emma Woodhouse]
+  gutenberg: 158
+  passages:
+    - locus: Volume 3, Chapter 7, Box Hill
+      difficulty: 2
+      text: >-
+        Were she a woman of fortune, I would leave every harmless absurdity to take its chance, I would not quarrel with you for any liberties of manner. Were she your equal in situation - but, Emma, consider how far this is from being the case. She is poor; she has sunk from the comforts she was born to; and, if she live to old age, must probably sink more. Her situation should secure your compassion. It was badly done, indeed! You, whom she had known from an infant, whom she had seen grow up from a period when her notice was an honour, to have you now, in thoughtless spirits, and the pride of the moment, laugh at her, humble her - and before her niece, too - and before others, many of whom (certainly some,) would be entirely guided by your treatment of her.
+      significance: >-
+        Knightley stops Emma on the way to the carriage after she has mocked Miss Bates in front of the whole party. He grounds the reproof in Miss Bates's poverty and in the fact that everyone present takes their cue from Emma. It is the only point in the novel where Emma is made to feel the weight of her own rank.
+    - locus: Volume 1, Chapter 10
+      difficulty: 3
+      text: >-
+        “I have none of the usual inducements of women to marry. Were I to fall in love, indeed, it would be a different thing! but I never have been in love; it is not my way, or my nature; and I do not think I ever shall. And, without love, I am sure I should be a fool to change such a situation as mine. Fortune I do not want; employment I do not want; consequence I do not want: I believe few married women are half as much mistress of their husband’s house as I am of Hartfield; and never, never could I expect to be so truly beloved and important; so always first and always right in any man’s eyes as I am in my father’s.”
+      significance: >-
+        Emma explains to Harriet why she intends never to marry. Her reasoning is unusually plain about money, since she already holds the fortune and the authority that most women marry to obtain. Austen lets her heroine make the economic case exactly, then spends the rest of the book dismantling her certainty.
+  famous:
+    locus: Volume 1, Chapter 1
+    text: >-
+      Emma Woodhouse, handsome, clever, and rich, with a comfortable home and happy disposition, seemed to unite some of the best blessings of existence; and had lived nearly twenty-one years in the world with very little to distress or vex her.
+
+
+      She was the youngest of the two daughters of a most affectionate, indulgent father; and had, in consequence of her sister’s marriage, been mistress of his house from a very early period. Her mother had died too long ago for her to have more than an indistinct remembrance of her caresses; and her place had been supplied by an excellent woman as governess, who had fallen little short of a mother in affection.
+- id: a-passage-to-india
+  title: A Passage to India
+  author: E. M. Forster
+  year: 1924
+  window: 2
+  form: novel
+  clue: English novelist
+  aliases: [Passage to India]
+  gutenberg: 61221
+  passages:
+    - locus: Chapter 14
+      difficulty: 2
+      text: >-
+        Professor Godbole had never mentioned an echo; it never impressed him, perhaps. There are some exquisite echoes in India; there is the whisper round the dome at Bijapur; there are the long, solid sentences that voyage through the air at Mandu, and return unbroken to their creator. The echo in a Marabar cave is not like these, it is entirely devoid of distinction. Whatever is said, the same monotonous noise replies, and quivers up and down the walls until it is absorbed into the roof. “Boum” is the sound as far as the human alphabet can express it, or “bou-oum,” or “ou-boum,” - utterly dull. Hope, politeness, the blowing of a nose, the squeak of a boot, all produce “boum.” Even the striking of a match starts a little worm coiling, which is too small to complete a circle but is eternally watchful. And if several people talk at once, an overlapping howling noise begins, echoes generate echoes, and the cave is stuffed with a snake composed of small snakes, which writhe independently.
+      significance: >-
+        Forster stops the picnic to describe what the caves do to any sound made inside them. Hope, politeness and the squeak of a boot all come back as the same syllable. The echo is the novel's central symbol and the agent of everything that goes wrong on the expedition.
+    - locus: Chapter 14
+      difficulty: 3
+      text: >-
+        The crush and the smells she could forget, but the echo began in some indescribable way to undermine her hold on life. Coming at a moment when she chanced to be fatigued, it had managed to murmur, “Pathos, piety, courage - they exist, but are identical, and so is filth. Everything exists, nothing has value.” If one had spoken vileness in that place, or quoted lofty poetry, the comment would have been the same - “ou-boum.” If one had spoken with the tongues of angels and pleaded for all the unhappiness and misunderstanding in the world, past, present, and to come, for all the misery men must undergo whatever their opinion and position, and however much they dodge or bluff - it would amount to the same, the serpent would descend and return to the ceiling.
+      significance: >-
+        Mrs Moore rests outside the caves after a single visit and finds that the echo has emptied her convictions. Piety, courage and filth are reported back to her as equivalent, and lofty poetry would fare no better. Her loss of faith is the price the novel exacts for the meeting it has arranged.
+  famous:
+    locus: Chapter 37, the last lines
+    text: >-
+      “Why can’t we be friends now?” said the other, holding him affectionately. “It’s what I want. It’s what you want.”
+
+
+      But the horses didn’t want it - they swerved apart; the earth didn’t want it, sending up rocks through which riders must pass single file; the temples, the tank, the jail, the palace, the birds, the carrion, the Guest House, that came into view as they issued from the gap and saw Mau beneath: they didn’t want it, they said in their hundred voices, “No, not yet,” and the sky said, “No, not there.”
+- id: tess-of-the-durbervilles
+  title: Tess of the d'Urbervilles
+  author: Thomas Hardy
+  year: 1891
+  window: 2
+  form: novel
+  clue: English novelist
+  aliases: [Tess]
+  gutenberg: 110
+  passages:
+    - locus: Phase the Seventh, Chapter 58, Stonehenge
+      difficulty: 2
+      text: >-
+        “Sleepy are you, dear? I think you are lying on an altar.”
+
+
+        “I like very much to be here,” she murmured. “It is so solemn and lonely - after my great happiness - with nothing but the sky above my face. It seems as if there were no folk in the world but we two; and I wish there were not - except ’Liza-Lu.”
+
+
+        Clare thought she might as well rest here till it should get a little lighter, and he flung his overcoat upon her, and sat down by her side.
+
+
+        “Angel, if anything happens to me, will you watch over ’Liza-Lu for my sake?” she asked, when they had listened a long time to the wind among the pillars.
+
+
+        “I will.”
+
+
+        “She is so good and simple and pure. O, Angel - I wish you would marry her if you lose me, as you will do shortly. O, if you would!”
+
+
+        “If I lose you I lose all! And she is my sister-in-law.”
+      significance: >-
+        Tess lies down on a stone at Stonehenge in the last dark hours before her arrest and asks Angel to marry her younger sister once she is gone. Hardy stages the end of the novel as a sacrifice in which the victim chooses the altar herself. The scene answers the pagan reading of Tess that the book has pressed from the beginning.
+    - locus: Phase the Third, Chapter 19
+      difficulty: 3
+      text: >-
+        And you seem to see numbers of to-morrows just all in a line, the first of them the biggest and clearest, the others getting smaller and smaller as they stand farther away; but they all seem very fierce and cruel and as if they said, ‘I’m coming! Beware of me! Beware of me!’ ... But you, sir, can raise up dreams with your music, and drive all such horrid fancies away!”
+
+
+        He was surprised to find this young woman - who though but a milkmaid had just that touch of rarity about her which might make her the envied of her housemates - shaping such sad imaginings. She was expressing in her own native phrases - assisted a little by her Sixth Standard training - feelings which might almost have been called those of the age - the ache of modernism. The perception arrested him less when he reflected that what are called advanced ideas are really in great part but the latest fashion in definition - a more accurate expression, by words in logy and ism, of sensations which men and women have vaguely grasped for centuries.
+      significance: >-
+        Angel overhears the dairymaid describe the future as a row of tomorrows advancing on her, each one crueller than the last, and is startled to find such thinking in her. He names what he has heard the ache of modernism. Hardy is arguing that a field labourer carries the full consciousness of the age, and that her education has only given her the words for it.
+  famous:
+    locus: Phase the Seventh, Chapter 59, the last lines
+    text: >-
+      Upon the cornice of the tower a tall staff was fixed. Their eyes were riveted on it. A few minutes after the hour had struck something moved slowly up the staff, and extended itself upon the breeze. It was a black flag.
+
+
+      “Justice” was done, and the President of the Immortals, in Æschylean phrase, had ended his sport with Tess. And the d’Urberville knights and dames slept on in their tombs unknowing.
+- id: scarlet-letter
+  title: The Scarlet Letter
+  author: Nathaniel Hawthorne
+  year: 1850
+  window: 2
+  form: novel
+  clue: American novelist
+  aliases: [Hester Prynne]
+  gutenberg: 33
+  passages:
+    - locus: Chapter 17, The Pastor and His Parishioner
+      difficulty: 2
+      text: >-
+        “I do forgive you, Hester,” replied the minister at length, with a deep utterance, out of an abyss of sadness, but no anger. “I freely forgive you now. May God forgive us both. We are not, Hester, the worst sinners in the world. There is one worse than even the polluted priest! That old man’s revenge has been blacker than my sin. He has violated, in cold blood, the sanctity of a human heart. Thou and I, Hester, never did so!”
+
+
+        “Never, never!” whispered she. “What we did had a consecration of its own. We felt it so! We said so to each other. Hast thou forgotten it?”
+
+
+        “Hush, Hester!” said Arthur Dimmesdale, rising from the ground. “No; I have not forgotten!”
+      significance: >-
+        Dimmesdale forgives Hester in the forest, hours after learning that the physician who has tormented him for seven years is her husband. He ranks the old man's cold revenge above his own sin, and Hester answers that what they did had a consecration of its own. The scene sets the lovers' private moral accounting against the public one that put her on the scaffold.
+    - locus: Chapter 1, The Prison Door
+      difficulty: 3
+      text: >-
+        Before this ugly edifice, and between it and the wheel-track of the street, was a grass-plot, much overgrown with burdock, pig-weed, apple-pern, and such unsightly vegetation, which evidently found something congenial in the soil that had so early borne the black flower of civilised society, a prison. But on one side of the portal, and rooted almost at the threshold, was a wild rose-bush, covered, in this month of June, with its delicate gems, which might be imagined to offer their fragrance and fragile beauty to the prisoner as he went in, and to the condemned criminal as he came forth to his doom, in token that the deep heart of Nature could pity and be kind to him.
+      significance: >-
+        The opening chapter describes the jail and its weedy grass plot before a single character appears. The prison is named the black flower of civilised society, and the wild rose at its threshold is the only mercy in the picture. The image frames the whole romance as a story about what a community does with sin.
+  famous:
+    locus: Chapter 2, The Market-Place
+    text: >-
+      In a moment, however, wisely judging that one token of her shame would but poorly serve to hide another, she took the baby on her arm, and with a burning blush, and yet a haughty smile, and a glance that would not be abashed, looked around at her townspeople and neighbours. On the breast of her gown, in fine red cloth, surrounded with an elaborate embroidery and fantastic flourishes of gold thread, appeared the letter A. It was so artistically done, and with so much fertility and gorgeous luxuriance of fancy, that it had all the effect of a last and fitting decoration to the apparel which she wore, and which was of a splendour in accordance with the taste of the age, but greatly beyond what was allowed by the sumptuary regulations of the colony.
+- id: the-trial
+  title: The Trial
+  author: Franz Kafka
+  year: 1925
+  window: 2
+  form: novel
+  clue: Czech writer writing in German
+  aliases: [Der Process, Josef K.]
+  gutenberg: 7849
+  passages:
+    - locus: Chapter 9, In the Cathedral
+      difficulty: 3
+      text: >-
+        In front of the law there is a doorkeeper. A man from the countryside comes up to the door and asks for entry. But the doorkeeper says he can't let him in to the law right now. The man thinks about this, and then he asks if he'll be able to go in later on. 'That's possible,' says the doorkeeper, 'but not now.' The gateway to the law is open as it always is, and the doorkeeper has stepped to one side, so the man bends over to try and see in. When the doorkeeper notices this he laughs and says, 'If you're tempted give it a try, try and go in even though I say you can't. Careful though: I'm powerful. And I'm only the lowliest of all the doormen. But there's a doorkeeper for each of the rooms and each of them is more powerful than the last. It's more than I can stand just to look at the third one.'
+      significance: >-
+        The prison chaplain tells Josef K. this story in the cathedral to show him how he deceives himself about the court. The gate stands open the whole time and the man from the country never walks through it. The parable states the novel's problem in miniature, that the law is always available and never reachable.
+    - locus: Chapter 10, End
+      difficulty: 2
+      text: >-
+        As he looked round, he saw the top floor of the building next to the quarry. He saw how a light flickered on and the two halves of a window opened out, somebody, made weak and thin by the height and the distance, leant suddenly far out from it and stretched his arms out even further. Who was that? A friend? A good person? Somebody who was taking part? Somebody who wanted to help? Was he alone? Was it everyone? Would anyone help? Were there objections that had been forgotten? There must have been some. The logic cannot be refuted, but someone who wants to live will not resist it. Where was the judge he'd never seen? Where was the high court he had never reached? He raised both hands and spread out all his fingers.
+
+
+        But the hands of one of the gentleman were laid on K.'s throat, while the other pushed the knife deep into his heart and twisted it there, twice. As his eyesight failed, K. saw the two gentlemen cheek by cheek, close in front of his face, watching the result. "Like a dog!" he said, it was as if the shame of it should outlive him.
+      significance: >-
+        Two men take K. to a quarry and kill him a year after his arrest, and he still does not know the charge. He searches a lit window for someone who might help and finds a figure he cannot name. His last words condemn the shame of a death he was never given a reason for.
+  famous:
+    locus: Chapter 1, Arrest
+    text: >-
+      Someone must have been telling lies about Josef K., he knew he had done nothing wrong but, one morning, he was arrested. Every day at eight in the morning he was brought his breakfast by Mrs. Grubach's cook - Mrs. Grubach was his landlady - but today she didn't come. That had never happened before. K. waited a little while, looked from his pillow at the old woman who lived opposite and who was watching him with an inquisitiveness quite unusual for her, and finally, both hungry and disconcerted, rang the bell.
+- id: call-of-the-wild
+  title: The Call of the Wild
+  author: Jack London
+  year: 1903
+  window: 2
+  form: novel
+  clue: American novelist
+  aliases: [Buck]
+  gutenberg: 215
+  passages:
+    - locus: Chapter 2, The Law of Club and Fang
+      difficulty: 2
+      text: >-
+        So sudden was it, and so unexpected, that Buck was taken aback. He saw Spitz run out his scarlet tongue in a way he had of laughing; and he saw François, swinging an axe, spring into the mess of dogs. Three men with clubs were helping him to scatter them. It did not take long. Two minutes from the time Curly went down, the last of her assailants were clubbed off. But she lay there limp and lifeless in the bloody, trampled snow, almost literally torn to pieces, the swart half-breed standing over her and cursing horribly. The scene often came back to Buck to trouble him in his sleep. So that was the way. No fair play. Once down, that was the end of you. Well, he would see to it that he never went down. Spitz ran out his tongue and laughed again, and from that moment Buck hated him with a bitter and deathless hatred.
+      significance: >-
+        Curly is torn apart by the pack within minutes of the dogs landing in the North, and Buck watches the whole thing. The rule he draws from it governs the rest of his life in the traces. It is the moment the law of club and fang replaces the manners of the California ranch he was stolen from.
+    - locus: Chapter 7, The Sounding of the Call
+      difficulty: 3
+      text: >-
+        In the summers there is one visitor, however, to that valley, of which the Yeehats do not know. It is a great, gloriously coated wolf, like, and yet unlike, all other wolves. He crosses alone from the smiling timber land and comes down into an open space among the trees. Here a yellow stream flows from rotted moose-hide sacks and sinks into the ground, with long grasses growing through it and vegetable mould overrunning it and hiding its yellow from the sun; and here he muses for a time, howling once, long and mournfully, ere he departs.
+
+
+        But he is not always alone. When the long winter nights come on and the wolves follow their meat into the lower valleys, he may be seen running at the head of the pack through the pale moonlight or glimmering borealis, leaping gigantic above his fellows, his great throat a-bellow as he sings a song of the younger world, which is the song of the pack.
+      significance: >-
+        The last paragraphs of the novel watch the dog from the outside, years after he has joined the wolves, and never name him. He returns each summer to the place where his master died, howls once, and goes. The book ends by dissolving the tame animal completely into the wild it came from.
+  famous:
+    locus: Chapter 1, Into the Primitive
+    text: >-
+      Buck did not read the newspapers, or he would have known that trouble was brewing, not alone for himself, but for every tide-water dog, strong of muscle and with warm, long hair, from Puget Sound to San Diego. Because men, groping in the Arctic darkness, had found a yellow metal, and because steamship and transportation companies were booming the find, thousands of men were rushing into the Northland. These men wanted dogs, and the dogs they wanted were heavy dogs, with strong muscles by which to toil, and furry coats to protect them from the frost.
+- id: tristram-shandy
+  title: Tristram Shandy
+  author: Laurence Sterne
+  year: 1759
+  window: 8
+  year_label: "1759"
+  form: novel
+  clue: English novelist
+  aliases: ["The Life and Opinions of Tristram Shandy, Gentleman"]
+  gutenberg: 1079
+  passages:
+    - locus: Volume II, Chapter 12
+      difficulty: 2
+      text: >-
+        - Go - says he, one day at dinner, to an over-grown one which had buzzed about his nose, and tormented him cruelly all dinner-time, - and which after infinite attempts, he had caught at last, as it flew by him; - I’ll not hurt thee, says my uncle Toby, rising from his chair, and going across the room, with the fly in his hand, - I’ll not hurt a hair of thy head: - Go, says he, lifting up the sash, and opening his hand as he spoke, to let it escape; - go, poor devil, get thee gone, why should I hurt thee? - This world surely is wide enough to hold both thee and me.
+      significance: >-
+        Uncle Toby catches the fly that has plagued him all through dinner, carries it to the window and lets it go. Tristram, ten years old at the table, takes it as the lesson in universal good will that formed him. In a book made almost entirely of interruptions it is the plainest statement of what Sterne values in a person.
+    - locus: Volume I, Chapter 22
+      difficulty: 3
+      text: >-
+        Digressions, incontestably, are the sunshine; - they are the life, the soul of reading! - take them out of this book, for instance, - you might as well take the book along with them; - one cold eternal winter would reign in every page of it; restore them to the writer; - he steps forth like a bridegroom, - bids All-hail; brings in variety, and forbids the appetite to fail.
+
+
+        All the dexterity is in the good cookery and management of them, so as to be not only for the advantage of the reader, but also of the author, whose distress, in this matter, is truly pitiable: For, if he begins a digression, - from that moment, I observe, his whole work stands stock still; - and if he goes on with his main work, - then there is an end of his digression.
+      significance: >-
+        Tristram stops the story to defend the shape of his own book, which keeps abandoning its subject to chase something else. He argues that the digressions are the life of the thing and that the work is digressive and progressive at once. The passage is the novel explaining its method while performing it.
+  famous:
+    locus: Volume I, Chapter 1
+    text: >-
+      I WISH either my father or my mother, or indeed both of them, as they were in duty both equally bound to it, had minded what they were about when they begot me; had they duly consider’d how much depended upon what they were then doing; - that not only the production of a rational Being was concerned in it, but that possibly the happy formation and temperature of his body, perhaps his genius and the very cast of his mind; - and, for aught they knew to the contrary, even the fortunes of his whole house might take their turn from the humours and dispositions which were then uppermost; - Had they duly weighed and considered all this, and proceeded accordingly, - I am verily persuaded I should have made a quite different figure in the world, from that in which the reader is likely to see me.
+- id: dracula
+  title: Dracula
+  author: Bram Stoker
+  year: 1897
+  window: 2
+  form: novel
+  clue: Irish novelist
+  aliases: [Count Dracula, Jonathan Harker]
+  gutenberg: 345
+  passages:
+    - locus: Chapter 3, Jonathan Harker's Journal
+      difficulty: 2
+      text: >-
+        What I saw was the Count’s head coming out from the window. I did not see the face, but I knew the man by the neck and the movement of his back and arms. In any case I could not mistake the hands which I had had so many opportunities of studying. I was at first interested and somewhat amused, for it is wonderful how small a matter will interest and amuse a man when he is a prisoner. But my very feelings changed to repulsion and terror when I saw the whole man slowly emerge from the window and begin to crawl down the castle wall over that dreadful abyss, face down with his cloak spreading out around him like great wings. At first I could not believe my eyes. I thought it was some trick of the moonlight, some weird effect of shadow; but I kept looking, and it could be no delusion. I saw the fingers and toes grasp the corners of the stones, worn clear of the mortar by the stress of years, and by thus using every projection and inequality move downwards with considerable speed, just as a lizard moves along a wall.
+      significance: >-
+        Harker, by now a prisoner in the castle, watches his host leave by the window and go down the sheer wall face first. It is the first proof that the Count is not a man, after weeks of unease Harker kept explaining away. The lizard fixes the book's idea of the vampire as an animal wearing a nobleman's manners.
+    - locus: Chapter 3, Jonathan Harker's Journal
+      difficulty: 3
+      text: >-
+        The girl went on her knees, and bent over me, simply gloating. There was a deliberate voluptuousness which was both thrilling and repulsive, and as she arched her neck she actually licked her lips like an animal, till I could see in the moonlight the moisture shining on the scarlet lips and on the red tongue as it lapped the white sharp teeth. Lower and lower went her head as the lips went below the range of my mouth and chin and seemed about to fasten on my throat. Then she paused, and I could hear the churning sound of her tongue as it licked her teeth and lips, and could feel the hot breath on my neck. Then the skin of my throat began to tingle as one’s flesh does when the hand that is to tickle it approaches nearer - nearer. I could feel the soft, shivering touch of the lips on the super-sensitive skin of my throat, and the hard dents of two sharp teeth, just touching and pausing there. I closed my eyes in a languorous ecstasy and waited - waited with beating heart.
+      significance: >-
+        Harker lies still while one of the three women in the castle bends to his throat, and he records his own longing for it. The scene reverses the roles his readers would expect, leaving the man passive and the women hunting. It sets up the mixture of dread and desire the novel keeps returning to.
+  famous:
+    locus: Chapter 2, Jonathan Harker's Journal
+    text: >-
+      “Welcome to my house! Enter freely and of your own will!” He made no motion of stepping to meet me, but stood like a statue, as though his gesture of welcome had fixed him into stone. The instant, however, that I had stepped over the threshold, he moved impulsively forward, and holding out his hand grasped mine with a strength which made me wince, an effect which was not lessened by the fact that it seemed as cold as ice - more like the hand of a dead than a living man.
+- id: good-soldier
+  title: The Good Soldier
+  author: Ford Madox Ford
+  year: 1915
+  window: 2
+  form: novel
+  clue: English novelist
+  aliases: [Ashburnham]
+  gutenberg: 2775
+  passages:
+    - locus: Part IV, Chapter 6
+      difficulty: 2
+      text: >-
+        Then he put two fingers into the waistcoat pocket of his grey, frieze suit; they came out with a little neat pen-knife - quite a small pen-knife. He said to me:
+
+
+        "You might just take that wire to Leonora." And he looked at me with a direct, challenging, brow-beating glare. I guess he could see in my eyes that I didn't intend to hinder him. Why should I hinder him?
+
+
+        I didn't think he was wanted in the world, let his confounded tenants, his rifle-associations, his drunkards, reclaimed and unreclaimed, get on as they liked. Not all the hundreds and hundreds of them deserved that that poor devil should go on suffering for their sakes.
+
+
+        When he saw that I did not intend to interfere with him his eyes became soft and almost affectionate. He remarked:
+
+
+        "So long, old man, I must have a bit of a rest, you know."
+
+
+        I didn't know what to say. I wanted to say, "God bless you", for I also am a sentimentalist. But I thought that perhaps that would not be quite English good form, so I trotted off with the telegram to Leonora. She was quite pleased with it.
+      significance: >-
+        Edward has just read a telegram from the girl he sent away, and in the stables he takes out a penknife and asks Dowell to carry the wire to Leonora. Dowell understands exactly what is coming and walks off with it. The novel's mildest narrator admits almost in passing that he let his friend kill himself.
+    - locus: Part I, Chapter 1
+      difficulty: 3
+      text: >-
+        No, indeed, it can't be gone. You can't kill a minuet de la cour. You may shut up the music-book, close the harpsichord; in the cupboard and presses the rats may destroy the white satin favours. The mob may sack Versailles; the Trianon may fall, but surely the minuet - the minuet itself is dancing itself away into the furthest stars, even as our minuet of the Hessian bathing places must be stepping itself still. Isn't there any heaven where old beautiful dances, old beautiful intimacies prolong themselves? Isn't there any Nirvana pervaded by the faint thrilling of instruments that have fallen into the dust of wormwood but that yet had frail, tremulous, and everlasting souls?
+
+
+        No, by God, it is false! It wasn't a minuet that we stepped; it was a prison - a prison full of screaming hysterics, tied down so that they might not outsound the rolling of our carriage wheels as we went along the shaded avenues of the Taunus Wald.
+      significance: >-
+        Dowell holds on to the picture of the four of them moving through nine years of spa seasons like dancers, then destroys it in one sentence. The turn from minuet to prison is the book's method in miniature, an account offered and then taken back. It is where the narrator stops trusting his own memory of the friendship.
+  famous:
+    locus: Part I, Chapter 1
+    text: >-
+      THIS is the saddest story I have ever heard. We had known the Ashburnhams for nine seasons of the town of Nauheim with an extreme intimacy - or, rather with an acquaintanceship as loose and easy and yet as close as a good glove's with your hand. My wife and I knew Captain and Mrs Ashburnham as well as it was possible to know anybody, and yet, in another sense, we knew nothing at all about them. This is, I believe, a state of things only possible with English people of whom, till today, when I sit down to puzzle out what I know of this sad affair, I knew nothing whatever. Six months ago I had never been to England, and, certainly, I had never sounded the depths of an English heart. I had known the shallows.
+- id: sun-also-rises
+  title: The Sun Also Rises
+  author: Ernest Hemingway
+  year: 1926
+  window: 2
+  form: novel
+  clue: American novelist
+  aliases: [Fiesta, Jake Barnes]
+  gutenberg: 67138
+  passages:
+    - locus: Book I, Chapter 4
+      difficulty: 2
+      text: >-
+        I went back up-stairs and from the open window watched Brett walking up the street to the big limousine drawn up to the curb under the arc-light. She got in and it started off. I turned around. On the table was an empty glass and a glass half-full of brandy and soda. I took them both out to the kitchen and poured the half-full glass down the sink. I turned off the gas in the dining-room, kicked off my slippers sitting on the bed, and got into bed. This was Brett, that I had felt like crying about. Then I thought of her walking up the street and stepping into the car, as I had last seen her, and of course in a little while I felt like hell again. It is awfully easy to be hard-boiled about everything in the daytime, but at night it is another thing.
+      significance: >-
+        Jake watches Brett drive off with someone else, tidies the flat and goes to bed alone. The injury that makes the affair impossible is never named here, only felt in how flatly he reports the evening. The last sentence names the cost of the pose the novel keeps up everywhere else.
+    - locus: Book II, Chapter 12
+      difficulty: 3
+      text: >-
+        “Good. Coffee is good for you. It’s the caffeine in it. Caffeine, we are here. Caffeine puts a man on her horse and a woman in his grave. You know what’s the trouble with you? You’re an expatriate. One of the worst type. Haven’t you heard that? Nobody that ever left their own country ever wrote anything worth printing. Not even in the newspapers.”
+
+
+        He drank the coffee.
+
+
+        “You’re an expatriate. You’ve lost touch with the soil. You get precious. Fake European standards have ruined you. You drink yourself to death. You become obsessed by sex. You spend all your time talking, not working. You are an expatriate, see? You hang around cafés.”
+      significance: >-
+        Bill needles Jake over breakfast with a mock lecture on what is wrong with Americans who stay in Europe. The joke works because most of it is true of everyone in the book. It is the novel's diagnosis of its own characters, delivered as banter.
+  famous:
+    locus: Book III, Chapter 19
+    text: >-
+      The driver started up the street. I settled back. Brett moved close to me. We sat close against each other. I put my arm around her and she rested against me comfortably. It was very hot and bright, and the houses looked sharply white. We turned out onto the Gran Via.
+
+
+      “Oh, Jake,” Brett said, “we could have had such a damned good time together.”
+
+
+      Ahead was a mounted policeman in khaki directing traffic. He raised his baton. The car slowed suddenly pressing Brett against me.
+
+
+      “Yes,” I said. “Isn’t it pretty to think so?”
+- id: iliad
+  title: The Iliad
+  author: Homer
+  year: -750
+  window: 100
+  year_label: "c. 750 BCE"
+  era: {from: -800, to: -700}
+  form: epic
+  clue: Greek poet
+  aliases: [Achilles]
+  gutenberg: 2199
+  passages:
+    - locus: Book 12
+      difficulty: 2
+      text: >-
+        “Glaucus, why in Lycia do we receive especial honour as regards our place at table? Why are the choicest portions served us and our cups kept brimming, and why do men look up to us as though we were gods? Moreover we hold a large estate by the banks of the river Xanthus, fair with orchard lawns and wheat-growing land; it becomes us, therefore, to take our stand at the head of all the Lycians and bear the brunt of the fight, that one may say to another, ‘Our princes in Lycia eat the fat of the land and drink best of wine, but they are fine fellows; they fight well and are ever at the front in battle.’ My good friend, if, when we were once out of this fight, we could escape old age and death thenceforward and forever, I should neither press forward myself nor bid you do so, but death in ten thousand shapes hangs ever over our heads, and no man can elude him; therefore let us go forward and either win glory for ourselves, or yield it to another.”
+      significance: >-
+        Sarpedon asks Glaucus why the two of them are honoured above other men in Lycia, and answers by leading the assault on the Achaean wall. Because death is coming either way, the seat at the head of the table has to be paid for in front of everyone. It is the clearest statement in the poem of the bargain the heroic code offers.
+    - locus: Book 24
+      difficulty: 3
+      text: >-
+        The immortals know no care, yet the lot they spin for man is full of sorrow; on the floor of Jove’s palace there stand two urns, the one filled with evil gifts, and the other with good ones. He for whom Jove the lord of thunder mixes the gifts he sends, will meet now with good and now with evil fortune; but he to whom Jove sends none but evil gifts will be pointed at by the finger of scorn, the hand of famine will pursue him to the ends of the world, and he will go up and down the face of the earth, respected neither by gods nor men.
+      significance: >-
+        Achilles says this to Priam, who has come alone to the Greek camp to ransom the body of his son. Instead of comfort he offers the old man a picture of how the gods deal out sorrow to everyone, his own father included. The anger that drives the poem gives way here to a shared view of what it costs to be mortal.
+  famous:
+    locus: Book 1
+    text: >-
+      Sing, O goddess, the anger of Achilles son of Peleus, that brought countless ills upon the Achaeans. Many a brave soul did it send hurrying down to Hades, and many a hero did it yield a prey to dogs and vultures, for so were the counsels of Jove fulfilled from the day on which the son of Atreus, king of men, and great Achilles, first fell out with one another.
+- id: portrait-of-the-artist
+  title: A Portrait of the Artist as a Young Man
+  author: James Joyce
+  year: 1916
+  window: 2
+  form: novel
+  clue: Irish novelist
+  aliases: [Portrait of the Artist, Stephen Dedalus]
+  gutenberg: 4217
+  passages:
+    - locus: Chapter 5
+      difficulty: 2
+      text: >-
+        The spell of arms and voices: the white arms of roads, their promise of close embraces and the black arms of tall ships that stand against the moon, their tale of distant nations. They are held out to say: We are alone - come. And the voices say with them: We are your kinsmen. And the air is thick with their company as they call to me, their kinsman, making ready to go, shaking the wings of their exultant and terrible youth.
+
+
+        April 26. Mother is putting my new secondhand clothes in order. She prays now, she says, that I may learn in my own life and away from home and friends what the heart is and what it feels. Amen. So be it. Welcome, O life! I go to encounter for the millionth time the reality of experience and to forge in the smithy of my soul the uncreated conscience of my race.
+
+
+        April 27. Old father, old artificer, stand me now and ever in good stead.
+      significance: >-
+        The novel breaks into diary entries as Stephen packs to leave Ireland. He finally states his vocation in the terms he has been reaching for all book, then calls on Daedalus, the old artificer, for help. The break from home, church and country is complete, and the form of the book breaks with it.
+    - locus: Chapter 4
+      difficulty: 3
+      text: >-
+        A girl stood before him in midstream, alone and still, gazing out to sea. She seemed like one whom magic had changed into the likeness of a strange and beautiful seabird. Her long slender bare legs were delicate as a crane’s and pure save where an emerald trail of seaweed had fashioned itself as a sign upon the flesh. Her thighs, fuller and softhued as ivory, were bared almost to the hips, where the white fringes of her drawers were like feathering of soft white down. Her slateblue skirts were kilted boldly about her waist and dovetailed behind her. Her bosom was as a bird’s, soft and slight, slight and soft as the breast of some darkplumaged dove. But her long fair hair was girlish: and girlish, and touched with the wonder of mortal beauty, her face.
+      significance: >-
+        Stephen sees a girl wading on the strand shortly after refusing the priesthood, and takes the sight as a call to a life of art instead. Not a word passes between them, and the whole turn of his life happens in the looking. It is the epiphany the first four chapters have been building toward.
+  famous:
+    locus: Chapter 1
+    text: >-
+      Once upon a time and a very good time it was there was a moocow coming down along the road and this moocow that was coming down along the road met a nicens little boy named baby tuckoo....
+
+
+      His father told him that story: his father looked at him through a glass: he had a hairy face.
+
+
+      He was baby tuckoo. The moocow came down the road where Betty Byrne lived: she sold lemon platt.
