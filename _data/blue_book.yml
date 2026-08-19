@@ -1,0 +1,360 @@
+# Blue Book canon. One entry per book. To add a book: append an entry, then run
+#   python3 _tools/blue_book/verify_passages.py      (checks passages against Gutenberg)
+#   python3 _tools/blue_book/build_schedule.py       (extends the daily schedule)
+# Field notes:
+#   year        single integer, negative for BCE (Odyssey: -700)
+#   window      years either side of `year` that still earn full year points (default 2)
+#   year_label  optional display override ("c. 725 BCE"); default is derived from year
+#   era         optional {from, to} override for the era hint band; default is the century block
+#   form        novel | play | epic | philosophy | nonfiction | stories
+#   clue        the author-clue hint text ("Russian novelist")
+#   aliases     extra strings the search box should match
+#   gutenberg   Project Gutenberg ebook number; enables automated verification. Omit for
+#               books not on Gutenberg (they are reported as unverified).
+#   passages    the main passages, in play rotation. Each needs text, locus, difficulty (1-3);
+#               significance is optional (2-3 sentences, shown on the reveal). id is optional
+#               and defaults to <book id>-<1-based position>.
+#   text        `>-` block scalar; leave TWO blank lines between paragraphs. Folded YAML turns
+#               two blank lines into one paragraph break, and one blank line into a bare newline.
+#   famous      the most recognisable passage, only ever shown as a hint (id <book id>-famous)
+- id: great-gatsby
+  title: The Great Gatsby
+  author: F. Scott Fitzgerald
+  year: 1925
+  window: 2
+  form: novel
+  clue: American novelist
+  aliases: [Gatsby]
+  gutenberg: 64317
+  passages:
+    - locus: Chapter 6
+      difficulty: 2
+      text: >-
+        “I wouldn’t ask too much of her,” I ventured. “You can’t repeat the past.”
+
+
+        “Can’t repeat the past?” he cried incredulously. “Why of course you can!”
+
+
+        He looked around him wildly, as if the past were lurking here in the shadow of his house, just out of reach of his hand.
+
+
+        “I’m going to fix everything just the way it was before,” he said, nodding determinedly. “She’ll see.”
+
+
+        He talked a lot about the past, and I gathered that he wanted to recover something, some idea of himself perhaps, that had gone into loving Daisy. His life had been confused and disordered since then, but if he could once return to a certain starting place and go over it all slowly, he could find out what that thing was …
+      significance: >-
+        Nick has just told Gatsby he cannot repeat the past, and Gatsby refuses to accept it. The line states the novel's central delusion outright: that money and will can restore what is gone. Everything that follows is that refusal playing out.
+    - locus: Chapter 9
+      difficulty: 2
+      text: >-
+        They were careless people, Tom and Daisy—they smashed up things and creatures and then retreated back into their money or their vast carelessness, or whatever it was that kept them together, and let other people clean up the mess they had made …
+      significance: >-
+        Nick delivers the novel's harshest verdict on Tom and Daisy after the wreckage of Gatsby's death has settled. He reduces their marriage to a shared instinct for self protection at other people's expense. It is the closest the book comes to naming who is actually responsible.
+  famous:
+    locus: Chapter 9
+    text: >-
+      Gatsby believed in the green light, the orgiastic future that year by year recedes before us. It eluded us then, but that’s no matter—tomorrow we will run faster, stretch out our arms further … And one fine morning—
+
+
+      So we beat on, boats against the current, borne back ceaselessly into the past.
+- id: wuthering-heights
+  title: Wuthering Heights
+  author: Emily Brontë
+  year: 1847
+  window: 2
+  form: novel
+  clue: English novelist
+  gutenberg: 768
+  passages:
+    - locus: Chapter 16
+      difficulty: 3
+      text: >-
+        Catherine Earnshaw, may you not rest as long as I am living; you said I killed you—haunt me, then! The murdered do haunt their murderers, I believe. I know that ghosts have wandered on earth. Be with me always—take any form—drive me mad! only do not leave me in this abyss, where I cannot find you! Oh, God! it is unutterable! I cannot live without my life! I cannot live without my soul!”
+      significance: >-
+        Heathcliff begs Catherine's ghost to haunt him rather than leave him at peace, moments after learning she has died. The outburst shows that love in this novel is bound up with torment and possession rather than comfort. It sets the tone for the decades of grief and revenge that follow.
+    - locus: Chapter 34
+      difficulty: 2
+      text: >-
+        I sought, and soon discovered, the three headstones on the slope next the moor: the middle one grey, and half buried in heath; Edgar Linton’s only harmonized by the turf and moss creeping up its foot; Heathcliff’s still bare.
+
+
+        I lingered round them, under that benign sky: watched the moths fluttering among the heath and harebells, listened to the soft wind breathing through the grass, and wondered how any one could ever imagine unquiet slumbers for the sleepers in that quiet earth.
+      significance: >-
+        Lockwood visits the three graves at the very end of the novel and finds the scene calm, almost gentle. The quiet closing image contrasts deliberately with the violence that filled the story. It is the narrator's final word on whether the suffering ever found any rest.
+  famous:
+    locus: Chapter 9
+    text: >-
+      My love for Linton is like the foliage in the woods: time will change it, I’m well aware, as winter changes the trees. My love for Heathcliff resembles the eternal rocks beneath: a source of little visible delight, but necessary. Nelly, I am Heathcliff! He’s always, always in my mind: not as a pleasure, any more than I am always a pleasure to myself, but as my own being.
+- id: ulysses
+  title: Ulysses
+  author: James Joyce
+  year: 1922
+  window: 2
+  form: novel
+  clue: Irish novelist
+  gutenberg: 4300
+  passages:
+    - locus: Episode 3, Proteus
+      difficulty: 3
+      text: >-
+        Ineluctable modality of the visible: at least that if no more, thought through my eyes. Signatures of all things I am here to read, seaspawn and seawrack, the nearing tide, that rusty boot. Snotgreen, bluesilver, rust: coloured signs. Limits of the diaphane. But he adds: in bodies. Then he was aware of them bodies before of them coloured. How? By knocking his sconce against them, sure. Go easy. Bald he was and a millionaire, maestro di color che sanno. Limit of the diaphane in. Why in? Diaphane, adiaphane. If you can put your five fingers through it it is a gate, if not a door. Shut your eyes and see.
+      significance: >-
+        Stephen walks the strand testing his own senses, closing his eyes to check whether the world still exists when he cannot see it. The passage is Joyce's clearest statement of the novel's interest in perception as a subject in its own right. It establishes the interior style that carries through the rest of the book.
+    - locus: Episode 2, Nestor
+      difficulty: 3
+      text: >-
+        —History, Stephen said, is a nightmare from which I am trying to awake.
+
+
+        From the playfield the boys raised a shout. A whirring whistle: goal. What if that nightmare gave you a back kick?
+
+
+        —The ways of the Creator are not our ways, Mr Deasy said. All human history moves towards one great goal, the manifestation of God.
+
+
+        Stephen jerked his thumb towards the window, saying:
+
+
+        —That is God.
+
+
+        Hooray! Ay! Whrrwhee!
+
+
+        —What? Mr Deasy asked.
+
+
+        —A shout in the street, Stephen answered, shrugging his shoulders.
+      significance: >-
+        Stephen tells his employer Mr Deasy that history is a nightmare he is trying to wake from, rejecting Deasy's tidy providential view of the past. The line is one of the most quoted in the book because it compresses Stephen's whole relationship to Irish history. Deasy's self satisfied reply only widens the gap between them.
+  famous:
+    locus: Episode 18, Penelope
+    text: >-
+      and I thought well as well him as another and then I asked him with my eyes to ask again yes and then he asked me would I yes to say yes my mountain flower and first I put my arms around him yes and drew him down to me so he could feel my breasts all perfume yes and his heart was going like mad and yes I said yes I will Yes.
+- id: pride-and-prejudice
+  title: Pride and Prejudice
+  author: Jane Austen
+  year: 1813
+  window: 2
+  form: novel
+  clue: English novelist
+  gutenberg: 1342
+  passages:
+    - locus: Chapter 34
+      difficulty: 2
+      text: >-
+        “In vain have I struggled. It will not do. My feelings will not be repressed. You must allow me to tell you how ardently I admire and love you.”
+
+
+        Elizabeth’s astonishment was beyond expression. She stared, coloured, doubted, and was silent. This he considered sufficient encouragement, and the avowal of all that he felt and had long felt for her immediately followed. He spoke well; but there were feelings besides those of the heart to be detailed, and he was not more eloquent on the subject of tenderness than of pride. His sense of her inferiority, of its being a degradation, of the family obstacles which judgment had always opposed to inclination, were dwelt on with a warmth which seemed due to the consequence he was wounding, but was very unlikely to recommend his suit.
+      significance: >-
+        Darcy proposes to Elizabeth and manages to insult her family in the same breath as his declaration of love. The scene is the novel's turning point because his pride and her prejudice are both laid bare in one conversation. Everything that follows works to correct what each of them gets wrong here.
+    - locus: Chapter 36
+      difficulty: 3
+      text: >-
+        “How despicably have I acted!” she cried. “I, who have prided myself on my discernment! I, who have valued myself on my abilities! who have often disdained the generous candour of my sister, and gratified my vanity in useless or blameless distrust. How humiliating is this discovery! Yet, how just a humiliation! Had I been in love, I could not have been more wretchedly blind. But vanity, not love, has been my folly. Pleased with the preference of one, and offended by the neglect of the other, on the very beginning of our acquaintance, I have courted prepossession and ignorance, and driven reason away where either were concerned. Till this moment, I never knew myself.”
+      significance: >-
+        Elizabeth rereads Darcy's letter and is forced to admit that her judgment of him was driven by vanity rather than insight. The moment turns the novel's title back on her, since she recognizes her own prejudice for the first time. It is the point where her feelings toward Darcy can finally begin to change.
+  famous:
+    locus: Chapter 1
+    text: >-
+      It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife.
+
+
+      However little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered as the rightful property of some one or other of their daughters.
+- id: jane-eyre
+  title: Jane Eyre
+  author: Charlotte Brontë
+  year: 1847
+  window: 2
+  form: novel
+  clue: English novelist
+  gutenberg: 1260
+  passages:
+    - locus: Chapter 23
+      difficulty: 2
+      text: >-
+        “I tell you I must go!” I retorted, roused to something like passion. “Do you think I can stay to become nothing to you? Do you think I am an automaton?—a machine without feelings? and can bear to have my morsel of bread snatched from my lips, and my drop of living water dashed from my cup? Do you think, because I am poor, obscure, plain, and little, I am soulless and heartless? You think wrong!—I have as much soul as you,—and full as much heart! And if God had gifted me with some beauty and much wealth, I should have made it as hard for you to leave me, as it is now for me to leave you. I am not talking to you now through the medium of custom, conventionalities, nor even of mortal flesh;—it is my spirit that addresses your spirit; just as if both had passed through the grave, and we stood at God’s feet, equal,—as we are!”
+      significance: >-
+        Jane insists to Rochester that her poverty and plainness do not make her his inferior, speaking to him as an equal soul rather than a dependent. The speech is the novel's central statement of Jane's self respect and its refusal to treat love as a matter of rank or fortune. It is also the moment that leads directly to Rochester's proposal.
+    - locus: Chapter 27
+      difficulty: 3
+      text: >-
+        Still indomitable was the reply—“I care for myself. The more solitary, the more friendless, the more unsustained I am, the more I will respect myself. I will keep the law given by God; sanctioned by man. I will hold to the principles received by me when I was sane, and not mad—as I am now. Laws and principles are not for the times when there is no temptation: they are for such moments as this, when body and soul rise in mutiny against their rigour; stringent are they; inviolate they shall be. If at my individual convenience I might break them, what would be their worth?
+      significance: >-
+        Jane resolves to leave Rochester rather than remain with him under false pretenses, even though it means giving up the person she loves most. She chooses principle over desire because she believes rules exist for exactly this kind of moment. The passage is the clearest expression of the moral discipline that defines her character.
+  famous:
+    locus: Chapter 38
+    text: >-
+      Reader, I married him. A quiet wedding we had: he and I, the parson and clerk, were alone present. When we got back from church, I went into the kitchen of the manor-house, where Mary was cooking the dinner and John cleaning the knives, and I said—
+
+
+      “Mary, I have been married to Mr. Rochester this morning.”
+- id: moby-dick
+  title: Moby-Dick
+  author: Herman Melville
+  year: 1851
+  window: 2
+  form: novel
+  clue: American novelist
+  gutenberg: 2701
+  passages:
+    - locus: Chapter 36, The Quarter-Deck
+      difficulty: 3
+      text: >-
+        “Hark ye yet again—the little lower layer. All visible objects, man, are but as pasteboard masks. But in each event—in the living act, the undoubted deed—there, some unknown but still reasoning thing puts forth the mouldings of its features from behind the unreasoning mask. If man will strike, strike through the mask! How can the prisoner reach outside except by thrusting through the wall? To me, the white whale is that wall, shoved near to me. Sometimes I think there’s naught beyond. But ’tis enough. He tasks me; he heaps me; I see in him outrageous strength, with an inscrutable malice sinewing it. That inscrutable thing is chiefly what I hate; and be the white whale agent, or be the white whale principal, I will wreak that hate upon him. Talk not to me of blasphemy, man; I’d strike the sun if it insulted me.
+      significance: >-
+        Ahab explains to his assembled crew why he hunts the white whale, describing it as a mask concealing some deeper and more hostile force behind appearances. The speech reveals that his pursuit is philosophical as much as personal, an attempt to strike through the visible world to whatever lies behind it. It is the clearest statement of the obsession that drives the entire voyage.
+    - locus: Chapter 135, The Chase, Third Day
+      difficulty: 2
+      text: >-
+        Oh, lonely death on lonely life! Oh, now I feel my topmost greatness lies in my topmost grief. Ho, ho! from all your furthest bounds, pour ye now in, ye bold billows of my whole foregone life, and top this one piled comber of my death! Towards thee I roll, thou all-destroying but unconquering whale; to the last I grapple with thee; from hell’s heart I stab at thee; for hate’s sake I spit my last breath at thee. Sink all coffins and all hearses to one common pool! and since neither can be mine, let me then tow to pieces, while still chasing thee, though tied to thee, thou damned whale! Thus, I give up the spear!”
+      significance: >-
+        Ahab hurls his last words at the whale in the moment before the final, fatal strike. The language mixes despair and defiance, treating his own death as one more act of war against the thing that has ruled his life. It is the last we hear from him before the Pequod goes down.
+  famous:
+    locus: Chapter 1, Loomings
+    text: >-
+      Call me Ishmael. Some years ago—never mind how long precisely—having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the circulation. Whenever I find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people’s hats off—then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this. If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me.
+- id: frankenstein
+  title: Frankenstein
+  author: Mary Shelley
+  year: 1818
+  window: 2
+  form: novel
+  clue: English novelist
+  gutenberg: 84
+  passages:
+    - locus: Chapter 10
+      difficulty: 2
+      text: >-
+        “I expected this reception,” said the dæmon. “All men hate the wretched; how, then, must I be hated, who am miserable beyond all living things! Yet you, my creator, detest and spurn me, thy creature, to whom thou art bound by ties only dissoluble by the annihilation of one of us. You purpose to kill me. How dare you sport thus with life? Do your duty towards me, and I will do mine towards you and the rest of mankind. If you will comply with my conditions, I will leave them and you at peace; but if you refuse, I will glut the maw of death, until it be satiated with the blood of your remaining friends.”
+
+
+        “Abhorred monster! Fiend that thou art! The tortures of hell are too mild a vengeance for thy crimes. Wretched devil! You reproach me with your creation, come on, then, that I may extinguish the spark which I so negligently bestowed.”
+
+
+        My rage was without bounds; I sprang on him, impelled by all the feelings which can arm one being against the existence of another.
+
+
+        He easily eluded me and said,
+
+
+        “Be calm! I entreat you to hear me before you give vent to your hatred on my devoted head. Have I not suffered enough, that you seek to increase my misery? Life, although it may only be an accumulation of anguish, is dear to me, and I will defend it. Remember, thou hast made me more powerful than thyself; my height is superior to thine, my joints more supple. But I will not be tempted to set myself in opposition to thee. I am thy creature, and I will be even mild and docile to my natural lord and king if thou wilt also perform thy part, the which thou owest me. Oh, Frankenstein, be not equitable to every other and trample upon me alone, to whom thy justice, and even thy clemency and affection, is most due. Remember that I am thy creature; I ought to be thy Adam, but I am rather the fallen angel, whom thou drivest from joy for no misdeed. Everywhere I see bliss, from which I alone am irrevocably excluded. I was benevolent and good; misery made me a fiend. Make me happy, and I shall again be virtuous.”
+      significance: >-
+        The creature confronts Victor for the first time since his creation and demands to be heard before being condemned. He argues that his violence grew out of rejection rather than nature, comparing himself to a fallen angel rather than a demon. The speech forces Victor, and the reader, to reconsider who the real monster is.
+    - locus: Chapter 20
+      difficulty: 3
+      text: >-
+        “Slave, I before reasoned with you, but you have proved yourself unworthy of my condescension. Remember that I have power; you believe yourself miserable, but I can make you so wretched that the light of day will be hateful to you. You are my creator, but I am your master; obey!”
+
+
+        “The hour of my irresolution is past, and the period of your power is arrived. Your threats cannot move me to do an act of wickedness; but they confirm me in a determination of not creating you a companion in vice. Shall I, in cool blood, set loose upon the earth a dæmon whose delight is in death and wretchedness? Begone! I am firm, and your words will only exasperate my rage.”
+
+
+        The monster saw my determination in my face and gnashed his teeth in the impotence of anger. “Shall each man,” cried he, “find a wife for his bosom, and each beast have his mate, and I be alone? I had feelings of affection, and they were requited by detestation and scorn. Man! You may hate, but beware! Your hours will pass in dread and misery, and soon the bolt will fall which must ravish from you your happiness for ever. Are you to be happy while I grovel in the intensity of my wretchedness? You can blast my other passions, but revenge remains—revenge, henceforth dearer than light or food! I may die, but first you, my tyrant and tormentor, shall curse the sun that gazes on your misery. Beware, for I am fearless and therefore powerful. I will watch with the wiliness of a snake, that I may sting with its venom. Man, you shall repent of the injuries you inflict.”
+
+
+        “Devil, cease; and do not poison the air with these sounds of malice. I have declared my resolution to you, and I am no coward to bend beneath words. Leave me; I am inexorable.”
+
+
+        “It is well. I go; but remember, I shall be with you on your wedding-night.”
+      significance: >-
+        The creature responds to Victor's decision to destroy his unfinished companion by promising to be with him on his wedding night. The threat is delivered calmly rather than in anger, which makes it more unsettling than anything said before. It sets in motion the deaths that close the novel.
+  famous:
+    locus: Chapter 5
+    text: >-
+      It was on a dreary night of November that I beheld the accomplishment of my toils. With an anxiety that almost amounted to agony, I collected the instruments of life around me, that I might infuse a spark of being into the lifeless thing that lay at my feet. It was already one in the morning; the rain pattered dismally against the panes, and my candle was nearly burnt out, when, by the glimmer of the half-extinguished light, I saw the dull yellow eye of the creature open; it breathed hard, and a convulsive motion agitated its limbs.
+- id: don-quixote
+  title: Don Quixote
+  author: Miguel de Cervantes
+  year: 1605
+  window: 10
+  year_label: "1605"
+  form: novel
+  clue: Spanish novelist
+  aliases: [Quixote, Quijote, Don Quijote]
+  gutenberg: 996
+  passages:
+    - locus: Part 1, Chapter 1
+      difficulty: 2
+      text: >-
+        In a village of La Mancha, the name of which I have no desire to call to mind, there lived not long since one of those gentlemen that keep a lance in the lance-rack, an old buckler, a lean hack, and a greyhound for coursing. An olla of rather more beef than mutton, a salad on most nights, scraps on Saturdays, lentils on Fridays, and a pigeon or so extra on Sundays, made away with three-quarters of his income. The rest of it went in a doublet of fine cloth and velvet breeches and shoes to match for holidays, while on week-days he made a brave figure in his best homespun. He had in his house a housekeeper past forty, a niece under twenty, and a lad for the field and market-place, who used to saddle the hack as well as handle the bill-hook. The age of this gentleman of ours was bordering on fifty; he was of a hardy habit, spare, gaunt-featured, a very early riser and a great sportsman. They will have it his surname was Quixada or Quesada (for here there is some difference of opinion among the authors who write on the subject), although from reasonable conjectures it seems plain that he was called Quexana. This, however, is of but little importance to our tale; it will be enough not to stray a hair’s breadth from the truth in the telling of it.
+      significance: >-
+        The narrator introduces the aging hidalgo who will soon reinvent himself as Don Quixote, describing his modest household and habits before any madness appears. The famously evasive opening line, refusing to name his village, sets the ironic and unreliable tone the whole narration keeps. It establishes the gap between the ordinary man and the legend he is about to build for himself.
+    - locus: Part 2, Chapter 74
+      difficulty: 3
+      text: >-
+        Good news for you, good sirs, that I am no longer Don Quixote of La Mancha, but Alonso Quixano, whose way of life won for him the name of Good. Now am I the enemy of Amadis of Gaul and of the whole countless troop of his descendants; odious to me now are all the profane stories of knight-errantry; now I perceive my folly, and the peril into which reading them brought me; now, by God’s mercy schooled into my right senses, I loathe them.
+      significance: >-
+        On his deathbed, Alonso Quixano renounces the name and the chivalric romances that turned him into Don Quixote, calling his old obsession folly. The return of sanity just before death gives the book a sober final note after two volumes of comic delusion. It leaves open whether the world was better served by his illusions or by their loss.
+  famous:
+    locus: Part 1, Chapter 8
+    text: >-
+      “Fortune is arranging matters for us better than we could have shaped our desires ourselves, for look there, friend Sancho Panza, where thirty or more monstrous giants present themselves, all of whom I mean to engage in battle and slay, and with whose spoils we shall begin to make our fortunes; for this is righteous warfare, and it is God’s good service to sweep so evil a breed from off the face of the earth.”
+
+
+      “What giants?” said Sancho Panza.
+
+
+      “Those thou seest there,” answered his master, “with the long arms, and some have them nearly two leagues long.”
+
+
+      “Look, your worship,” said Sancho; “what we see there are not giants but windmills, and what seem to be their arms are the sails that turned by the wind make the millstone go.”
+- id: great-expectations
+  title: Great Expectations
+  author: Charles Dickens
+  year: 1861
+  window: 2
+  form: novel
+  clue: English novelist
+  gutenberg: 1400
+  passages:
+    - locus: Chapter 8
+      difficulty: 2
+      text: >-
+        She was dressed in rich materials,—satins, and lace, and silks,—all of white. Her shoes were white. And she had a long white veil dependent from her hair, and she had bridal flowers in her hair, but her hair was white. Some bright jewels sparkled on her neck and on her hands, and some other jewels lay sparkling on the table. Dresses, less splendid than the dress she wore, and half-packed trunks, were scattered about. She had not quite finished dressing, for she had but one shoe on,—the other was on the table near her hand,—her veil was but half arranged, her watch and chain were not put on, and some lace for her bosom lay with those trinkets, and with her handkerchief, and gloves, and some flowers, and a Prayer-Book all confusedly heaped about the looking-glass.
+
+
+        It was not in the first few moments that I saw all these things, though I saw more of them in the first moments than might be supposed. But I saw that everything within my view which ought to be white, had been white long ago, and had lost its lustre and was faded and yellow. I saw that the bride within the bridal dress had withered like the dress, and like the flowers, and had no brightness left but the brightness of her sunken eyes.
+      significance: >-
+        Pip sees Miss Havisham for the first time, frozen in her wedding dress decades after being jilted, and takes in how completely time and decay have overtaken her. The description sets her up as the novel's great emblem of arrested grief. Pip's fascination and unease here shape the expectations that give the book its title.
+    - locus: Chapter 39
+      difficulty: 3
+      text: >-
+        “Yes, Pip, dear boy, I’ve made a gentleman on you! It’s me wot has done it! I swore that time, sure as ever I earned a guinea, that guinea should go to you. I swore arterwards, sure as ever I spec’lated and got rich, you should get rich. I lived rough, that you should live smooth; I worked hard, that you should be above work. What odds, dear boy? Do I tell it, fur you to feel a obligation? Not a bit. I tell it, fur you to know as that there hunted dunghill dog wot you kep life in, got his head so high that he could make a gentleman,—and, Pip, you’re him!”
+      significance: >-
+        Magwitch reveals to Pip that he, not Miss Havisham, has secretly been the source of his fortune all along. The revelation destroys the story Pip had been telling himself about his own rise in the world. It forces him to reckon with gratitude, class, and who actually made him a gentleman.
+  famous:
+    locus: Chapter 1
+    text: >-
+      My father’s family name being Pirrip, and my Christian name Philip, my infant tongue could make of both names nothing longer or more explicit than Pip. So, I called myself Pip, and came to be called Pip.
+- id: crime-and-punishment
+  title: Crime and Punishment
+  author: Fyodor Dostoevsky
+  year: 1866
+  window: 2
+  form: novel
+  clue: Russian novelist
+  aliases: [Crime & Punishment, Dostoyevsky]
+  gutenberg: 2554
+  passages:
+    - locus: Part 3, Chapter 5
+      difficulty: 3
+      text: >-
+        In short, I maintain that all great men or even men a little out of the common, that is to say capable of giving some new word, must from their very nature be criminals--more or less, of course. Otherwise it’s hard for them to get out of the common rut; and to remain in the common rut is what they can’t submit to, from their very nature again, and to my mind they ought not, indeed, to submit to it. You see that there is nothing particularly new in all that. The same thing has been printed and read a thousand times before. As for my division of people into ordinary and extraordinary, I acknowledge that it’s somewhat arbitrary, but I don’t insist upon exact numbers. I only believe in my leading idea that men are in general divided by a law of nature into two categories, inferior (ordinary), that is, so to say, material that serves only to reproduce its kind, and men who have the gift or the talent to utter a new word.
+      significance: >-
+        Raskolnikov lays out his theory that certain extraordinary men are permitted to break ordinary morality because they carry humanity forward. The passage is the intellectual justification he built for himself before the murder, and its coldness is meant to unsettle. It is the clearest statement of the idea the rest of the novel spends dismantling.
+    - locus: Epilogue, Chapter 2
+      difficulty: 3
+      text: >-
+        He did not know that the new life would not be given him for nothing, that he would have to pay dearly for it, that it would cost him great striving, great suffering.
+
+
+        But that is the beginning of a new story--the story of the gradual renewal of a man, the story of his gradual regeneration, of his passing from one world into another, of his initiation into a new unknown life. That might be the subject of a new story, but our present story is ended.
+      significance: >-
+        The narrator steps back from Raskolnikov's ongoing renewal to note that this transformation belongs to a different story than the one just told. The line marks the boundary Dostoevsky deliberately draws between crime and redemption, declining to dramatize the second the way he dramatized the first. It closes the novel while pointing at a story it will not tell.
+  famous:
+    locus: Part 5, Chapter 4
+    text: >-
+      “Go at once, this very minute, stand at the cross-roads, bow down, first kiss the earth which you have defiled and then bow down to all the world and say to all men aloud, ‘I am a murderer!’ Then God will send you life again. Will you go, will you go?” she asked him, trembling all over, snatching his two hands, squeezing them tight in hers and gazing at him with eyes full of fire.

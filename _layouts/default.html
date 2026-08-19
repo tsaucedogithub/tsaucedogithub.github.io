@@ -16,6 +16,7 @@
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
     <link href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}" rel="stylesheet" type="text/css" />
+    {% if page.stylesheet %}<link href="{{ page.stylesheet | relative_url }}?v={{ site.time | date: '%s' }}" rel="stylesheet" type="text/css" />{% endif %}
   </head>
   <body class="{{ page.body_class | default: '' }}">
     <header>

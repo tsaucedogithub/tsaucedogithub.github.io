@@ -1,0 +1,33 @@
+- id: sample-book
+  title: Sample Book
+  author: Some Author
+  year: -700
+  window: 150
+  form: epic
+  clue: Greek poet
+  gutenberg: 99999
+  passages:
+    - locus: Book 1
+      difficulty: 2
+      text: >-
+        Sing to me of the man, Muse, the man of twists and turns
+        driven time and again off course.
+    - id: custom-id
+      locus: Book 11
+      difficulty: 3
+      text: >-
+        And I saw the mighty Heracles, or his phantom.
+  famous:
+    locus: Book 1
+    text: >-
+      Tell me about a complicated man.
+- id: no-gutenberg
+  title: Modern Book
+  author: Living Author
+  year: 1961
+  form: novel
+  clue: American novelist
+  passages:
+    - locus: Chapter 1
+      difficulty: 1
+      text: It was love at first sight.

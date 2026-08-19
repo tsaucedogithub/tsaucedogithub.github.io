@@ -21,3 +21,6 @@ ENTRIES.md
 # Python bytecode from _tools/
 __pycache__/
 *.pyc
+
+# Blue Book: downloaded Gutenberg texts used by _tools/blue_book/verify_passages.py
+_tools/blue_book/cache/
