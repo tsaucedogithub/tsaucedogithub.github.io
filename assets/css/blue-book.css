@@ -459,24 +459,36 @@ body.blue-book { max-width: 720px; }
   letter-spacing: normal;
 }
 
-/* Fields: a small label, then the value written on a ruled line. */
-.bb-card-fields { margin: 0; padding: 0; }
+/* Fields: a small label, then the value written on a short ruled line. The
+   lines are a fixed width, sized to the longest value the card can ever show
+   ("Blue Book No. 999"), and the block is centred rather than stretched: a
+   real blue book has short rules, not full-width ones. */
+.bb-card-fields {
+  width: max-content;
+  margin: 0 auto 1.6rem;
+  padding: 0;
+}
 .bb-card-field {
   display: flex;
   align-items: baseline;
-  gap: 1rem;
   margin-bottom: 1.2rem;
 }
 .bb-card-field dt {
   flex: 0 0 auto;
-  width: 8rem;
+  /* The width is the whole label column, gap included, so the block measures
+     exactly label + rule (7.5 + 17rem) and stays inside a 360px screen. */
+  box-sizing: border-box;
+  width: 7.5rem;
+  padding-right: 1rem;
   font-size: 1.2rem;
+  text-align: right;
   text-transform: uppercase;
   letter-spacing: .08em;
   opacity: .7;
 }
 .bb-card-field dd {
-  flex: 1;
+  flex: 0 0 auto;
+  width: 17rem;
   margin: 0;
   padding-bottom: .2rem;
   font-weight: 500;
@@ -487,7 +499,8 @@ body.blue-book { max-width: 720px; }
 .bb-card-field dd.bb-card-field-score { font-weight: 700; }
 .bb-card-field dd.bb-card-field-grade { font-size: 2.2rem; font-weight: 700; }
 
-/* Rounds: one per ruled line, title left, points right. */
+/* Rounds: one per ruled line, the book on the left with its author and year
+   underneath, the round's points on the right. */
 .bb-card-rows {
   list-style: none;
   margin: 0;
@@ -507,9 +520,10 @@ body.blue-book { max-width: 720px; }
   font-weight: 700;
   opacity: .6;
 }
-.bb-row-title { flex: 1; font-weight: 500; }
-.bb-row-split { font-size: 1.3rem; opacity: .75; }
-.bb-row-pts { font-weight: 700; font-variant-numeric: tabular-nums; }
+.bb-row-main { flex: 1; min-width: 0; }
+.bb-row-title { font-weight: 500; }
+.bb-row-sub { display: block; font-size: 1.3rem; opacity: .7; }
+.bb-row-pts { flex: 0 0 auto; font-weight: 700; font-variant-numeric: tabular-nums; }
 
 /* Under the five rounds: the label, then one line in the marker's hand (the
    serif the passages are set in). */
@@ -527,8 +541,8 @@ body.blue-book { max-width: 720px; }
   line-height: 1.45;
 }
 
-/* On a phone the line has no room for both: the split drops under the
-   title, level with it, and the points stay on the first line. */
+/* On a phone the card loses some padding and the labels narrow, which keeps
+   the field block (label plus a 17rem rule) inside a 360px screen. */
 @media (max-width: 480px) {
   .bb-card { padding: 2rem 1.8rem 1.6rem; }
   /* No room beside the heading: the date sits above it instead. */
@@ -538,15 +552,6 @@ body.blue-book { max-width: 720px; }
     margin: 0 0 .6rem;
   }
   .bb-card-field dt { width: 6.5rem; }
-  .bb-card-rows li { flex-wrap: wrap; }
-  .bb-row-n { order: 1; }
-  .bb-row-title { order: 2; }
-  .bb-row-pts { order: 3; }
-  .bb-row-split {
-    order: 4;
-    flex-basis: 100%;
-    padding-left: 2.6rem;
-  }
 }
 
 /* ===================== end Scorecard ===================== */

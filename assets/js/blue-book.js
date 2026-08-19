@@ -312,12 +312,12 @@
     if (left > 0) text += ' ' + left + ' ' + (left === 1 ? 'guess' : 'guesses') + ' left.';
     el.feedback.textContent = text;
     unpick();
-    if (left === 0) endRound(false);
+    if (left === 0) endRound(false, 'guesses');
   }
 
   function onGiveUp() {
     if (state.cur.ended) return;
-    endRound(false);
+    endRound(false, 'giveup');
   }
 
   el.guess.addEventListener('click', onGuess);
@@ -383,15 +383,25 @@
   // The label for the one row that names what the round was docked for:
   // "Hints 3", "Wrong guess 1", "Hints 1, wrong guesses 2". Only the causes
   // that actually happened appear, and the second clause runs on lowercase.
-  function offLabel(hints, wrong) {
+  // Giving up is priced as three wrong guesses but says so in its own words,
+  // rather than reporting guesses the player never made.
+  function offLabel(hints, wrong, reason) {
     var parts = [];
     if (hints > 0) parts.push('Hints ' + hints);
-    if (wrong > 0) parts.push((wrong === 1 ? 'Wrong guess ' : 'Wrong guesses ') + wrong);
+    if (reason === 'giveup') {
+      parts.push('Gave up');
+    } else if (wrong > 0) {
+      parts.push((wrong === 1 ? 'Wrong guess ' : 'Wrong guesses ') + wrong);
+    }
     if (parts.length === 2) parts[1] = parts[1].charAt(0).toLowerCase() + parts[1].slice(1);
     return parts.join(', ');
   }
 
-  function renderReveal(result, r, wrong) {
+  // reason: how a lost round ended, 'giveup' or 'guesses' (unread when the
+  // guess was right). The verdict line is the only thing that reads it, and
+  // it is passed down rather than inferred from the guess count: giving up on
+  // the third guess is still giving up.
+  function renderReveal(result, r, wrong, reason) {
     el.feedback.textContent = '';
     el.guess.disabled = true;
     el.giveup.disabled = true;
@@ -405,7 +415,7 @@
     setHintsOpen(false);
     closeResults();
 
-    el.revealVerdict.textContent = result.correct ? 'Right.' : 'Not this time.';
+    el.revealVerdict.textContent = result.correct ? 'Right.' : (reason === 'giveup' ? 'You gave up.' : 'Not this time.');
     el.revealTitle.textContent = r.book.title;
     el.revealMeta.textContent = plainDashes(r.book.author + ' · ' + (r.book.year_label || C.yearLabel(r.book.year)) + ' · ' + r.passage.locus);
 
@@ -423,7 +433,7 @@
     addBreakdownRow('Book', String(result.book));
     addBreakdownRow('Year (you said ' + C.yearLabel(result.year) + ')', String(result.yearPts));
     if (result.offPct > 0) {
-      addBreakdownRow(offLabel(result.hintsUsed.length, wrong), '−' + result.offPct + '%');
+      addBreakdownRow(offLabel(result.hintsUsed.length, wrong, reason), '−' + result.offPct + '%');
     }
     addBreakdownRow('Round total', String(result.total), 'bb-breakdown-total');
 
@@ -432,14 +442,14 @@
     el.next.textContent = state.round === TOTAL_ROUNDS - 1 ? 'See results' : 'Next';
   }
 
-  function endRound(correct) {
+  function endRound(correct, reason) {
     var r = rounds[state.round], cur = state.cur; cur.ended = true;
     var yearPts = C.yearPoints(cur.year, r.book);
-    var wrong = correct ? cur.guessIds.length - 1 : cur.guessIds.length;
+    var wrong = correct ? cur.guessIds.length - 1 : (reason === 'giveup' ? 3 : cur.guessIds.length);
     var score = C.roundScore({ correct: correct, wrongGuesses: wrong, hintsUsed: cur.hintsUsed.length, yearPts: yearPts });
     var result = { passageId: r.passage.id, bookId: r.book.id, correct: correct, guessIds: cur.guessIds.slice(), hintsUsed: cur.hintsUsed.slice(), year: cur.year, yearPts: yearPts, book: score.book, offPct: score.offPct, total: score.total };
     state.results[state.round] = result;
-    renderReveal(result, r, wrong);
+    renderReveal(result, r, wrong, reason);
     if (hooks.onRoundEnd) hooks.onRoundEnd(result);
   }
 
@@ -578,14 +588,39 @@
 
   // ---- Results screen -----------------------------------------------------
 
-  // Instructor's comments, by grade. Tristan will rewrite these; keep one to
-  // three per grade.
+  // Instructor's comments, by grade. Tristan will rewrite these; keep a few
+  // per grade.
   var INSTRUCTOR_COMMENTS = {
-    A: ['Exemplary. See me about a reading list.', 'You have clearly done the reading.'],
-    B: ['Solid work. Watch the dates.', 'Good instincts, uneven execution.'],
-    C: ['You were in the room, at least some of the time.', 'Passable. Reread the ones you missed.'],
-    D: ['We should talk after class.', 'This is not the level I expect.'],
-    F: ['See me.', 'Did you read the passage before answering?']
+    A: [
+      'Exemplary. Please stop making the rest of the class look bad.',
+      'You have clearly done the reading. All of it. Unsettling.',
+      'A pleasure to grade. Office hours are for people who need them.',
+      'If this were a real exam I would suspect a cheat sheet.'
+    ],
+    B: [
+      'Solid. A few dates wandered off on their own.',
+      'You knew the books. The years were a vibe.',
+      'Good instincts, uneven execution. I have written this on better students.',
+      'Nearly there. Read the second half of things.'
+    ],
+    C: [
+      'You were in the room, at least some of the time.',
+      'Passable. Reread the ones you missed, then the ones you got.',
+      'Middling, in the classical sense.',
+      'I can tell which authors you like. It is not enough of them.'
+    ],
+    D: [
+      'We should talk after class.',
+      'I can tell which passages you skimmed. It was most of them.',
+      'This is not the level I expect, and I expect very little.',
+      'The year slider is not a dartboard.'
+    ],
+    F: [
+      'Did you read the passage before answering?',
+      'See me.',
+      'The grade is generous.',
+      'I have graded blank exams with more conviction.'
+    ]
   };
 
   // One comment per grade per day, the same for everyone playing that day.
@@ -648,10 +683,14 @@
     el.cardRows.innerHTML = '';
     for (var i = 0; i < results.length; i++) {
       var r = results[i];
+      var book = rounds[i].book;
       var li = document.createElement('li');
+      var main = document.createElement('span');
+      main.className = 'bb-row-main';
+      main.appendChild(rowSpan('bb-row-title', book.title));
+      main.appendChild(rowSpan('bb-row-sub', plainDashes(book.author + ' · ' + (book.year_label || C.yearLabel(book.year)))));
       li.appendChild(rowSpan('bb-row-n', String(i + 1)));
-      li.appendChild(rowSpan('bb-row-title', rounds[i].book.title));
-      li.appendChild(rowSpan('bb-row-split', 'Book ' + r.book + ' · Year ' + r.yearPts));
+      li.appendChild(main);
       li.appendChild(rowSpan('bb-row-pts', C.formatPoints(r.total)));
       el.cardRows.appendChild(li);
     }
