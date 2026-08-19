@@ -50,8 +50,10 @@
     breakdown: document.getElementById('bb-breakdown'),
     next: document.getElementById('bb-next'),
     resultsScreen: document.getElementById('bb-results-screen'),
+    cardDate: document.getElementById('bb-card-date'),
     cardFields: document.getElementById('bb-card-fields'),
     cardRows: document.getElementById('bb-card-rows'),
+    cardComment: document.getElementById('bb-card-comment'),
     stats: document.getElementById('bb-stats'),
     share: document.getElementById('bb-share'),
     shareNote: document.getElementById('bb-share-note'),
@@ -62,7 +64,7 @@
 
   // state.cur: the round in play. state.results: finished rounds, in order,
   // shape { passageId, bookId, correct, guessIds, hintsUsed, year, yearPts,
-  // book, penalty, total } (book/penalty/total from C.roundScore).
+  // book, offPct, total } (book/offPct/total from C.roundScore).
   var state = {
     round: 0,
     results: [],
@@ -366,10 +368,6 @@
 
   // ---- Ending a round and the reveal -----------------------------------------
 
-  // Indexed by the number of wrong guesses before the right one, so one miss
-  // makes the book the 2nd guess.
-  var GUESS_ORDINALS = ['1st', '2nd', '3rd'];
-
   function addBreakdownRow(label, value, extraClass) {
     var li = document.createElement('li');
     if (extraClass) li.className = extraClass;
@@ -380,6 +378,17 @@
     li.appendChild(labelSpan);
     li.appendChild(valueSpan);
     el.breakdown.appendChild(li);
+  }
+
+  // The label for the one row that names what the round was docked for:
+  // "Hints 3", "Wrong guess 1", "Hints 1, wrong guesses 2". Only the causes
+  // that actually happened appear, and the second clause runs on lowercase.
+  function offLabel(hints, wrong) {
+    var parts = [];
+    if (hints > 0) parts.push('Hints ' + hints);
+    if (wrong > 0) parts.push((wrong === 1 ? 'Wrong guess ' : 'Wrong guesses ') + wrong);
+    if (parts.length === 2) parts[1] = parts[1].charAt(0).toLowerCase() + parts[1].slice(1);
+    return parts.join(', ');
   }
 
   function renderReveal(result, r, wrong) {
@@ -398,25 +407,23 @@
 
     el.revealVerdict.textContent = result.correct ? 'Right.' : 'Not this time.';
     el.revealTitle.textContent = r.book.title;
-    el.revealMeta.textContent = r.book.author + ' · ' + (r.book.year_label || C.yearLabel(r.book.year)) + ' · ' + r.passage.locus;
+    el.revealMeta.textContent = plainDashes(r.book.author + ' · ' + (r.book.year_label || C.yearLabel(r.book.year)) + ' · ' + r.passage.locus);
 
     if (r.passage.significance) {
-      el.revealSig.textContent = r.passage.significance;
+      el.revealSig.textContent = plainDashes(r.passage.significance);
       el.revealSig.hidden = false;
     } else {
       el.revealSig.textContent = '';
       el.revealSig.hidden = true;
     }
 
-    // Wrong guesses get no row of their own: they come off the book line,
-    // whose label names the guess that landed it.
+    // The book and the year are what the round was worth; hints and wrong
+    // guesses come off that subtotal as one percentage, so they share a row.
     el.breakdown.innerHTML = '';
-    var bookLabel = 'Book';
-    if (result.correct && wrong > 0) bookLabel += ' (' + GUESS_ORDINALS[wrong] + ' guess)';
-    addBreakdownRow(bookLabel, String(result.book));
+    addBreakdownRow('Book', String(result.book));
     addBreakdownRow('Year (you said ' + C.yearLabel(result.year) + ')', String(result.yearPts));
-    if (result.hintsUsed.length > 0) {
-      addBreakdownRow('Hints (' + result.hintsUsed.length + ')', '−' + (100 * result.hintsUsed.length));
+    if (result.offPct > 0) {
+      addBreakdownRow(offLabel(result.hintsUsed.length, wrong), '−' + result.offPct + '%');
     }
     addBreakdownRow('Round total', String(result.total), 'bb-breakdown-total');
 
@@ -430,7 +437,7 @@
     var yearPts = C.yearPoints(cur.year, r.book);
     var wrong = correct ? cur.guessIds.length - 1 : cur.guessIds.length;
     var score = C.roundScore({ correct: correct, wrongGuesses: wrong, hintsUsed: cur.hintsUsed.length, yearPts: yearPts });
-    var result = { passageId: r.passage.id, bookId: r.book.id, correct: correct, guessIds: cur.guessIds.slice(), hintsUsed: cur.hintsUsed.slice(), year: cur.year, yearPts: yearPts, book: score.book, penalty: score.penalty, total: score.total };
+    var result = { passageId: r.passage.id, bookId: r.book.id, correct: correct, guessIds: cur.guessIds.slice(), hintsUsed: cur.hintsUsed.slice(), year: cur.year, yearPts: yearPts, book: score.book, offPct: score.offPct, total: score.total };
     state.results[state.round] = result;
     renderReveal(result, r, wrong);
     if (hooks.onRoundEnd) hooks.onRoundEnd(result);
@@ -571,14 +578,31 @@
 
   // ---- Results screen -----------------------------------------------------
 
+  // Instructor's comments, by grade. Tristan will rewrite these; keep one to
+  // three per grade.
+  var INSTRUCTOR_COMMENTS = {
+    A: ['Exemplary. See me about a reading list.', 'You have clearly done the reading.'],
+    B: ['Solid work. Watch the dates.', 'Good instincts, uneven execution.'],
+    C: ['You were in the room, at least some of the time.', 'Passable. Reread the ones you missed.'],
+    D: ['We should talk after class.', 'This is not the level I expect.'],
+    F: ['See me.', 'Did you read the passage before answering?']
+  };
+
+  // One comment per grade per day, the same for everyone playing that day.
+  function instructorComment(letter) {
+    var list = INSTRUCTOR_COMMENTS[letter] || [];
+    if (!list.length) return '';
+    return list[((dayIdx % list.length) + list.length) % list.length];
+  }
+
   // The card is the cover of a graded blue book: a run of labelled fields,
   // then one ruled line per round. Edit this list to reshape the cover: one
   // entry is one field line, in order, and `value` is handed a ctx of
-  // { dateLabel, dayNumber, total }.
+  // { dateLabel, dayNumber, total }. The date is not a field: it sits in the
+  // card's top-right corner (#bb-card-date).
   var CARD_FIELDS = [
-    { label: 'Date',    value: function (ctx) { return ctx.dateLabel; } },
-    { label: 'Subject', value: function (ctx) { return 'The classics'; } },
     { label: 'Class',   value: function (ctx) { return 'Blue Book No. ' + ctx.dayNumber; } },
+    { label: 'Subject', value: function (ctx) { return 'The Classics'; } },
     { label: 'Score',   value: function (ctx) { return C.formatPoints(ctx.total) + ' / 5,000'; } },
     { label: 'Grade',   value: function (ctx) { return C.grade(ctx.total); } }
   ];
@@ -597,12 +621,14 @@
     return span;
   }
 
-  function renderCard(results) {
+  function renderCard(results, total) {
     var ctx = {
       dateLabel: new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }),
       dayNumber: dayIdx + 1,
-      total: dayTotal(results)
+      total: total
     };
+
+    el.cardDate.textContent = ctx.dateLabel;
 
     el.cardFields.innerHTML = '';
     for (var f = 0; f < CARD_FIELDS.length; f++) {
@@ -629,6 +655,8 @@
       li.appendChild(rowSpan('bb-row-pts', C.formatPoints(r.total)));
       el.cardRows.appendChild(li);
     }
+
+    el.cardComment.textContent = instructorComment(C.grade(total));
   }
 
   // The streak is still counted and saved; it is just kept off the screen for
@@ -648,7 +676,7 @@
     renderProgress(TOTAL_ROUNDS, state.results);
 
     var total = dayTotal(state.results);
-    renderCard(state.results);
+    renderCard(state.results, total);
 
     var st = stats || load(KEY_STATS, statsDefaults());
     renderStats(st);

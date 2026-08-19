@@ -45,24 +45,28 @@
   // ---- Scoring -------------------------------------------------------------
 
   // Points for a year guess: full 400 inside the book's window, decaying
-  // linearly to 0 over D = max(50, 2 * window) years past the window.
+  // linearly to 0 over D = max(100, 2 * window) years past the window. The
+  // 100-year floor is what keeps a near miss on a tightly dated book (a
+  // pamphlet with a window of 2) from collapsing to nothing: half a century
+  // out still pays about half.
   function yearPoints(guess, book) {
     var w = typeof book.window === 'number' ? book.window : 2;
     var excess = Math.max(0, Math.abs(guess - book.year) - w);
-    var D = Math.max(50, 2 * w);
+    var D = Math.max(100, 2 * w);
     return Math.round(400 * Math.max(0, 1 - excess / D));
   }
 
-  // Round total: the book is worth 600 found on the first guess and 100 less
-  // for each wrong guess before it (500, then 400); never finding it is worth
-  // 0 and costs nothing further, so the year points still stand. Hints are the
-  // only penalty, 100 each off the round, floored at 0.
+  // Round total, out of 1,000: 600 for the book (all or nothing) and up to 400
+  // for the year, which is scored the same whether or not the book was found.
+  // Every hint and every wrong guess takes 10 percent off the round, additive
+  // and capped at 100 percent, so the cost of help scales with how well the
+  // round was going.
   function roundScore(o) {
-    var wrong = o.wrongGuesses || 0;
-    var book = o.correct ? Math.max(0, 600 - 100 * wrong) : 0;
+    var book = o.correct ? 600 : 0;
     var year = o.yearPts || 0;
-    var penalty = 100 * (o.hintsUsed || 0);
-    return { book: book, year: year, penalty: penalty, total: Math.max(0, book + year - penalty) };
+    var offPct = Math.min(100, 10 * ((o.hintsUsed || 0) + (o.wrongGuesses || 0)));
+    var total = Math.max(0, Math.round((book + year) * (1 - offPct / 100)));
+    return { book: book, year: year, offPct: offPct, total: total };
   }
 
   // ---- Tiers ---------------------------------------------------------------

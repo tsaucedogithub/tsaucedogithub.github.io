@@ -8,6 +8,7 @@ const manifesto = { id: 'manifesto', title: 'The Communist Manifesto', author: '
 const odyssey = { id: 'odyssey', title: 'The Odyssey', author: 'Homer', year: -700, window: 150, era: { from: -800, to: -600 }, passages: [{ id: 'odyssey-1', text: 'y', locus: 'Book 1' }] };
 const hamlet = { id: 'hamlet', title: 'Hamlet', author: 'William Shakespeare', year: 1600, window: 5, passages: [{ id: 'hamlet-1', text: 'z', locus: 'III.i' }] };
 const beowulf = { id: 'beowulf', title: 'Beowulf', author: '', year: 900, window: 200, passages: [{ id: 'beowulf-1', text: 'w', locus: '' }] };
+const ulysses = { id: 'ulysses', title: 'Ulysses', author: 'James Joyce', year: 1922, window: 2, passages: [{ id: 'ulysses-1', text: 'v', locus: '1' }] };
 const books = [gatsby, manifesto, odyssey, hamlet, beowulf];
 
 test('dayIndex counts local calendar days since the epoch', () => {
@@ -34,27 +35,36 @@ test('eraBand defaults to the century block, honours override', () => {
 test('yearPoints follows the spec table', () => {
   assert.equal(C.yearPoints(1848, manifesto), 400);
   assert.equal(C.yearPoints(1850, manifesto), 400);
-  assert.equal(C.yearPoints(1870, manifesto), 240);
-  assert.equal(C.yearPoints(1880, manifesto), 160);
-  assert.equal(C.yearPoints(1900, manifesto), 0);
-  assert.equal(C.yearPoints(-530, odyssey), 373);
+  assert.equal(C.yearPoints(1870, manifesto), 320);   // excess 20, D 100
+  assert.equal(C.yearPoints(1880, manifesto), 280);
+  assert.equal(C.yearPoints(1900, manifesto), 200);
+  assert.equal(C.yearPoints(1950, manifesto), 0);
+  assert.equal(C.yearPoints(-530, odyssey), 373);     // window 150, D 300
   assert.equal(C.yearPoints(-400, odyssey), 200);
-  assert.equal(C.yearPoints(1620, hamlet), 280);
-  assert.equal(C.yearPoints(1200, beowulf), 300);
-  assert.equal(C.yearPoints(1930, { year: 1925 }), 376); // default window 2: excess 3, D 50
+  assert.equal(C.yearPoints(1620, hamlet), 340);      // window 5, D 100 (floor)
+  assert.equal(C.yearPoints(1200, beowulf), 300);     // window 200, D 400
+  assert.equal(C.yearPoints(1930, { year: 1925 }), 388); // default window 2: excess 3, D 100
+  assert.equal(C.yearPoints(1872, ulysses), 208);     // half a century out is still worth something
 });
 
 test('yearPoints returns integers', () => {
   for (const g of [1700, 1848, 1875, 1899, 2025, -3000]) assert.equal(Number.isInteger(C.yearPoints(g, manifesto)), true);
 });
 
-test('roundScore discounts the book per wrong guess, charges hints, and floors at zero', () => {
-  assert.deepEqual(C.roundScore({ correct: true, wrongGuesses: 0, hintsUsed: 0, yearPts: 400 }), { book: 600, year: 400, penalty: 0, total: 1000 });
-  assert.deepEqual(C.roundScore({ correct: true, wrongGuesses: 1, hintsUsed: 0, yearPts: 240 }), { book: 500, year: 240, penalty: 0, total: 740 });
-  assert.deepEqual(C.roundScore({ correct: true, wrongGuesses: 2, hintsUsed: 3, yearPts: 0 }), { book: 400, year: 0, penalty: 300, total: 100 });
-  // Missing the book costs the 600 and nothing more: the year still stands.
-  assert.deepEqual(C.roundScore({ correct: false, wrongGuesses: 3, hintsUsed: 0, yearPts: 200 }), { book: 0, year: 200, penalty: 0, total: 200 });
-  assert.deepEqual(C.roundScore({ correct: false, wrongGuesses: 3, hintsUsed: 3, yearPts: 200 }), { book: 0, year: 200, penalty: 300, total: 0 });
+test('roundScore takes 10 percent off per hint and per wrong guess, and floors at zero', () => {
+  assert.deepEqual(C.roundScore({ correct: true, wrongGuesses: 0, hintsUsed: 0, yearPts: 400 }), { book: 600, year: 400, offPct: 0, total: 1000 });
+  assert.deepEqual(C.roundScore({ correct: true, wrongGuesses: 0, hintsUsed: 3, yearPts: 400 }), { book: 600, year: 400, offPct: 30, total: 700 });
+  assert.deepEqual(C.roundScore({ correct: true, wrongGuesses: 2, hintsUsed: 0, yearPts: 300 }), { book: 600, year: 300, offPct: 20, total: 720 });
+  // Missing the book costs the 600: the year still stands, and the percentage
+  // comes off what is left.
+  assert.deepEqual(C.roundScore({ correct: false, wrongGuesses: 3, hintsUsed: 0, yearPts: 400 }), { book: 0, year: 400, offPct: 30, total: 280 });
+  assert.deepEqual(C.roundScore({ correct: false, wrongGuesses: 3, hintsUsed: 3, yearPts: 300 }), { book: 0, year: 300, offPct: 60, total: 120 });
+});
+
+test('roundScore caps the discount at 100 percent and defaults its inputs', () => {
+  assert.deepEqual(C.roundScore({ correct: true, wrongGuesses: 8, hintsUsed: 5, yearPts: 400 }), { book: 600, year: 400, offPct: 100, total: 0 });
+  assert.deepEqual(C.roundScore({ correct: true }), { book: 600, year: 0, offPct: 0, total: 600 });
+  assert.deepEqual(C.roundScore({}), { book: 0, year: 0, offPct: 0, total: 0 });
 });
 
 test('tiers', () => {

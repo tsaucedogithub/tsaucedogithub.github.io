@@ -416,6 +416,7 @@ body.blue-book { max-width: 720px; }
    ========================================================= */
 
 .bb-card {
+  position: relative;
   text-align: left;
   color: var(--color-primary);
   background: var(--bb-blue);
@@ -424,18 +425,38 @@ body.blue-book { max-width: 720px; }
   padding: 2.4rem 2.4rem 2rem;
 }
 
-.bb-card-kicker {
+/* The date is written in the corner of the cover, not among the fields, so
+   the printed heading below it stays centred on the card. */
+.bb-card-date {
+  position: absolute;
+  top: 2.4rem;
+  right: 2.4rem;
   margin: 0;
   font-size: 1.3rem;
+  opacity: .8;
+}
+
+/* The heading is the printed part of the cover: centred, and set larger than
+   anything the marker writes in. */
+.bb-card-kicker {
+  margin: 0;
+  font-size: 1.6rem;
   font-weight: 700;
+  text-align: center;
   text-transform: uppercase;
-  letter-spacing: .18em;
+  letter-spacing: .2em;
+  /* Letter-spacing adds a gap after the last letter too, which drags centred
+     text off to the left; the indent puts it back. */
+  text-indent: .2em;
 }
 .bb-card-title {
   margin: 0 0 1.6rem;
-  font-size: 2.6rem;
+  font-size: 3.2rem;
   font-weight: 700;
   line-height: 1.15;
+  text-align: center;
+  /* <h2> inherits the site's tightened tracking; the cover wants none. */
+  letter-spacing: normal;
 }
 
 /* Fields: a small label, then the value written on a ruled line. */
@@ -461,15 +482,10 @@ body.blue-book { max-width: 720px; }
   font-weight: 500;
   border-bottom: 1px solid var(--color-primary);
 }
-.bb-card-field-grade { font-size: 2.2rem; font-weight: 700; }
-
-.bb-card-comments-label {
-  margin: 2rem 0 .8rem;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  opacity: .7;
-}
+/* Qualified by the dd: the `.bb-card-field dd` rule above is more specific
+   than a bare value class would be, and would keep the weight at 500. */
+.bb-card-field dd.bb-card-field-score { font-weight: 700; }
+.bb-card-field dd.bb-card-field-grade { font-size: 2.2rem; font-weight: 700; }
 
 /* Rounds: one per ruled line, title left, points right. */
 .bb-card-rows {
@@ -495,10 +511,32 @@ body.blue-book { max-width: 720px; }
 .bb-row-split { font-size: 1.3rem; opacity: .75; }
 .bb-row-pts { font-weight: 700; font-variant-numeric: tabular-nums; }
 
+/* Under the five rounds: the label, then one line in the marker's hand (the
+   serif the passages are set in). */
+.bb-card-comments-label {
+  margin: 2rem 0 .8rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  opacity: .7;
+}
+.bb-card-comment {
+  margin: 0;
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-size: 1.6rem;
+  line-height: 1.45;
+}
+
 /* On a phone the line has no room for both: the split drops under the
    title, level with it, and the points stay on the first line. */
 @media (max-width: 480px) {
   .bb-card { padding: 2rem 1.8rem 1.6rem; }
+  /* No room beside the heading: the date sits above it instead. */
+  .bb-card-date {
+    position: static;
+    text-align: center;
+    margin: 0 0 .6rem;
+  }
   .bb-card-field dt { width: 6.5rem; }
   .bb-card-rows li { flex-wrap: wrap; }
   .bb-row-n { order: 1; }
@@ -513,7 +551,7 @@ body.blue-book { max-width: 720px; }
 
 /* ===================== end Scorecard ===================== */
 
-.bb-stats { font-size: 1.4rem; opacity: .75; margin: 0 0 1.8rem; }
+.bb-stats { font-size: 1.4rem; opacity: .75; margin: 1.8rem 0 0; }
 .bb-share-note { font-size: 1.3rem; opacity: .7; margin-left: .8rem; }
 .bb-countdown { font-size: 1.3rem; opacity: .5; margin: 1.4rem 0 0; }
 
