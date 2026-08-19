@@ -1,37 +1,40 @@
 // Blue Book (/blue-book/): boot, data, and the round interaction state
-// machine (search, guesses, hints, year control, reveal). Task 7 adds the
-// results screen and daily persistence on top of the `hooks` object below.
+// machine (search, guesses, hints, year control, reveal), the results
+// screen, and daily persistence.
 (function () {
   var root = document.getElementById('bb-app');
   if (!root || !window.BlueBookCore) return;
   var C = window.BlueBookCore;
   var books = JSON.parse(document.getElementById('bb-data').textContent);
   var schedule = JSON.parse(document.getElementById('bb-schedule').textContent);
+  var library = JSON.parse(document.getElementById('bb-library').textContent);
   var URL = 'tristansaucedo.com/blue-book';
   var TOTAL_ROUNDS = 5;
+  var MAX_MATCHES = 8;
 
   var dayIdx = C.dayIndex(new Date(), schedule.epoch);
   var rounds = C.roundsForDay(schedule, books, dayIdx);   // [{book, passage}]
   var range = C.sliderRange(books);
+  // The searchable list: the canon plus several hundred decoy titles, so the
+  // box cannot be walked letter by letter to find the ten real answers.
+  var entries = C.mergeLibrary(books, library);
 
   var el = {
-    daynum: document.getElementById('bb-daynum'),
-    dot: document.getElementById('bb-dot'),
-    streak: document.getElementById('bb-streak'),
+    progressRow: document.getElementById('bb-progress-row'),
     progress: document.getElementById('bb-progress'),
+    hintsBtn: document.getElementById('bb-hints-btn'),
+    hintsPanel: document.getElementById('bb-hints-panel'),
     round: document.getElementById('bb-round'),
     passage: document.getElementById('bb-passage'),
     hintEra: document.getElementById('bb-hint-era'),
     hintClue: document.getElementById('bb-hint-clue'),
     hintFamous: document.getElementById('bb-hint-famous'),
     hintOut: document.getElementById('bb-hint-out'),
+    searchWrap: document.getElementById('bb-search-wrap'),
     search: document.getElementById('bb-search'),
     results: document.getElementById('bb-results'),
     picked: document.getElementById('bb-picked'),
     yearNum: document.getElementById('bb-year-num'),
-    yearMinus: document.getElementById('bb-year-minus'),
-    yearPlus: document.getElementById('bb-year-plus'),
-    yearLabel: document.getElementById('bb-year-label'),
     yearSlider: document.getElementById('bb-year-slider'),
     sliderBand: document.getElementById('bb-slider-band'),
     feedback: document.getElementById('bb-feedback'),
@@ -73,11 +76,9 @@
   // ---- Passage / hint text rendering --------------------------------------
 
   function appendParagraphs(container, text) {
-    // Display-only cleanup: some Gutenberg editions print an em dash as "--".
-    // The data file stays verbatim; only the rendered text is normalized.
     text.split(/\n\s*\n/).forEach(function (para) {
       var p = document.createElement('p');
-      p.textContent = para.replace(/--/g, '—');
+      p.textContent = para;
       container.appendChild(p);
     });
   }
@@ -89,13 +90,13 @@
 
   function renderProgress(current, results) {
     // current: 0-based index of the round in play. results: completed round
-    // results so far, in order (used to mark earlier pills is-done + tier).
+    // results so far, in order (used to mark earlier rings is-done).
     el.progress.innerHTML = '';
     for (var i = 0; i < TOTAL_ROUNDS; i++) {
       var li = document.createElement('li');
       li.textContent = String(i + 1);
       if (i < results.length) {
-        li.className = 'is-done tier-' + C.tier(results[i].total);
+        li.className = 'is-done';
       } else if (i === current) {
         li.className = 'is-current';
       }
@@ -105,11 +106,22 @@
 
   // ---- Year control --------------------------------------------------------
 
+  // "1848", "725 BCE", "725 bc", " -725 ", "−725" (Unicode minus, which is what
+  // the field itself prints) all parse; anything else returns the fallback so a
+  // typo restores the year the control already held.
+  function parseYearInput(raw, fallback) {
+    var s = String(raw).replace(/\s+/g, '').replace(/−/g, '-');
+    var era = s.match(/(bce|bc)$/i);
+    if (era) s = s.slice(0, s.length - era[1].length);
+    var n = parseInt(s, 10);
+    if (isNaN(n)) return fallback;
+    return era ? -Math.abs(n) : n;
+  }
+
   function setYear(y) {
     y = Math.max(range.min, Math.min(range.max, y));
     state.cur.year = y;
-    el.yearNum.value = y;
-    el.yearLabel.textContent = C.yearLabel(y);
+    el.yearNum.value = C.yearLabel(y);
     el.yearSlider.value = C.yearToSlider(y, range);
   }
 
@@ -123,51 +135,86 @@
     el.sliderBand.style.background = 'linear-gradient(to right, transparent ' + a + '%, rgba(20,33,61,.18) ' + a + '%, rgba(20,33,61,.18) ' + b + '%, transparent ' + b + '%)';
   }
 
-  el.yearNum.min = range.min;
-  el.yearNum.max = range.max;
   el.yearSlider.addEventListener('input', function () {
     setYear(C.sliderToYear(+el.yearSlider.value, range));
   });
   el.yearNum.addEventListener('change', function () {
-    setYear(parseInt(el.yearNum.value, 10) || state.cur.year);
+    setYear(parseYearInput(el.yearNum.value, state.cur.year));
   });
-  el.yearMinus.addEventListener('click', function () { setYear(state.cur.year - 1); });
-  el.yearPlus.addEventListener('click', function () { setYear(state.cur.year + 1); });
 
   // ---- Search and pick -------------------------------------------------------
 
   function updateActive() {
     var items = el.results.children;
     for (var i = 0; i < items.length; i++) {
-      items[i].className = i === activeIdx ? 'is-active' : '';
+      items[i].classList.toggle('is-active', i === activeIdx);
     }
     if (activeIdx >= 0 && items[activeIdx]) items[activeIdx].scrollIntoView({ block: 'nearest' });
   }
 
-  function renderResults(matches) {
+  function showMatches(matches, autoActive) {
     currentMatches = matches;
-    activeIdx = matches.length ? 0 : -1;
+    activeIdx = (autoActive && matches.length) ? 0 : -1;
     el.results.innerHTML = '';
-    matches.forEach(function (book, i) {
-      var li = document.createElement('li');
-      li.setAttribute('role', 'option');
-      if (i === activeIdx) li.className = 'is-active';
-      var strong = document.createElement('strong');
-      strong.textContent = book.title;
-      var author = document.createElement('span');
-      author.className = 'bb-res-author';
-      author.textContent = book.author;
-      li.appendChild(strong);
-      li.appendChild(author);
-      li.addEventListener('click', function () { pick(book); });
-      el.results.appendChild(li);
-    });
-    el.results.hidden = matches.length === 0;
+
+    if (!matches.length) {
+      var empty = document.createElement('li');
+      empty.className = 'bb-res-empty';
+      empty.textContent = 'No match';
+      el.results.appendChild(empty);
+    } else {
+      matches.forEach(function (entry, i) {
+        var li = document.createElement('li');
+        li.setAttribute('role', 'option');
+        if (i === activeIdx) li.className = 'is-active';
+        var strong = document.createElement('strong');
+        strong.textContent = entry.title;
+        li.appendChild(strong);
+        // A handful of library entries (Beowulf, Gilgamesh, the Song of Roland)
+        // have no author; they get the title line only.
+        if (entry.author) {
+          var author = document.createElement('span');
+          author.className = 'bb-res-author';
+          author.textContent = entry.author;
+          li.appendChild(author);
+        }
+        // pointerdown, not click: on a phone the tap collapses the keyboard
+        // and blurs the input, which can swallow a click on a moving row.
+        li.addEventListener('pointerdown', function (e) {
+          e.preventDefault();
+          pick(entry);
+        });
+        el.results.appendChild(li);
+      });
+    }
+
+    el.results.hidden = false;
+    el.results.scrollTop = 0;
   }
 
-  function pick(book) {
-    state.cur.picked = book;
-    el.picked.textContent = book.title + ' · ' + book.author;
+  function closeResults() {
+    el.results.hidden = true;
+  }
+
+  // Everything still guessable this round: an entry already guessed drops out
+  // so it cannot be offered (or picked) twice.
+  function availableEntries() {
+    var guessed = state.cur.guessIds;
+    return entries.filter(function (e) { return guessed.indexOf(e.id) === -1; });
+  }
+
+  // Empty box: the whole library, alphabetical and scrollable, so the list
+  // reads as "choose from all of these". Typing narrows it to MAX_MATCHES.
+  function openResults() {
+    if (!state.cur || state.cur.ended) return;
+    var query = el.search.value.trim();
+    var pool = availableEntries();
+    showMatches(query ? C.searchBooks(pool, query, MAX_MATCHES) : pool, !!query);
+  }
+
+  function pick(entry) {
+    state.cur.picked = entry;
+    el.picked.textContent = entry.author ? entry.title + ' · ' + entry.author : entry.title;
     var x = document.createElement('button');
     x.type = 'button';
     x.className = 'bb-picked-x';
@@ -177,7 +224,7 @@
     el.picked.appendChild(x);
     el.picked.hidden = false;
     el.search.value = '';
-    el.results.hidden = true;
+    closeResults();
     el.guess.disabled = false;
   }
 
@@ -188,13 +235,11 @@
     el.guess.disabled = true;
   }
 
-  el.search.addEventListener('input', function () {
-    var value = el.search.value;
-    if (!value) { renderResults([]); return; }
-    var matches = C.searchBooks(books, value).filter(function (b) {
-      return state.cur.guessIds.indexOf(b.id) === -1;
-    });
-    renderResults(matches);
+  el.search.addEventListener('input', openResults);
+  el.search.addEventListener('focus', openResults);
+
+  document.addEventListener('pointerdown', function (e) {
+    if (!el.searchWrap.contains(e.target)) closeResults();
   });
 
   el.search.addEventListener('keydown', function (e) {
@@ -209,11 +254,11 @@
       activeIdx = (activeIdx - 1 + currentMatches.length) % currentMatches.length;
       updateActive();
     } else if (e.key === 'Enter') {
-      if (el.results.hidden || !currentMatches.length) return;
+      if (el.results.hidden || activeIdx < 0 || !currentMatches[activeIdx]) return;
       e.preventDefault();
-      pick(currentMatches[activeIdx] || currentMatches[0]);
+      pick(currentMatches[activeIdx]);
     } else if (e.key === 'Escape') {
-      el.results.hidden = true;
+      closeResults();
     }
   });
 
@@ -221,16 +266,16 @@
 
   function onGuess() {
     if (!state.cur.picked || state.cur.ended) return;
-    var b = state.cur.picked;
-    state.cur.guessIds.push(b.id);
+    var picked = state.cur.picked;
+    state.cur.guessIds.push(picked.id);
     var answer = rounds[state.round].book;
-    if (b.id === answer.id) {
+    if (picked.id === answer.id) {
       endRound(true);
       return;
     }
     var left = 3 - state.cur.guessIds.length;
     var text = 'Not it.';
-    if (b.author === answer.author) text += ' Right author, though.';
+    if (C.sameAuthor(picked.author, answer.author)) text += ' Right author, though.';
     if (left > 0) text += ' ' + left + ' ' + (left === 1 ? 'guess' : 'guesses') + ' left.';
     el.feedback.textContent = text;
     unpick();
@@ -247,8 +292,17 @@
 
   // ---- Hints ----------------------------------------------------------------
 
+  function setHintsOpen(open) {
+    el.hintsPanel.hidden = !open;
+    el.hintsBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  el.hintsBtn.addEventListener('click', function () {
+    setHintsOpen(el.hintsPanel.hidden);
+  });
+
   function useHint(name) {
-    if (state.cur.ended) return;
+    if (!state.cur || state.cur.ended) return;
     var btn = hintBtns[name];
     if (!btn || btn.disabled || btn.classList.contains('is-used')) return;
 
@@ -299,12 +353,13 @@
     el.giveup.disabled = true;
     el.search.disabled = true;
     el.yearNum.disabled = true;
-    el.yearMinus.disabled = true;
-    el.yearPlus.disabled = true;
     el.yearSlider.disabled = true;
     el.hintEra.disabled = true;
     el.hintClue.disabled = true;
     el.hintFamous.disabled = true;
+    el.hintsBtn.disabled = true;
+    setHintsOpen(false);
+    closeResults();
 
     el.revealVerdict.textContent = result.correct ? 'Right.' : 'Not this time.';
     el.revealTitle.textContent = r.book.title;
@@ -358,18 +413,22 @@
     el.search.disabled = false;
     el.search.value = '';
     el.results.innerHTML = '';
-    el.results.hidden = true;
+    closeResults();
     currentMatches = [];
     activeIdx = -1;
     unpick();
 
     el.giveup.disabled = false;
     el.yearNum.disabled = false;
-    el.yearMinus.disabled = false;
-    el.yearPlus.disabled = false;
     el.yearSlider.disabled = false;
 
-    [el.hintEra, el.hintClue, el.hintFamous].forEach(function (btn) {
+    el.progressRow.hidden = false;
+    el.hintsBtn.hidden = false;
+    el.hintsBtn.disabled = false;
+    setHintsOpen(false);
+
+    Object.keys(hintBtns).forEach(function (name) {
+      var btn = hintBtns[name];
       btn.classList.remove('is-used');
       btn.disabled = false;
       btn.removeAttribute('title');
@@ -424,6 +483,20 @@
     } catch (e) {}
   }
 
+  // Testing aid: /blue-book/?reset drops every stored key and then strips the
+  // query string, so the page boots fresh and a refresh does not wipe again.
+  function resetStorage() {
+    try {
+      var keys = [];
+      for (var i = 0; i < localStorage.length; i++) {
+        var k = localStorage.key(i);
+        if (k && k.indexOf('bb:v1:') === 0) keys.push(k);
+      }
+      for (var j = 0; j < keys.length; j++) localStorage.removeItem(keys[j]);
+      history.replaceState(null, '', location.pathname);
+    } catch (e) {}
+  }
+
   hooks.onRoundEnd = function () {
     save(KEY_DAY, { results: state.results, done: false });
   };
@@ -457,16 +530,6 @@
   }
   hooks.onDayEnd = finishDay;
 
-  function renderStreak(st) {
-    if (st && (st.lastDay === dayIdx || st.lastDay === dayIdx - 1) && st.streak) {
-      el.streak.textContent = '🔥 ' + st.streak;
-      el.dot.hidden = false;
-    } else {
-      el.streak.textContent = '';
-      el.dot.hidden = true;
-    }
-  }
-
   // ---- Results screen -----------------------------------------------------
 
   function renderTiles() {
@@ -474,7 +537,6 @@
     for (var i = 0; i < state.results.length; i++) {
       var r = state.results[i];
       var li = document.createElement('li');
-      li.className = 'tier-' + C.tier(r.total);
 
       var n = document.createElement('span');
       n.className = 'bb-tile-n';
@@ -495,13 +557,18 @@
     }
   }
 
+  // The streak is still counted and saved; it is just kept off the screen for
+  // now, so this line reads Played / Best / Average only.
   function renderStats(st) {
     var average = st.played ? Math.round(st.sum / st.played) : 0;
-    el.stats.textContent = 'Played ' + st.played + ' · Streak ' + st.streak + ' · Best ' + C.formatPoints(st.best) + ' · Average ' + C.formatPoints(average);
+    el.stats.textContent = 'Played ' + st.played + ' · Best ' + C.formatPoints(st.best) + ' · Average ' + C.formatPoints(average);
   }
 
   function showResults(justFinished, stats) {
     el.round.hidden = true;
+    // The tiles list every round, so the rings and the hints button go away.
+    el.progressRow.hidden = true;
+    setHintsOpen(false);
     renderProgress(TOTAL_ROUNDS, state.results);
 
     var total = dayTotal();
@@ -510,13 +577,12 @@
 
     var st = stats || load(KEY_STATS, statsDefaults());
     renderStats(st);
-    renderStreak(st);
 
     el.resultsScreen.hidden = false;
     startCountdown();
     root.scrollIntoView({ block: 'start' });
 
-    el.share.onclick = function () { onShare(total, st); };
+    el.share.onclick = function () { onShare(total); };
   }
 
   // ---- Share ----------------------------------------------------------------
@@ -539,12 +605,11 @@
     setTimeout(function () { el.shareNote.textContent = ''; }, 2000);
   }
 
-  function onShare(total, st) {
+  function onShare(total) {
     var text = C.shareText({
       dayNumber: dayIdx + 1,
       total: total,
       roundTotals: state.results.map(function (r) { return r.total; }),
-      streak: st.streak,
       url: URL
     });
 
@@ -585,9 +650,7 @@
   // ---- Boot ---------------------------------------------------------------
 
   function boot() {
-    el.daynum.textContent = '#' + (dayIdx + 1);
-    var st = load(KEY_STATS, statsDefaults());
-    renderStreak(st);
+    if (/[?&]reset\b/.test(location.search)) resetStorage();
 
     var saved = load(KEY_DAY, null);
     if (!(saved && Array.isArray(saved.results))) saved = null;

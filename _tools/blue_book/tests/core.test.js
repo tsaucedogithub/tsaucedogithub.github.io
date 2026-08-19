@@ -130,8 +130,68 @@ test('passageIndex and roundsForDay derive default ids when the data omits them 
   assert.equal(rounds.length, 5);
 });
 
-test('shareText matches the spec format', () => {
+test('shareText matches the spec format and carries no streak', () => {
   const t = C.shareText({ dayNumber: 12, total: 3860, roundTotals: [940, 800, 600, 100, 1420], streak: 6, url: 'tristansaucedo.com/blue-book' });
-  assert.equal(t, 'Blue Book #12 · 3,860 / 5,000\n📗 📗 📙 📕 📗 · 🔥 6\ntristansaucedo.com/blue-book');
+  assert.equal(t, 'Blue Book #12 · 3,860 / 5,000\n📗 📗 📙 📕 📗\ntristansaucedo.com/blue-book');
+  assert.equal(t.split('\n').length, 3);
+  assert.equal(/🔥/.test(t), false);
   assert.equal(C.formatPoints(0), '0');
+});
+
+test('mergeLibrary puts canon first, drops library duplicates, and ids the rest', () => {
+  const library = [
+    { title: 'The Great Gatsby', author: 'F. Scott Fitzgerald' },
+    { title: 'Gatsby', author: 'F. Scott Fitzgerald' },
+    { title: 'Middlemarch', author: 'George Eliot' },
+    { title: 'The Aeneid', author: 'Virgil' },
+  ];
+  const merged = C.mergeLibrary([gatsby, hamlet], library);
+  const gat = merged.filter(e => C.normalize(e.title) === 'the great gatsby');
+  assert.equal(gat.length, 1);
+  assert.deepEqual(gat[0], { id: 'great-gatsby', title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', aliases: ['Gatsby'], isCanon: true });
+  assert.equal(merged.length, 5);   // 2 canon + 3 library rows (the duplicate Gatsby row is dropped)
+  assert.deepEqual(merged.map(e => e.id), ['lib-3', 'lib-1', 'great-gatsby', 'hamlet', 'lib-2']);
+  assert.deepEqual(merged.map(e => e.title), ['The Aeneid', 'Gatsby', 'The Great Gatsby', 'Hamlet', 'Middlemarch']);
+  assert.deepEqual(merged.filter(e => e.isCanon).map(e => e.id), ['great-gatsby', 'hamlet']);
+  for (const e of merged) assert.deepEqual(Object.keys(e).sort(), ['aliases', 'author', 'id', 'isCanon', 'title']);
+});
+
+test('mergeLibrary sorts case and accent insensitively, ignoring a leading article', () => {
+  const merged = C.mergeLibrary([], [
+    { title: 'Zorba the Greek', author: 'Nikos Kazantzakis' },
+    { title: 'Émile', author: 'Jean-Jacques Rousseau' },
+    { title: 'An American Tragedy', author: 'Theodore Dreiser' },
+    { title: 'The Aeneid', author: 'Virgil' },
+  ]);
+  assert.deepEqual(merged.map(e => e.title), ['The Aeneid', 'An American Tragedy', 'Émile', 'Zorba the Greek']);
+  assert.equal(merged.every(e => e.isCanon === false), true);
+  assert.deepEqual(merged[0].aliases, []);
+});
+
+test('mergeLibrary copes with a missing or empty library', () => {
+  assert.deepEqual(C.mergeLibrary([hamlet], []).map(e => e.id), ['hamlet']);
+  assert.deepEqual(C.mergeLibrary([hamlet]).map(e => e.id), ['hamlet']);
+});
+
+test('sameAuthor compares normalized last names', () => {
+  assert.equal(C.sameAuthor('Leo Tolstoy', 'Tolstoy'), true);
+  assert.equal(C.sameAuthor('Emily Brontë', 'Charlotte Bronte'), true);
+  assert.equal(C.sameAuthor('F. Scott Fitzgerald', 'F. Scott Fitzgerald'), true);
+  assert.equal(C.sameAuthor('Leo Tolstoy', 'Fyodor Dostoevsky'), false);
+  assert.equal(C.sameAuthor('', ''), false);
+  assert.equal(C.sameAuthor('Homer', ''), false);
+  assert.equal(C.sameAuthor(null, undefined), false);
+  assert.equal(C.sameAuthor('Virginia Woolf', 'woolf'), true);
+});
+
+test('searchBooks works over merged entries and finds a decoy the canon does not hold', () => {
+  const merged = C.mergeLibrary(books, [
+    { title: 'Middlemarch', author: 'George Eliot' },
+    { title: 'The Aeneid', author: 'Virgil' },
+  ]);
+  assert.deepEqual(C.searchBooks(merged, 'middle').map(e => e.title), ['Middlemarch']);
+  assert.deepEqual(C.searchBooks(merged, 'virgil').map(e => e.id), ['lib-1']);
+  assert.deepEqual(C.searchBooks(merged, 'gat').map(e => e.id), ['great-gatsby']);
+  assert.equal(C.searchBooks(merged, 'the').length <= 8, true);
+  assert.equal(C.searchBooks(merged, 'zzzz').length, 0);
 });

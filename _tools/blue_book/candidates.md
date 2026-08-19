@@ -193,7 +193,7 @@ Lists: `bbc` = bbc_big_read_top100, `bokklubben` = bokklubben_world_library, `bo
 | 183 | A Bend in the River | VS Naipaul | 1979 | 3 | guardian-2015 ml-novels observer-2003 |
 | 184 | A House for Mr Biswas | V.S. Naipaul | 1961 | 3 | guardian-2026 ml-novels time |
 | 185 | Metamorphoses | Ovid | 1st century CE | 3 | bokklubben cbc tgb200 |
-| 186 | Usa | John Dos Passos |  | 3 | tgb200 ml-novels observer-2003 |
+| 186 | U.S.A. | John Dos Passos |  | 3 | tgb200 ml-novels observer-2003 |
 | 187 | Doctor Zhivago | Boris Pasternak |  | 3 | tgb200 jeffrich worldcat |
 | 188 | The Moviegoer | Walker Percy | 1961 | 3 | tgb200 ml-novels time |
 | 189 | Six Characters in Search of an Author | Luigi Pirandello | 1921 | 3 | greatbooks jeffrich lemonde |

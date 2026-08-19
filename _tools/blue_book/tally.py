@@ -223,6 +223,7 @@ DISPLAY = {
     'in search of lost time': 'In Search of Lost Time',
     'hunger games': 'The Hunger Games (series)',
     '1984': '1984',
+    'u s a': 'U.S.A.',
 }
 
 

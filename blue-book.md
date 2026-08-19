@@ -10,31 +10,31 @@ stylesheet: /assets/css/blue-book.css
 <div class="bb" id="bb-app">
 
   <header class="bb-head">
-    <h1 class="bb-title">Blue Book</h1>
-    <p class="bb-tagline">Five passages from the classics. Name the book, place it in time.</p>
-    <p class="bb-meta"><span id="bb-daynum"></span> <span class="bb-dot" id="bb-dot" hidden>·</span> <span id="bb-streak"></span></p>
-    <details class="bb-help">
-      <summary>How to play</summary>
-      <p>Each round shows a passage. Pick the book it comes from and set the year it was written. A round is worth 1,000 points: 600 for the book, 400 for the year. Every hint and every wrong guess costs 100. You get three guesses.</p>
-      <p>The year is forgiving in proportion to the book: a Marx pamphlet expects you within a couple of years, an ancient epic within a century or so.</p>
-    </details>
+    <div class="bb-head-block">
+      <h1 class="bb-title">Blue Book</h1>
+      <p class="bb-tagline">From the passage, guess the book and its publication year.</p>
+    </div>
   </header>
 
-  <ol class="bb-progress" id="bb-progress" aria-label="Rounds"></ol>
+  <div class="bb-progress-row" id="bb-progress-row">
+    <ol class="bb-progress" id="bb-progress" aria-label="Rounds"></ol>
+    <button type="button" class="bb-hints-btn" id="bb-hints-btn" aria-expanded="false" aria-controls="bb-hints-panel">Hints</button>
+  </div>
+
+  <div class="bb-hints" id="bb-hints-panel" hidden>
+    <button type="button" class="bb-hint" id="bb-hint-era" data-hint="era"><span class="bb-hint-name">Era</span><span class="bb-hint-cost">−100 points</span></button>
+    <button type="button" class="bb-hint" id="bb-hint-clue" data-hint="clue"><span class="bb-hint-name">Author clue</span><span class="bb-hint-cost">−100 points</span></button>
+    <button type="button" class="bb-hint" id="bb-hint-famous" data-hint="famous"><span class="bb-hint-name">Famous passage</span><span class="bb-hint-cost">−100 points</span></button>
+  </div>
 
   <section class="bb-round" id="bb-round" hidden>
     <blockquote class="bb-passage" id="bb-passage"></blockquote>
 
-    <div class="bb-hints" id="bb-hints">
-      <button type="button" class="bb-hint" id="bb-hint-era" data-hint="era">Era <span class="bb-cost">−100</span></button>
-      <button type="button" class="bb-hint" id="bb-hint-clue" data-hint="clue">Author clue <span class="bb-cost">−100</span></button>
-      <button type="button" class="bb-hint" id="bb-hint-famous" data-hint="famous">Famous passage <span class="bb-cost">−100</span></button>
-    </div>
     <div class="bb-hint-out" id="bb-hint-out" hidden></div>
 
     <div class="bb-guess">
       <label class="bb-label" for="bb-search">Which book?</label>
-      <div class="bb-search-wrap">
+      <div class="bb-search-wrap" id="bb-search-wrap">
         <input type="text" id="bb-search" class="bb-search" autocomplete="off" autocorrect="off" spellcheck="false" placeholder="Start typing a title or author">
         <ul class="bb-results" id="bb-results" role="listbox" hidden></ul>
       </div>
@@ -43,15 +43,12 @@ stylesheet: /assets/css/blue-book.css
 
     <div class="bb-year">
       <label class="bb-label" for="bb-year-num">When was it written?</label>
-      <div class="bb-year-row">
-        <button type="button" class="bb-step" id="bb-year-minus" aria-label="Earlier">−</button>
-        <input type="number" id="bb-year-num" class="bb-year-num" step="1">
-        <button type="button" class="bb-step" id="bb-year-plus" aria-label="Later">+</button>
-        <span class="bb-year-label" id="bb-year-label"></span>
-      </div>
       <div class="bb-slider-wrap">
         <div class="bb-slider-band" id="bb-slider-band"></div>
         <input type="range" id="bb-year-slider" class="bb-slider" min="0" max="1000" step="1">
+      </div>
+      <div class="bb-year-row">
+        <input type="text" id="bb-year-num" class="bb-year-num" inputmode="numeric" autocomplete="off">
       </div>
     </div>
 
@@ -89,5 +86,6 @@ stylesheet: /assets/css/blue-book.css
 
 <script type="application/json" id="bb-data">{{ site.data.blue_book | jsonify | replace: '</', '<\/' }}</script>
 <script type="application/json" id="bb-schedule">{{ site.data.blue_book_schedule | jsonify | replace: '</', '<\/' }}</script>
+<script type="application/json" id="bb-library">{{ site.data.blue_book_library | jsonify | replace: '</', '<\/' }}</script>
 <script src="{{ '/assets/js/blue-book-core.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/blue-book.js' | relative_url }}"></script>

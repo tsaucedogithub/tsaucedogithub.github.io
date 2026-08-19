@@ -4,10 +4,19 @@
  * Everything not styled here (tokens, type, headings, blockquote, layout,
  * body font) comes from style.css; this file only adds the `.bb-` classes.
  */
+
+/* Booklet palette: the baby blue of an exam blue book cover, and a paper
+   cream lighter than the site's. */
+:root {
+  --bb-blue:      #d9e7f6;
+  --bb-blue-line: #b7cfe9;
+  --bb-cream:     #faf6ee;
+}
+
 body.blue-book { max-width: 720px; }
 
 /* The [hidden] attribute is used throughout for state toggles (dropdown,
-   reveal, results screen, the meta dot). Several .bb- rules below would
+   hints panel, reveal, results screen). Several .bb- rules below would
    otherwise beat the UA [hidden] rule with a more specific display value,
    so pin it here, ahead of everything else. */
 .bb [hidden] { display: none !important; }
@@ -22,7 +31,7 @@ body.blue-book { max-width: 720px; }
 
 /* <header class="bb-head"> is a bare <header> element, so it inherits the
    site's flex row layout (wordmark + nav) meant for the page header. This
-   content header always stacks: title, tagline, meta, details. */
+   content header always stacks. */
 .bb-head {
   display: block;
   margin: 0 0 2rem;
@@ -30,31 +39,38 @@ body.blue-book { max-width: 720px; }
   border-bottom: 0;
   gap: 0;
 }
-.bb-title { margin: 0 0 .6rem; }
-.bb-tagline { font-size: 1.6rem; opacity: .8; margin: .4rem 0 1rem; }
-.bb-meta { font-size: 1.4rem; opacity: .6; margin: 0 0 1.4rem; }
-.bb-dot { margin: 0 .3rem; }
-
-.bb-help { font-size: 1.4rem; margin: 0 0 1.6rem; }
-.bb-help summary {
-  cursor: pointer;
-  font-weight: 500;
-  color: var(--color-primary);
+.bb-head-block {
+  background: var(--bb-blue);
+  border-radius: 10px;
+  padding: 2rem 2.2rem;
 }
-.bb-help p { opacity: .8; margin: .8rem 0 0; }
+.bb-title { margin: 0 0 .6rem; color: var(--color-primary); }
+.bb-tagline {
+  font-size: 1.6rem;
+  color: var(--color-primary);
+  opacity: .8;
+  margin: 0;
+}
 
-/* ---- progress pills ---- */
+/* ---- progress row: rings on the left, the hints button on the right ---- */
+
+.bb-progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin: 0 0 1.6rem;
+}
 
 .bb-progress {
   display: flex;
   flex-wrap: wrap;
   gap: .7rem;
   list-style: none;
-  margin: 0 0 2rem;
+  margin: 0;
   padding: 0;
 }
 .bb-progress li {
-  position: relative;
   width: 2.8rem;
   height: 2.8rem;
   display: flex;
@@ -71,21 +87,61 @@ body.blue-book { max-width: 720px; }
   background: var(--color-primary);
   border-color: var(--color-primary);
 }
-.bb-progress li.is-done { border: 2px solid var(--color-primary); }
-.bb-progress li.is-done::after {
-  content: '';
-  position: absolute;
-  bottom: -.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: .6rem;
-  height: .6rem;
-  border-radius: 50%;
-  background: rgba(20, 33, 61, .4);
+.bb-progress li.is-done {
+  background: var(--bb-blue);
+  border-color: var(--color-primary);
 }
-.bb-progress li.is-done.tier-high::after { background: #2f7d4f; }
-.bb-progress li.is-done.tier-mid::after { background: #c98a1b; }
-.bb-progress li.is-done.tier-low::after { background: #b3403a; }
+
+.bb-hints-btn {
+  flex: 0 0 auto;
+  font: inherit;
+  font-size: 1.35rem;
+  font-weight: 700;
+  padding: .6rem 1.4rem;
+  color: var(--color-primary);
+  background: var(--bb-blue);
+  border: 1px solid var(--bb-blue-line);
+  border-radius: 99px;
+  cursor: pointer;
+  transition: border-color .2s, opacity .2s;
+}
+.bb-hints-btn:hover:not(:disabled) { border-color: var(--color-primary); }
+.bb-hints-btn:disabled { opacity: .45; cursor: default; }
+
+/* ---- hints panel ---- */
+
+.bb-hints {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
+  margin: 0 0 1.6rem;
+  padding: 0;
+}
+.bb-hint {
+  display: flex;
+  flex: 1 1 9rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .2rem;
+  font: inherit;
+  text-align: left;
+  padding: .8rem 1.2rem;
+  color: var(--color-primary);
+  background: var(--color-bg);
+  border: 1px solid rgba(20, 33, 61, .45);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, opacity .2s;
+}
+.bb-hint-name { font-size: 1.35rem; font-weight: 700; }
+.bb-hint-cost { font-size: 1.2rem; opacity: .6; }
+.bb-hint:hover { background: var(--bb-blue); }
+.bb-hint.is-used {
+  background: var(--bb-cream);
+  cursor: default;
+}
+.bb-hint.is-used .bb-hint-cost { text-decoration: line-through; }
+.bb-hint:disabled { opacity: .45; cursor: default; pointer-events: none; }
 
 /* ---- passage (overrides the site's blockquote rule: no left border, full
    width, serif hero treatment) ---- */
@@ -94,7 +150,7 @@ body.blue-book { max-width: 720px; }
   margin: 0;
   padding: 2rem 2.2rem;
   border: 0;
-  background: var(--color-accent);
+  background: var(--bb-cream);
   border-radius: 10px;
   font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
   font-size: 1.9rem;
@@ -103,42 +159,10 @@ body.blue-book { max-width: 720px; }
 .bb-passage p { margin: 0 0 1.2rem; }
 .bb-passage p:last-child { margin-bottom: 0; }
 
-/* ---- hints ---- */
-
-.bb-hints {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .8rem;
-  margin: 1.8rem 0 0;
-  padding: 0;
-}
-.bb-hint {
-  display: inline-flex;
-  align-items: center;
-  gap: .4rem;
-  font: inherit;
-  font-size: 1.25rem;
-  padding: .4rem .6rem .4rem 1.2rem;
-  color: var(--color-primary);
-  background: var(--color-bg);
-  border: 1px solid rgba(20, 33, 61, .45);
-  border-radius: 99px;
-  cursor: pointer;
-  transition: background .2s, border-color .2s, opacity .2s;
-}
-.bb-hint:hover { background: var(--color-accent); }
-.bb-hint .bb-cost { opacity: .6; }
-.bb-hint.is-used {
-  background: var(--color-accent);
-  cursor: default;
-}
-.bb-hint.is-used .bb-cost { text-decoration: line-through; }
-.bb-hint:disabled { opacity: .45; cursor: default; pointer-events: none; }
-
 .bb-hint-out {
   margin: 1.2rem 0 0;
   padding: 1.4rem 1.6rem;
-  background: var(--color-accent);
+  background: var(--bb-cream);
   border-radius: 10px;
   font-size: 1.5rem;
   line-height: 1.5;
@@ -187,8 +211,9 @@ body.blue-book { max-width: 720px; }
   background: #fff;
   border: 1px solid var(--color-primary);
   border-radius: 6px;
-  max-height: 26rem;
+  max-height: 32rem;
   overflow: auto;
+  overscroll-behavior: contain;
   box-shadow: 0 10px 24px -12px rgba(20, 33, 61, .35);
 }
 .bb-results li {
@@ -197,7 +222,12 @@ body.blue-book { max-width: 720px; }
 }
 .bb-results li strong { display: block; font-weight: 700; color: var(--color-ink); }
 .bb-results li .bb-res-author { display: block; font-size: 1.3rem; opacity: .6; }
-.bb-results li.is-active { background: var(--color-accent); }
+.bb-results li.is-active { background: var(--bb-blue); }
+.bb-results li.bb-res-empty {
+  cursor: default;
+  font-size: 1.4rem;
+  opacity: .6;
+}
 
 .bb-picked {
   display: inline-flex;
@@ -223,47 +253,12 @@ body.blue-book { max-width: 720px; }
 }
 .bb-picked-x:hover { opacity: 1; }
 
-/* ---- year ---- */
+/* ---- year: full-width slider, one editable field under its right end ---- */
 
 .bb-year { margin-top: 2rem; }
-.bb-year-row {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: .8rem;
-}
-.bb-step {
-  box-sizing: border-box;
-  width: 3.6rem;
-  height: 3.6rem;
-  flex: 0 0 auto;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  background: var(--color-bg);
-  border: 1px solid rgba(20, 33, 61, .18);
-  border-radius: 6px;
-  cursor: pointer;
-}
-.bb-step:hover { background: var(--color-accent); border-color: var(--color-primary); }
-.bb-year-num {
-  box-sizing: border-box;
-  width: 8rem;
-  height: 3.6rem;
-  font: inherit;
-  font-size: 1.6rem;
-  text-align: center;
-  color: var(--color-ink);
-  background: var(--color-bg);
-  border: 1px solid rgba(20, 33, 61, .18);
-  border-radius: 6px;
-}
-.bb-year-num:focus { outline: 2px solid var(--color-link); outline-offset: 1px; }
-.bb-year-label { font-size: 1.4rem; opacity: .6; }
 
 .bb-slider-wrap {
   position: relative;
-  margin-top: 1.4rem;
   display: flex;
   align-items: center;
   height: 2.4rem;
@@ -286,6 +281,26 @@ body.blue-book { max-width: 720px; }
   margin: 0;
   accent-color: var(--color-primary);
 }
+
+.bb-year-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: .8rem;
+}
+.bb-year-num {
+  box-sizing: border-box;
+  width: 10rem;
+  height: 3.6rem;
+  font: inherit;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--color-primary);
+  background: var(--color-bg);
+  border: 1px solid rgba(20, 33, 61, .18);
+  border-radius: 6px;
+}
+.bb-year-num:focus { outline: 2px solid var(--color-link); outline-offset: 1px; }
 
 /* ---- feedback + actions ---- */
 
@@ -332,7 +347,7 @@ body.blue-book { max-width: 720px; }
 .bb-reveal {
   margin-top: 2rem;
   padding: 2rem 2.2rem;
-  background: var(--color-accent);
+  background: var(--bb-cream);
   border-radius: 10px;
   animation: bb-rise .45s cubic-bezier(.2, .7, .3, 1);
 }
@@ -389,17 +404,19 @@ body.blue-book { max-width: 720px; }
   gap: 1rem;
   padding: 1rem 1.4rem;
   margin-bottom: .6rem;
-  background: var(--color-accent);
-  border-left: 4px solid rgba(20, 33, 61, .25);
+  background: var(--bb-cream);
+  border-left: 4px solid var(--bb-blue-line);
   border-radius: 6px;
   font-size: 1.4rem;
 }
-.bb-tiles li.tier-high { border-left-color: #2f7d4f; }
-.bb-tiles li.tier-mid { border-left-color: #c98a1b; }
-.bb-tiles li.tier-low { border-left-color: #b3403a; }
 .bb-tile-n { flex: 0 0 auto; width: 2rem; opacity: .55; font-weight: 700; }
 .bb-tile-title { flex: 1 1 auto; font-weight: 500; }
-.bb-tile-pts { flex: 0 0 auto; font-variant-numeric: tabular-nums; font-weight: 700; }
+.bb-tile-pts {
+  flex: 0 0 auto;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--color-primary);
+}
 
 .bb-stats { font-size: 1.4rem; opacity: .75; margin: 0 0 1.8rem; }
 .bb-share-note { font-size: 1.3rem; opacity: .7; margin-left: .8rem; }
@@ -419,6 +436,10 @@ body.blue-book { max-width: 720px; }
 
 @media (max-width: 400px) {
   .bb { padding: 1.8rem 1.2rem; }
+  .bb-head-block { padding: 1.6rem 1.6rem; }
   .bb-passage { padding: 1.6rem 1.6rem; font-size: 1.7rem; }
+  /* Three across would break "Famous passage" over two lines and make the
+     button three lines deep; stacked, each stays name over cost. */
+  .bb-hint { flex: 1 1 100%; }
   .bb-total { font-size: 5rem; }
 }

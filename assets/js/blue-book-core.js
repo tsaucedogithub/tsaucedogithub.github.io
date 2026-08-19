@@ -113,6 +113,52 @@
 
   var LEADING_ARTICLE = /^(the |a |an )/;
 
+  // Normalized title with a leading article stripped: the key both the
+  // library merge and the sort order use, so "The Aeneid" files under "a".
+  function titleKey(title) {
+    return normalize(title).replace(LEADING_ARTICLE, '');
+  }
+
+  // The searchable list: the canon plus the wider library of decoy titles
+  // (_data/blue_book_library.json). Canon entries keep their book id and
+  // aliases and win any title collision, so a library row for a canon book
+  // never shadows the real answer. Everything else gets a synthetic id.
+  // Entries carry no passages: this list is for searching, not scoring.
+  function mergeLibrary(books, library) {
+    var entries = [];
+    var canonTitles = {};
+    var i;
+
+    for (i = 0; i < books.length; i++) {
+      var book = books[i];
+      canonTitles[titleKey(book.title)] = true;
+      entries.push({ id: book.id, title: book.title, author: book.author, aliases: book.aliases || [], isCanon: true });
+    }
+
+    var rows = library || [];
+    for (i = 0; i < rows.length; i++) {
+      var row = rows[i];
+      if (Object.prototype.hasOwnProperty.call(canonTitles, titleKey(row.title))) continue;
+      entries.push({ id: 'lib-' + i, title: row.title, author: row.author, aliases: [], isCanon: false });
+    }
+
+    entries.sort(function (a, b) {
+      var ka = titleKey(a.title), kb = titleKey(b.title);
+      if (ka < kb) return -1;
+      if (ka > kb) return 1;
+      return 0;
+    });
+    return entries;
+  }
+
+  // Two author strings name the same person when their normalized last
+  // tokens match: "Leo Tolstoy" and "Tolstoy" do, an empty author never does.
+  function sameAuthor(a, b) {
+    var x = normalize(a).split(' ').pop();
+    var y = normalize(b).split(' ').pop();
+    return x !== '' && x === y;
+  }
+
   // Ranked search over the canon: 0 = title prefix match (with or without
   // a leading article), 1 = alias/author prefix or a title-word prefix,
   // 2 = substring anywhere in title, aliases, or author.
@@ -233,9 +279,11 @@
     return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
+  // Three lines: score, the five tier emoji, the URL. The streak is still
+  // tracked in stats but is deliberately kept off the share card for now.
   function shareText(o) {
     return 'Blue Book #' + o.dayNumber + ' · ' + formatPoints(o.total) + ' / 5,000\n' +
-      o.roundTotals.map(tierEmoji).join(' ') + ' · 🔥 ' + o.streak + '\n' + o.url;
+      o.roundTotals.map(tierEmoji).join(' ') + '\n' + o.url;
   }
 
   return {
@@ -251,6 +299,8 @@
     sliderToYear: sliderToYear,
     yearToSlider: yearToSlider,
     normalize: normalize,
+    mergeLibrary: mergeLibrary,
+    sameAuthor: sameAuthor,
     searchBooks: searchBooks,
     passageIndex: passageIndex,
     roundsForDay: roundsForDay,
