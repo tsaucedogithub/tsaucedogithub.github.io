@@ -48,15 +48,29 @@ test('yearPoints returns integers', () => {
   for (const g of [1700, 1848, 1875, 1899, 2025, -3000]) assert.equal(Number.isInteger(C.yearPoints(g, manifesto)), true);
 });
 
-test('roundScore applies penalties and floors at zero', () => {
+test('roundScore discounts the book per wrong guess, charges hints, and floors at zero', () => {
   assert.deepEqual(C.roundScore({ correct: true, wrongGuesses: 0, hintsUsed: 0, yearPts: 400 }), { book: 600, year: 400, penalty: 0, total: 1000 });
-  assert.deepEqual(C.roundScore({ correct: true, wrongGuesses: 2, hintsUsed: 3, yearPts: 0 }), { book: 600, year: 0, penalty: 500, total: 100 });
-  assert.deepEqual(C.roundScore({ correct: false, wrongGuesses: 3, hintsUsed: 3, yearPts: 200 }), { book: 0, year: 200, penalty: 600, total: 0 });
+  assert.deepEqual(C.roundScore({ correct: true, wrongGuesses: 1, hintsUsed: 0, yearPts: 240 }), { book: 500, year: 240, penalty: 0, total: 740 });
+  assert.deepEqual(C.roundScore({ correct: true, wrongGuesses: 2, hintsUsed: 3, yearPts: 0 }), { book: 400, year: 0, penalty: 300, total: 100 });
+  // Missing the book costs the 600 and nothing more: the year still stands.
+  assert.deepEqual(C.roundScore({ correct: false, wrongGuesses: 3, hintsUsed: 0, yearPts: 200 }), { book: 0, year: 200, penalty: 0, total: 200 });
+  assert.deepEqual(C.roundScore({ correct: false, wrongGuesses: 3, hintsUsed: 3, yearPts: 200 }), { book: 0, year: 200, penalty: 300, total: 0 });
 });
 
 test('tiers', () => {
   assert.equal(C.tier(800), 'high'); assert.equal(C.tier(799), 'mid'); assert.equal(C.tier(400), 'mid'); assert.equal(C.tier(399), 'low');
   assert.equal(C.tierEmoji(1000), '📗'); assert.equal(C.tierEmoji(500), '📙'); assert.equal(C.tierEmoji(0), '📕');
+});
+
+test('grade maps the day total onto a letter', () => {
+  assert.equal(C.grade(5000), 'A');
+  assert.equal(C.grade(4000), 'A');
+  assert.equal(C.grade(3999), 'B');
+  assert.equal(C.grade(2000), 'C');
+  assert.equal(C.grade(1000), 'D');
+  assert.equal(C.grade(999), 'F');
+  assert.equal(C.grade(0), 'F');
+  assert.deepEqual(C.GRADE_CUTS, [[4000, 'A'], [3000, 'B'], [2000, 'C'], [1000, 'D']]);
 });
 
 test('slider mapping is monotonic, hits the pivot at 250, and round-trips', () => {

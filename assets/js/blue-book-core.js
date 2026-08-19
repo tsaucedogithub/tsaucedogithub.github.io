@@ -53,12 +53,15 @@
     return Math.round(400 * Math.max(0, 1 - excess / D));
   }
 
-  // Round total: 600 for a correct book guess, plus year points, minus
-  // 100 per wrong guess and per hint used, floored at 0.
+  // Round total: the book is worth 600 found on the first guess and 100 less
+  // for each wrong guess before it (500, then 400); never finding it is worth
+  // 0 and costs nothing further, so the year points still stand. Hints are the
+  // only penalty, 100 each off the round, floored at 0.
   function roundScore(o) {
-    var book = o.correct ? 600 : 0;
+    var wrong = o.wrongGuesses || 0;
+    var book = o.correct ? Math.max(0, 600 - 100 * wrong) : 0;
     var year = o.yearPts || 0;
-    var penalty = 100 * ((o.wrongGuesses || 0) + (o.hintsUsed || 0));
+    var penalty = 100 * (o.hintsUsed || 0);
     return { book: book, year: year, penalty: penalty, total: Math.max(0, book + year - penalty) };
   }
 
@@ -75,6 +78,20 @@
     if (t === 'high') return '📗'; // 📗
     if (t === 'mid') return '📙'; // 📙
     return '📕'; // 📕
+  }
+
+  // ---- Grade ---------------------------------------------------------------
+
+  // Letter for a day's total, highest cut first. The thresholds are
+  // placeholders: once enough days have been played they will be curved to
+  // the real distribution of scores rather than to round numbers.
+  var GRADE_CUTS = [[4000, 'A'], [3000, 'B'], [2000, 'C'], [1000, 'D']];
+
+  function grade(total) {
+    for (var i = 0; i < GRADE_CUTS.length; i++) {
+      if (total >= GRADE_CUTS[i][0]) return GRADE_CUTS[i][1];
+    }
+    return 'F';
   }
 
   // ---- Year slider ---------------------------------------------------------
@@ -295,6 +312,8 @@
     roundScore: roundScore,
     tier: tier,
     tierEmoji: tierEmoji,
+    GRADE_CUTS: GRADE_CUTS,
+    grade: grade,
     sliderRange: sliderRange,
     sliderToYear: sliderToYear,
     yearToSlider: yearToSlider,

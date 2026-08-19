@@ -20,6 +20,7 @@
   var entries = C.mergeLibrary(books, library);
 
   var el = {
+    head: document.getElementById('bb-head'),
     progressRow: document.getElementById('bb-progress-row'),
     progress: document.getElementById('bb-progress'),
     hintsBtn: document.getElementById('bb-hints-btn'),
@@ -38,6 +39,7 @@
     yearSlider: document.getElementById('bb-year-slider'),
     sliderBand: document.getElementById('bb-slider-band'),
     feedback: document.getElementById('bb-feedback'),
+    misses: document.getElementById('bb-misses'),
     guess: document.getElementById('bb-guess'),
     giveup: document.getElementById('bb-giveup'),
     reveal: document.getElementById('bb-reveal'),
@@ -48,8 +50,8 @@
     breakdown: document.getElementById('bb-breakdown'),
     next: document.getElementById('bb-next'),
     resultsScreen: document.getElementById('bb-results-screen'),
-    total: document.getElementById('bb-total'),
-    tiles: document.getElementById('bb-tiles'),
+    cardFields: document.getElementById('bb-card-fields'),
+    cardRows: document.getElementById('bb-card-rows'),
     stats: document.getElementById('bb-stats'),
     share: document.getElementById('bb-share'),
     shareNote: document.getElementById('bb-share-note'),
@@ -75,10 +77,17 @@
 
   // ---- Passage / hint text rendering --------------------------------------
 
+  // No em dash ever reaches the screen. The canon is kept clear of them, and
+  // anything that slips through anyway (a Gutenberg text's "--", a real em or
+  // en dash) renders as one spaced hyphen: "story - the story".
+  function plainDashes(text) {
+    return text.replace(/\s*(?:--|—|–)\s*/g, ' - ');
+  }
+
   function appendParagraphs(container, text) {
     text.split(/\n\s*\n/).forEach(function (para) {
       var p = document.createElement('p');
-      p.textContent = para;
+      p.textContent = plainDashes(para);
       container.appendChild(p);
     });
   }
@@ -264,6 +273,27 @@
 
   // ---- Guessing --------------------------------------------------------------
 
+  // The books already ruled out, kept on screen through the reveal: they are
+  // part of the round's record, and they cost points.
+  function addMiss(entry) {
+    var li = document.createElement('li');
+    li.className = 'bb-miss';
+
+    var x = document.createElement('span');
+    x.className = 'bb-miss-x';
+    x.setAttribute('aria-hidden', 'true');
+    x.textContent = '×';
+
+    var text = document.createElement('span');
+    text.className = 'bb-miss-text';
+    text.textContent = entry.author ? entry.title + ' · ' + entry.author : entry.title;
+
+    li.appendChild(x);
+    li.appendChild(text);
+    el.misses.appendChild(li);
+    el.misses.hidden = false;
+  }
+
   function onGuess() {
     if (!state.cur.picked || state.cur.ended) return;
     var picked = state.cur.picked;
@@ -273,9 +303,10 @@
       endRound(true);
       return;
     }
+    // No "right author" note: the only hints are the ones you pay for.
     var left = 3 - state.cur.guessIds.length;
-    var text = 'Not it.';
-    if (C.sameAuthor(picked.author, answer.author)) text += ' Right author, though.';
+    addMiss(picked);
+    var text = 'Wrong.';
     if (left > 0) text += ' ' + left + ' ' + (left === 1 ? 'guess' : 'guesses') + ' left.';
     el.feedback.textContent = text;
     unpick();
@@ -335,6 +366,10 @@
 
   // ---- Ending a round and the reveal -----------------------------------------
 
+  // Indexed by the number of wrong guesses before the right one, so one miss
+  // makes the book the 2nd guess.
+  var GUESS_ORDINALS = ['1st', '2nd', '3rd'];
+
   function addBreakdownRow(label, value, extraClass) {
     var li = document.createElement('li');
     if (extraClass) li.className = extraClass;
@@ -373,16 +408,17 @@
       el.revealSig.hidden = true;
     }
 
+    // Wrong guesses get no row of their own: they come off the book line,
+    // whose label names the guess that landed it.
     el.breakdown.innerHTML = '';
-    addBreakdownRow('Book', String(result.book));
+    var bookLabel = 'Book';
+    if (result.correct && wrong > 0) bookLabel += ' (' + GUESS_ORDINALS[wrong] + ' guess)';
+    addBreakdownRow(bookLabel, String(result.book));
     addBreakdownRow('Year (you said ' + C.yearLabel(result.year) + ')', String(result.yearPts));
     if (result.hintsUsed.length > 0) {
       addBreakdownRow('Hints (' + result.hintsUsed.length + ')', '−' + (100 * result.hintsUsed.length));
     }
-    if (wrong > 0) {
-      addBreakdownRow('Wrong guesses (' + wrong + ')', '−' + (100 * wrong));
-    }
-    addBreakdownRow('Round', String(result.total), 'bb-breakdown-total');
+    addBreakdownRow('Round total', String(result.total), 'bb-breakdown-total');
 
     el.reveal.hidden = false;
     el.reveal.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -404,6 +440,8 @@
 
   function resetControls(book) {
     el.feedback.textContent = '';
+    el.misses.innerHTML = '';
+    el.misses.hidden = true;
     el.reveal.hidden = true;
 
     el.hintOut.innerHTML = '';
@@ -451,6 +489,7 @@
     renderPassage(r.passage.text);
     renderProgress(i, state.results);
     setYear(1800);
+    el.head.hidden = false;
     el.round.hidden = false;
     // No focus() call here: keeps the on-screen keyboard from popping on mobile.
   }
@@ -507,14 +546,14 @@
     return { played: 0, streak: 0, maxStreak: 0, lastDay: null, best: 0, sum: 0 };
   }
 
-  function dayTotal() {
+  function dayTotal(results) {
     var total = 0;
-    for (var i = 0; i < state.results.length; i++) total += state.results[i].total;
+    for (var i = 0; i < results.length; i++) total += results[i].total;
     return total;
   }
 
   function finishDay() {
-    var total = dayTotal();
+    var total = dayTotal(state.results);
     var st = load(KEY_STATS, statsDefaults());
     if (st.lastDay !== dayIdx) {
       st.played += 1;
@@ -532,28 +571,63 @@
 
   // ---- Results screen -----------------------------------------------------
 
-  function renderTiles() {
-    el.tiles.innerHTML = '';
-    for (var i = 0; i < state.results.length; i++) {
-      var r = state.results[i];
+  // The card is the cover of a graded blue book: a run of labelled fields,
+  // then one ruled line per round. Edit this list to reshape the cover: one
+  // entry is one field line, in order, and `value` is handed a ctx of
+  // { dateLabel, dayNumber, total }.
+  var CARD_FIELDS = [
+    { label: 'Date',    value: function (ctx) { return ctx.dateLabel; } },
+    { label: 'Subject', value: function (ctx) { return 'The classics'; } },
+    { label: 'Class',   value: function (ctx) { return 'Blue Book No. ' + ctx.dayNumber; } },
+    { label: 'Score',   value: function (ctx) { return C.formatPoints(ctx.total) + ' / 5,000'; } },
+    { label: 'Grade',   value: function (ctx) { return C.grade(ctx.total); } }
+  ];
+
+  // Every field value carries a class off its label ('Grade' -> the
+  // bb-card-field-grade the CSS enlarges), so a new field can be styled
+  // without touching this function.
+  function fieldClass(label) {
+    return 'bb-card-field-' + label.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  }
+
+  function rowSpan(className, text) {
+    var span = document.createElement('span');
+    span.className = className;
+    span.textContent = text;
+    return span;
+  }
+
+  function renderCard(results) {
+    var ctx = {
+      dateLabel: new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }),
+      dayNumber: dayIdx + 1,
+      total: dayTotal(results)
+    };
+
+    el.cardFields.innerHTML = '';
+    for (var f = 0; f < CARD_FIELDS.length; f++) {
+      var field = CARD_FIELDS[f];
+      var row = document.createElement('div');
+      row.className = 'bb-card-field';
+      var dt = document.createElement('dt');
+      dt.textContent = field.label;
+      var dd = document.createElement('dd');
+      dd.className = fieldClass(field.label);
+      dd.textContent = field.value(ctx);
+      row.appendChild(dt);
+      row.appendChild(dd);
+      el.cardFields.appendChild(row);
+    }
+
+    el.cardRows.innerHTML = '';
+    for (var i = 0; i < results.length; i++) {
+      var r = results[i];
       var li = document.createElement('li');
-
-      var n = document.createElement('span');
-      n.className = 'bb-tile-n';
-      n.textContent = String(i + 1);
-
-      var title = document.createElement('span');
-      title.className = 'bb-tile-title';
-      title.textContent = rounds[i].book.title;
-
-      var pts = document.createElement('span');
-      pts.className = 'bb-tile-pts';
-      pts.textContent = C.formatPoints(r.total);
-
-      li.appendChild(n);
-      li.appendChild(title);
-      li.appendChild(pts);
-      el.tiles.appendChild(li);
+      li.appendChild(rowSpan('bb-row-n', String(i + 1)));
+      li.appendChild(rowSpan('bb-row-title', rounds[i].book.title));
+      li.appendChild(rowSpan('bb-row-split', 'Book ' + r.book + ' · Year ' + r.yearPts));
+      li.appendChild(rowSpan('bb-row-pts', C.formatPoints(r.total)));
+      el.cardRows.appendChild(li);
     }
   }
 
@@ -566,14 +640,15 @@
 
   function showResults(justFinished, stats) {
     el.round.hidden = true;
-    // The tiles list every round, so the rings and the hints button go away.
+    // The card is the whole screen and names the game itself, so the page
+    // header goes away with the rings and the hints button.
+    el.head.hidden = true;
     el.progressRow.hidden = true;
     setHintsOpen(false);
     renderProgress(TOTAL_ROUNDS, state.results);
 
-    var total = dayTotal();
-    el.total.textContent = C.formatPoints(total) + ' / 5,000';
-    renderTiles();
+    var total = dayTotal(state.results);
+    renderCard(state.results);
 
     var st = stats || load(KEY_STATS, statsDefaults());
     renderStats(st);

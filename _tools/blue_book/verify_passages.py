@@ -32,6 +32,9 @@ def normalize(s):
     for k, v in _TYPO.items():
         s = s.replace(k, v)
     s = s.replace('--', '-')
+    # The canon writes every dash as one spaced hyphen ("Daisy - they"); the
+    # source prints it closed up ("Daisy—they"). Compare them as the same.
+    s = re.sub(r'\s*-\s*', '-', s)
     s = re.sub(r'(?<!\w)_|_(?!\w)', '', s)   # Gutenberg _italics_ markers
     s = re.sub(r'\s+', ' ', s)
     return s.strip()

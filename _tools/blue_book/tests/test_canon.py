@@ -1,4 +1,4 @@
-import os, sys, unittest
+import os, re, sys, unittest
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 import canon
@@ -31,6 +31,28 @@ class LoadCanon(unittest.TestCase):
         books = canon.load_canon(FIX)
         ids = [p['id'] for p in canon.all_passages(books)]
         self.assertEqual(ids, ['sample-book-1', 'custom-id', 'no-gutenberg-1'])
+
+class NoEmDashes(unittest.TestCase):
+    """No em dash, en dash or "--" may exist anywhere in the real canon: the
+    passages are stored with one spaced hyphen instead."""
+
+    DASH = re.compile(r'--|\u2014|\u2013')
+
+    def test_real_canon_is_free_of_dashes(self):
+        if not os.path.exists(canon.DEFAULT_PATH):
+            self.skipTest('canon file not present')
+        offenders = []
+        for b in canon.load_canon():
+            fields = [('title', b.get('title')), ('clue', b.get('clue'))]
+            for p in b['passages']:
+                fields.append((p['id'] + ' text', p.get('text')))
+                fields.append((p['id'] + ' significance', p.get('significance')))
+            if 'famous' in b:
+                fields.append((b['famous']['id'] + ' text', b['famous'].get('text')))
+            for name, value in fields:
+                if isinstance(value, str) and self.DASH.search(value):
+                    offenders.append(f"{b['id']}: {name}")
+        self.assertEqual(offenders, [], 'dashes must be written as one spaced hyphen')
 
 if __name__ == '__main__':
     unittest.main()

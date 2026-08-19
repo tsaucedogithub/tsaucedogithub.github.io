@@ -12,6 +12,10 @@ class Normalize(unittest.TestCase):
         self.assertEqual(vp.normalize('I _am_ here'), 'I am here')
         self.assertEqual(vp.normalize('it’s'), "it's")
 
+    def test_spaced_hyphen_matches_the_sources_em_dash(self):
+        # The canon holds "Daisy - they", Gutenberg prints "Daisy—they".
+        self.assertEqual(vp.normalize('Daisy - they'), vp.normalize('Daisy—they'))
+
 class CheckBook(unittest.TestCase):
     def setUp(self):
         self.books = canon.load_canon(os.path.join(FIX, 'canon_small.yml'))

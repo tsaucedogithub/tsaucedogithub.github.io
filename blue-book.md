@@ -9,7 +9,7 @@ stylesheet: /assets/css/blue-book.css
 
 <div class="bb" id="bb-app">
 
-  <header class="bb-head">
+  <header class="bb-head" id="bb-head">
     <div class="bb-head-block">
       <h1 class="bb-title">Blue Book</h1>
       <p class="bb-tagline">From the passage, guess the book and its publication year.</p>
@@ -22,9 +22,9 @@ stylesheet: /assets/css/blue-book.css
   </div>
 
   <div class="bb-hints" id="bb-hints-panel" hidden>
-    <button type="button" class="bb-hint" id="bb-hint-era" data-hint="era"><span class="bb-hint-name">Era</span><span class="bb-hint-cost">−100 points</span></button>
-    <button type="button" class="bb-hint" id="bb-hint-clue" data-hint="clue"><span class="bb-hint-name">Author clue</span><span class="bb-hint-cost">−100 points</span></button>
-    <button type="button" class="bb-hint" id="bb-hint-famous" data-hint="famous"><span class="bb-hint-name">Famous passage</span><span class="bb-hint-cost">−100 points</span></button>
+    <button type="button" class="bb-hint" id="bb-hint-era" data-hint="era"><span class="bb-hint-name">Era</span><span class="bb-hint-cost">100 points</span></button>
+    <button type="button" class="bb-hint" id="bb-hint-clue" data-hint="clue"><span class="bb-hint-name">Author clue</span><span class="bb-hint-cost">100 points</span></button>
+    <button type="button" class="bb-hint" id="bb-hint-famous" data-hint="famous"><span class="bb-hint-name">Famous passage</span><span class="bb-hint-cost">100 points</span></button>
   </div>
 
   <section class="bb-round" id="bb-round" hidden>
@@ -53,6 +53,7 @@ stylesheet: /assets/css/blue-book.css
     </div>
 
     <p class="bb-feedback" id="bb-feedback" aria-live="polite"></p>
+    <ul class="bb-misses" id="bb-misses" hidden></ul>
 
     <p class="bb-actions">
       <button type="button" class="bb-btn bb-btn-primary" id="bb-guess" disabled>Guess</button>
@@ -70,14 +71,18 @@ stylesheet: /assets/css/blue-book.css
   </section>
 
   <section class="bb-results-screen" id="bb-results-screen" hidden>
-    <p class="bb-total-label">Today</p>
-    <p class="bb-total" id="bb-total"></p>
-    <ol class="bb-tiles" id="bb-tiles"></ol>
-    <p class="bb-stats" id="bb-stats"></p>
+    <div class="bb-card" id="bb-card">
+      <p class="bb-card-kicker">Blue Book</p>
+      <p class="bb-card-title">Literary Examination</p>
+      <dl class="bb-card-fields" id="bb-card-fields"></dl>
+      <p class="bb-card-comments-label">Instructor's comments</p>
+      <ol class="bb-card-rows" id="bb-card-rows"></ol>
+    </div>
     <p class="bb-actions">
       <button type="button" class="bb-btn bb-btn-primary" id="bb-share">Share</button>
       <span class="bb-share-note" id="bb-share-note" aria-live="polite"></span>
     </p>
+    <p class="bb-stats" id="bb-stats"></p>
     <p class="bb-countdown" id="bb-countdown"></p>
   </section>
 

@@ -8,9 +8,11 @@
 /* Booklet palette: the baby blue of an exam blue book cover, and a paper
    cream lighter than the site's. */
 :root {
-  --bb-blue:      #d9e7f6;
-  --bb-blue-line: #b7cfe9;
-  --bb-cream:     #faf6ee;
+  --bb-blue:       #d9e7f6;
+  --bb-blue-line:  #b7cfe9;
+  --bb-cream:      #faf6ee;
+  --bb-coral:      #fbe9e6;
+  --bb-coral-line: #f0b8b0;
 }
 
 body.blue-book { max-width: 720px; }
@@ -312,6 +314,29 @@ body.blue-book { max-width: 720px; }
   margin: 1.4rem 0 0;
 }
 
+/* The books already ruled out this round, under the feedback line. */
+.bb-misses {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .4rem;
+  list-style: none;
+  margin: .6rem 0 0;
+  padding: 0;
+}
+.bb-miss {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .5rem 1rem;
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  background: var(--bb-coral);
+  border: 1px solid var(--bb-coral-line);
+  border-radius: 99px;
+}
+.bb-miss-x { font-weight: 700; color: #b3403a; }
+
 .bb-actions {
   display: flex;
   align-items: center;
@@ -383,40 +408,110 @@ body.blue-book { max-width: 720px; }
   text-align: center;
   animation: bb-rise .45s cubic-bezier(.2, .7, .3, 1);
 }
-.bb-total-label { font-size: 1.4rem; opacity: .6; margin: 0; }
-.bb-total {
-  font-size: 6rem;
-  font-weight: 900;
-  line-height: 1.1;
+
+/* ======================= Scorecard =======================
+   The day's result as the cover of a graded blue book: the printed heading,
+   the fields a marker fills in, and the five rounds on the cover's ruled
+   lines. The field list itself is CARD_FIELDS in blue-book.js.
+   ========================================================= */
+
+.bb-card {
+  text-align: left;
   color: var(--color-primary);
-  margin: .2rem 0 1.8rem;
+  background: var(--bb-blue);
+  border: 2px solid var(--color-primary);
+  border-radius: 8px;
+  padding: 2.4rem 2.4rem 2rem;
 }
 
-.bb-tiles {
-  list-style: none;
-  margin: 0 0 1.8rem;
-  padding: 0;
-  text-align: left;
+.bb-card-kicker {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .18em;
 }
-.bb-tiles li {
+.bb-card-title {
+  margin: 0 0 1.6rem;
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+/* Fields: a small label, then the value written on a ruled line. */
+.bb-card-fields { margin: 0; padding: 0; }
+.bb-card-field {
   display: flex;
   align-items: baseline;
   gap: 1rem;
-  padding: 1rem 1.4rem;
-  margin-bottom: .6rem;
-  background: var(--bb-cream);
-  border-left: 4px solid var(--bb-blue-line);
-  border-radius: 6px;
-  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
 }
-.bb-tile-n { flex: 0 0 auto; width: 2rem; opacity: .55; font-weight: 700; }
-.bb-tile-title { flex: 1 1 auto; font-weight: 500; }
-.bb-tile-pts {
+.bb-card-field dt {
   flex: 0 0 auto;
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  color: var(--color-primary);
+  width: 8rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  opacity: .7;
 }
+.bb-card-field dd {
+  flex: 1;
+  margin: 0;
+  padding-bottom: .2rem;
+  font-weight: 500;
+  border-bottom: 1px solid var(--color-primary);
+}
+.bb-card-field-grade { font-size: 2.2rem; font-weight: 700; }
+
+.bb-card-comments-label {
+  margin: 2rem 0 .8rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  opacity: .7;
+}
+
+/* Rounds: one per ruled line, title left, points right. */
+.bb-card-rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.bb-card-rows li {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: .8rem 0;
+  border-bottom: 1px solid rgba(20, 33, 61, .35);
+}
+.bb-row-n {
+  flex: 0 0 auto;
+  width: 1.6rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  opacity: .6;
+}
+.bb-row-title { flex: 1; font-weight: 500; }
+.bb-row-split { font-size: 1.3rem; opacity: .75; }
+.bb-row-pts { font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* On a phone the line has no room for both: the split drops under the
+   title, level with it, and the points stay on the first line. */
+@media (max-width: 480px) {
+  .bb-card { padding: 2rem 1.8rem 1.6rem; }
+  .bb-card-field dt { width: 6.5rem; }
+  .bb-card-rows li { flex-wrap: wrap; }
+  .bb-row-n { order: 1; }
+  .bb-row-title { order: 2; }
+  .bb-row-pts { order: 3; }
+  .bb-row-split {
+    order: 4;
+    flex-basis: 100%;
+    padding-left: 2.6rem;
+  }
+}
+
+/* ===================== end Scorecard ===================== */
 
 .bb-stats { font-size: 1.4rem; opacity: .75; margin: 0 0 1.8rem; }
 .bb-share-note { font-size: 1.3rem; opacity: .7; margin-left: .8rem; }
@@ -441,5 +536,4 @@ body.blue-book { max-width: 720px; }
   /* Three across would break "Famous passage" over two lines and make the
      button three lines deep; stacked, each stays name over cost. */
   .bb-hint { flex: 1 1 100%; }
-  .bb-total { font-size: 5rem; }
 }
