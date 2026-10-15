@@ -13,7 +13,7 @@ These are some of the things I've built or helped build. If you're here for the 
 
 A bullet game against a neural network fine-tuned on over 100,000 of my bullet moves. It plays like me (bad).
 
-It's Maia-3 (a transformer trained to play like humans) fine-tuned on my Chess.com games, plus my opening book and a model of how long I take to move. All of it runs in your browser.
+It's Maia-3 (a transformer trained to play like humans) fine-tuned on my Chess.com games, plus my opening book and a model of how long I take to move.
 
 ## [Timeback](https://getyourtimeback.app)
 
