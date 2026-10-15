@@ -9,6 +9,12 @@ description: Things Tristan Saucedo has built.
 
 These are some of the things I've built or helped build. If you're here for the formal version, my <a href="{{ '/assets/tsaucedo_resume_2026_public.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">resume</a> covers it.
 
+## [Play Tristan]({{ '/play-tristan/' | relative_url }})
+
+A bullet game against a neural network fine-tuned on over 100,000 of my bullet moves. It plays like me (bad).
+
+It's Maia-3 (a transformer trained to play like humans) fine-tuned on my Chess.com games, plus my opening book and a model of how long I take to move. All of it runs in your browser.
+
 ## [Timeback](https://getyourtimeback.app)
 
 Timeback is a Mac app (soon Windows too) that you use to control app usage on your phone. It's different from other screentime apps in that it cannot be circumvented on your phone.
